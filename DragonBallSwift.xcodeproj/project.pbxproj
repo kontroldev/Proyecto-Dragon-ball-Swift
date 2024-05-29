@@ -54,6 +54,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6E600C712C072E85002408CE /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		6E600C722C072F29002408CE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		B372A00F2C068E2300439428 = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +87,11 @@
 		B372A01A2C068E2300439428 /* DragonBallSwift */ = {
 			isa = PBXGroup;
 			children = (
+				6E600C722C072F29002408CE /* Tools */,
+				6E600C712C072E85002408CE /* Server */,
+				6E600C642C06927F002408CE /* Model */,
 				6E600C662C0692FA002408CE /* View */,
 				6E600C652C0692C0002408CE /* ViewModel */,
-				6E600C642C06927F002408CE /* Model */,
 				B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */,
 				B372A01F2C068E2500439428 /* Assets.xcassets */,
 				B372A0212C068E2500439428 /* Preview Content */,
