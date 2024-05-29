@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E600C742C073CE0002408CE /* AllCheratersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C732C073CE0002408CE /* AllCheratersModel.swift */; };
+		6E600C762C073E0B002408CE /* SingleCheranterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C752C073E0B002408CE /* SingleCheranterModel.swift */; };
+		6E600C792C073EE1002408CE /* AllPlanetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C782C073EE1002408CE /* AllPlanetsModel.swift */; };
+		6E600C7B2C073F96002408CE /* SinglePlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C7A2C073F96002408CE /* SinglePlanetModel.swift */; };
+		6E600C7E2C07436F002408CE /* ApiErrorAndProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C7D2C07436F002408CE /* ApiErrorAndProtocols.swift */; };
+		6E600C802C074B35002408CE /* AllCheracteersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C7F2C074B35002408CE /* AllCheracteersService.swift */; };
+		6E600C842C074CD8002408CE /* SingleCheracterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C832C074CD8002408CE /* SingleCheracterService.swift */; };
+		6E600C862C074D2F002408CE /* AllPlanetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C852C074D2F002408CE /* AllPlanetsService.swift */; };
+		6E600C882C074D93002408CE /* SinglePlanetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C872C074D93002408CE /* SinglePlanetService.swift */; };
 		B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */; };
 		B372A01E2C068E2300439428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B372A01D2C068E2300439428 /* ContentView.swift */; };
 		B372A0202C068E2500439428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A01F2C068E2500439428 /* Assets.xcassets */; };
@@ -14,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E600C732C073CE0002408CE /* AllCheratersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCheratersModel.swift; sourceTree = "<group>"; };
+		6E600C752C073E0B002408CE /* SingleCheranterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCheranterModel.swift; sourceTree = "<group>"; };
+		6E600C782C073EE1002408CE /* AllPlanetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlanetsModel.swift; sourceTree = "<group>"; };
+		6E600C7A2C073F96002408CE /* SinglePlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlanetModel.swift; sourceTree = "<group>"; };
+		6E600C7D2C07436F002408CE /* ApiErrorAndProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrorAndProtocols.swift; sourceTree = "<group>"; };
+		6E600C7F2C074B35002408CE /* AllCheracteersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCheracteersService.swift; sourceTree = "<group>"; };
+		6E600C832C074CD8002408CE /* SingleCheracterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCheracterService.swift; sourceTree = "<group>"; };
+		6E600C852C074D2F002408CE /* AllPlanetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlanetsService.swift; sourceTree = "<group>"; };
+		6E600C872C074D93002408CE /* SinglePlanetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlanetService.swift; sourceTree = "<group>"; };
 		B372A0182C068E2300439428 /* DragonBallSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBallSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallSwiftApp.swift; sourceTree = "<group>"; };
 		B372A01D2C068E2300439428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +53,7 @@
 		6E600C642C06927F002408CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E600C7C2C07401D002408CE /* ModeloApi */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -57,6 +76,10 @@
 		6E600C712C072E85002408CE /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				6E600C7F2C074B35002408CE /* AllCheracteersService.swift */,
+				6E600C832C074CD8002408CE /* SingleCheracterService.swift */,
+				6E600C852C074D2F002408CE /* AllPlanetsService.swift */,
+				6E600C872C074D93002408CE /* SinglePlanetService.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -64,8 +87,20 @@
 		6E600C722C072F29002408CE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6E600C7D2C07436F002408CE /* ApiErrorAndProtocols.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		6E600C7C2C07401D002408CE /* ModeloApi */ = {
+			isa = PBXGroup;
+			children = (
+				6E600C782C073EE1002408CE /* AllPlanetsModel.swift */,
+				6E600C732C073CE0002408CE /* AllCheratersModel.swift */,
+				6E600C752C073E0B002408CE /* SingleCheranterModel.swift */,
+				6E600C7A2C073F96002408CE /* SinglePlanetModel.swift */,
+			);
+			path = ModeloApi;
 			sourceTree = "<group>";
 		};
 		B372A00F2C068E2300439428 = {
@@ -178,7 +213,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B372A01E2C068E2300439428 /* ContentView.swift in Sources */,
+				6E600C802C074B35002408CE /* AllCheracteersService.swift in Sources */,
 				B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */,
+				6E600C762C073E0B002408CE /* SingleCheranterModel.swift in Sources */,
+				6E600C7E2C07436F002408CE /* ApiErrorAndProtocols.swift in Sources */,
+				6E600C7B2C073F96002408CE /* SinglePlanetModel.swift in Sources */,
+				6E600C882C074D93002408CE /* SinglePlanetService.swift in Sources */,
+				6E600C842C074CD8002408CE /* SingleCheracterService.swift in Sources */,
+				6E600C862C074D2F002408CE /* AllPlanetsService.swift in Sources */,
+				6E600C742C073CE0002408CE /* AllCheratersModel.swift in Sources */,
+				6E600C792C073EE1002408CE /* AllPlanetsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
