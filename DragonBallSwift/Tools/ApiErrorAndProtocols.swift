@@ -13,22 +13,22 @@ enum ApiError: Error {
     case invalidResponse
 }
 
-// MARK: - Establece Protocolos para llamada api, para todos los personajes
+// MARK: - Protocolo que define la interfaz para obtener todos los personajes.
 protocol AllCheractersProtocols{
     func getAllCheracters() async throws -> Characters
 }
 
-// MARK: - Establece Protocolos para llamada api, para todos los planetas
+// MARK: - Protocolo que define la interfaz para obtener todos los planetas.
 protocol AllPlanetsProtocols {
     func getAllPlanets() async throws -> Planets
 }
 
-// MARK: - Establece Protocolos para llamada api, un personage
+// MARK: - Protocolo que define la interfaz para obtener los datos de un solo personaje.
 protocol SingleCharacterProtocol {
     func getSingleCherater(id: Int) async throws -> SingleCharacter
 }
 
-// MARK: - Establece Protocolos para llamada api, un planeta
+// MARK: - Protocolo que define la interfaz para obtener los datos de un solo planeta.
 protocol SinglePlanetProtocol {
-    func getSinglePlanetProtocol(di: Int) async throws -> SinglePlanet
+    func getSinglePlanet(id: Int) async throws -> SinglePlanet
 }

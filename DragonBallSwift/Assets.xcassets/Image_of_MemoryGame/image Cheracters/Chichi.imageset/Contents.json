@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Chichi.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
