@@ -7,47 +7,46 @@
 
 import SwiftUI
 
+/// Vista de una carta en el juego de memoria.
 struct CardMemoryView: View {
     @State var cardMemory: CardMemoryModel
+    @State var memoryViewModel: MemoryGameViewModel
     
-    @Binding var matchedCards: [CardMemoryModel]
-    @Binding var userChoises: [CardMemoryModel]
-    
-    let width: Int
+    let width: Int // Ancho de la carta.
     
     var body: some View {
-        if cardMemory.isFaceUp || matchedCards.contains(where: {$0.id == cardMemory.id}){
+        /// Verifica si la carta está boca arriba o si ya ha sido emparejada.
+        if cardMemory.isFaceUp || memoryViewModel.matchedCards.contains(where: {$0.id == cardMemory.id}){
+            /// Muestra la imagen de la carta si está boca arriba o si ya ha sido emparejada.
             Image(cardMemory.text).resizable()
                 .modifier(MemoryGameStyle())
+            
         } else {
+            /// Muestra el reverso de la carta si está boca abajo y no ha sido emparejada.
             Image("klipartz").resizable()
                 .modifier(MemoryGameStyle())
                 .onTapGesture {
-                    if userChoises.count == 0 {
-                        cardMemory.turnOver()
-                        userChoises.append(cardMemory)
-                    } else if userChoises.count == 1 {
-                        cardMemory.turnOver()
-                        userChoises.append(cardMemory)
+                    // Maneja el tap gesture en la carta.
+                    if memoryViewModel.userChoices.count == 0 {
+                        // Voltea la carta si no hay otra carta seleccionada.
+                        cardMemory.isFaceUp.toggle()
+                        memoryViewModel.userChoices.append(cardMemory)
+                        
+                    } else if memoryViewModel.userChoices.count == 1 {
+                        /// Voltea la carta si ya hay una carta seleccionada y verifica si hay coincidencia después de un tiempo.
+                        cardMemory.isFaceUp.toggle()
+                        memoryViewModel.userChoices.append(cardMemory)
+                        /// Realiza una animación de volteo de las cartas seleccionadas después de un tiempo.
                         withAnimation(Animation.linear.delay(1)){
-                            for thisCar in userChoises{
-                                thisCar.turnOver()
+                            for thisCar in memoryViewModel.userChoices{
+                                thisCar.isFaceUp.toggle()
                             }
                         }
-                        checkForMatch()
+                        /// Verifica si hay coincidencia entre las cartas seleccionadas.
+                        memoryViewModel.checkForMatch()
                     }
                 }
         }
     }
-    
-    func checkForMatch(){
-        if userChoises[0].text == userChoises[1].text {
-            matchedCards.append(userChoises[0])
-            matchedCards.append(userChoises[1])
-        }
-        
-        userChoises.removeAll()
-    }
-    
 }
 
