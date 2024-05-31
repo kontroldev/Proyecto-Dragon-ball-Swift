@@ -1,5 +1,8 @@
 # Proyecto Colaborativo de una App de Dragon Ball en Swift
 
+![Captura de pantalla 2024-05-30 a las 4 02 11](https://github.com/lordzzz777/Proyecto-Dragon-ball-Swift/assets/114311106/76827e21-ddae-4883-ba29-d446eb4c3939)
+
+
 ¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift(, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/Dragon-Ball)
 
 ## Cómo contribuir
