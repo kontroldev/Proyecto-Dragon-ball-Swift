@@ -7,50 +7,47 @@
 
 import SwiftUI
 
+/// Vista principal del juego de memoria.
 struct MemoryGameView: View {
-    private var forColumGrid = [GridItem(.flexible()),
-                                GridItem(.flexible()),
-                                GridItem(.flexible()),
-                                GridItem(.flexible())]
-    
-    private var sixColumGrid = [GridItem(.flexible()),
-                                GridItem(.flexible()),
-                                GridItem(.flexible()),
-                                GridItem(.flexible()),
-                                GridItem(.flexible()),
-                                GridItem(.flexible())]
-    
-    @State var cards = createCadList().shuffled()
-    @State var matchedCards = [CardMemoryModel]()
-    @State var userChoices = [CardMemoryModel]()
+    /// ViewModel para manejar la lógica del juego de memoria.
+    @State var memoryViewModel = MemoryGameViewModel()
     
     var body: some View {
-        
+        // Diseño principal de la vista.
         ZStack{
+            // Fondo de la vista.
             Color(red: 0.0, green: 0.3, blue: 0.5)
                 .ignoresSafeArea()
+            // Scroll view para mostrar las cartas del juego y las cartas por emparejar.
             ScrollView{
+                // Utiliza GeometryReader para adaptarse al tamaño de la pantalla.
                 GeometryReader{geo in
                     VStack{
+                        // Imagen del logo del juego.
                         Image("logoDBGM").resizable()
                             .frame(width: 290, height: 70)
                             .padding(.top, -10)
-                        LazyVGrid(columns: forColumGrid, spacing: 15){
-                            ForEach(cards){card in
-                                CardMemoryView(cardMemory: card,
-                                               matchedCards: $matchedCards,
-                                               userChoises: $userChoices,
+                        
+                        // Cuadrícula para mostrar las cartas del juego.
+                        LazyVGrid(columns: memoryViewModel.forColumGrid, spacing: 15){
+                            ForEach(memoryViewModel.createCardList().shuffled()){ card in
+                                CardMemoryView(cardMemory: card ,
+                                               memoryViewModel: memoryViewModel,
                                                width: Int(geo.size.width/4 - 10))
                             }
                         }
                         
+                        // Sección para mostrar las cartas por emparejar.
                         VStack{
+                            // Título de la sección.
                             Text("Match these cards to win:").bold()
-                            LazyVGrid(columns: sixColumGrid, spacing: 5){
-                                ForEach(cardValue, id: \.self){ cardValue in
+                            
+                            // Cuadrícula para mostrar las cartas por emparejar.
+                            LazyVGrid(columns: memoryViewModel.sixColumGrid, spacing: 5){
+                                
+                                ForEach(memoryViewModel.cardValues, id: \.self){ cardValue in
                                     
-                                    if !matchedCards.contains(where: {$0.text == cardValue}){
-                                        // Text(cardValue).font(.system(size: 30))
+                                    if !memoryViewModel.matchedCards.contains(where: {$0.text == cardValue}){
                                         Image(cardValue).resizable()
                                             .frame(width: 35 , height: 35)
                                             .padding(2)
@@ -60,11 +57,7 @@ struct MemoryGameView: View {
                                 
                             }
                         }
-                        .frame(maxWidth: .infinity)
-                        .background(.regularMaterial)
-                        .clipShape(.rect(cornerRadius: 20))
-                        .padding(.horizontal, 20)
-                        .padding(.top, 6)
+                        .modifier(MemoryBacgroundSingle())
                         
                     }
                 }.padding(9)
