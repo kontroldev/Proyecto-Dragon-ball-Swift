@@ -8,21 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isShow = false
+    
     var body: some View {
         NavigationStack{
-            VStack {
-                Image("logoDBGM").resizable()
-                    .frame(width: 360, height: 200)
-                
-            }
-            .padding()
-            .toolbar{
-                NavigationLink("Ir AJuego", destination: {
+            ZStack{
+                LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+            
+                VStack{
                     
-                    MemoryGameView()
-                    
-                })
+                    NavigationLink(destination: {
+                        MemoryGameView()
+                    }, label: {
+                        Image("logoDBGM").resizable()
+                            .frame(width: 360, height: 200)
+                    }).navigationSplitViewStyle(.automatic)
+                    GifImage("Gif1")
+                        .frame(width: 220, height: 150)
+                        .clipShape(Circle())
+                    Spacer()
+                }
+            
             }
+//            .toolbar{
+//                NavigationLink("Ir AJuego", destination: {
+//                    
+//                    MemoryGameView()
+//                    
+//                })
+//            }
             
         }
     }
