@@ -8,9 +8,20 @@
 import Observation
 import SwiftUI
 
+// Enumera niveles de dificultad ...
+enum Difficulty {
+    case level_1 // Sin restricciones
+    case level_2 // Límite de intentos
+    case level_3 // Límite de tiempo y de intentos
+}
+
 /// ViewModel para manejar la lógica relacionada con la memoria de juego.
 @Observable
 class MemoryGameViewModel{
+    
+    var score: Int = 0 // Propiedad para almacenar el puntaje del usuario
+    var attempts: Int = 0 // cuenta los intentos que realiza el usuario
+    var completedScreens: Int = 0 // cuenta los paneles completados
     
     /// Definición de la cuadrícula para cuatro Filas
     var forColumGrid = [GridItem(.flexible()),
@@ -26,14 +37,20 @@ class MemoryGameViewModel{
                         GridItem(.flexible()),
                         GridItem(.flexible())]
     
- 
+    var cardList: [CardMemoryModel]            /// llama al modelo de cartas
+    var difficulty: Difficulty                 /// llama el enumerado de niveles
     var cardMemoryModel: CardMemoryModel       /// Instancia de la clase Card.
     var matchedCards: [CardMemoryModel] = []   /// Lista de cartas emparejadas.
     var userChoices: [CardMemoryModel] = []    /// Lista de cartas elegidas por el usuario.
     
     // Constructor
-    init(cardMemoryModel: CardMemoryModel = CardMemoryModel(text: "")) {
+    init(cardMemoryModel: CardMemoryModel = CardMemoryModel(text: ""),
+         cardList: [CardMemoryModel] = [],
+         difficulty: Difficulty = .level_1) {
+
         self.cardMemoryModel = cardMemoryModel
+        self.cardList = cardList
+        self.difficulty = difficulty
     }
     
     /// Matriz de referencias de imágenes para las cartas.
@@ -54,16 +71,86 @@ class MemoryGameViewModel{
         return cardList
     }
     
-    /// Método para verificar si hay coincidencia entre las cartas elegidas por el usuario.
-     func checkForMatch() {
-         /// Si el texto de las dos cartas elegidas es el mismo, se considera una coincidencia y se agregan a la lista de cartas emparejadas.
-         if userChoices[0].text == userChoices[1].text {
-             matchedCards.append(userChoices[0])
-             matchedCards.append(userChoices[1])
-         }
-         
-         /// Se limpia la lista de cartas elegidas por el usuario.
-         userChoices.removeAll()
-     }
+    /// Método para verificar si todas las cartas han sido emparejadas
+    func checkGaneCompletion() -> Bool {
+        return matchedCards.count == cardValues.count * 2
+    }
     
+    /// Método para verificar si hay coincidencia entre las cartas elegidas por el usuario.
+    func checkForMatch() {
+        /// Si el texto de las dos cartas elegidas es el mismo, se considera una coincidencia y se agregan a la lista de cartas emparejadas.
+        if userChoices[0].text == userChoices[1].text {
+            matchedCards.append(userChoices[0])
+            matchedCards.append(userChoices[1])
+            score += 5 // aumenta la cantidad de puntos cada vez que el usuario acierta
+            
+        } else {
+            // disminulle la cantidad de punto si se equivoca
+            if score <= 1{
+                score = 0 // controla que los puntos no sean negativos
+            }else if score >= 0 {
+                score -= 1 // resta puntos
+            }
+            
+            attempts += 1 // contabiliza el numero de intentos fallidos
+        }
+        /// Se limpia la lista de cartas elegidas por el usuario.
+        userChoices.removeAll()
+        
+        // Si el juego está completo, aumentar el puntaje
+        if checkGaneCompletion() {
+            completedScreens += 1
+            print("paneles completados \(completedScreens) ")
+            // Aquí podrías también realizar alguna otra acción, mostrar un mensaje de felicitación.
+            
+        }
+    }
+    
+    /// Metodo para reiniciar el juego
+    func resetGameAll() {
+        // Restablecer todas las cartas a su estado inicial
+        for index in 0..<cardList.count * 2 {
+            cardList[index].isFaceUp = false
+            cardList[index].isMctched = false
+            cardList[index].text = ""
+        }
+        // Limpiar las listas de cartas emparejadas, y cartas seleccionadas
+        matchedCards.removeAll()
+        userChoices.removeAll()
+        cardList.removeAll()
+        
+        // coloca todo los conteos de variables a 0
+        score = 0 // Reiniciar el conteo
+        attempts = 0  // Reiniciar los intentos
+        completedScreens = 0 // Reiniciar los aciertos
+    }
+    
+    /// Permite al usuario subir de nivel (Logica pensdiente de crear)
+    func upNivelGame(){
+        switch difficulty {
+        case .level_1:
+            // No hay restricciones adicionales
+            break
+        case .level_2:
+            // Puedes agregar restricciones de intentos aquí
+            break
+        case .level_3:
+            // Puedes agregar restricciones de tiempo y de intentos aquí
+            break
+        }
+    }
+    
+    /// Actualiza el nivel segun se ha completado paneles o no
+    func updateDifficulty() {
+        if completedScreens >= 4 {
+            difficulty = .level_3
+        }else if completedScreens >= 2 {
+            difficulty = .level_2
+        }
+    }
+    
+    /// logica que permite poner una restriccion de tiempo
+    func timeOff(){
+        // lógica pendiente ...
+    }
 }
