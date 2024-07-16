@@ -11,17 +11,18 @@ import Observation
 /// ViewModel para manejar la lógica relacionada con la obtención de todos los personajes.
 @Observable
 class AllCheractersViewModel {
-    
-    /// Servicio para obtener todos los personajes
-    private let allCheracteersService: AllCheracteersService = AllCheracteersService()
+
     var allCheracters: [Character] = []      /// Lista de todos los personajes
     var searchedCharecters: [Character] = [] /// Lista de personajes buscados
     var isLoading: Bool = false              /// Flag para indicar si la carga está en curso
     var showErroMessege: Bool = false        /// Flag para indicar si se debe mostrar un mensaje de error
     var errorMessage: String = ""            /// Mensaje de error
     
+    /// Servicio para obtener todos los personajes
+    private let allCheracteersService: AllCheracteersService
     /// Constructor
-    init(){
+    init(allCheracteersService: AllCheracteersService){
+        self.allCheracteersService = allCheracteersService
         Task{
             await getAllCheracters()
         }

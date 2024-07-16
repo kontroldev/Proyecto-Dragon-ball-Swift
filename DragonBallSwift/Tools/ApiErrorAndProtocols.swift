@@ -11,6 +11,11 @@ import Foundation
 enum ApiError: Error {
     case invalidURL
     case invalidResponse
+    case clientError
+    case notFound
+    case badResponse
+    case decodeError
+    case badRequest
 }
 
 // MARK: - Protocolo que define la interfaz para obtener todos los personajes.
