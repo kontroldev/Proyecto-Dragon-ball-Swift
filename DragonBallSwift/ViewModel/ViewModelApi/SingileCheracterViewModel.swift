@@ -11,19 +11,15 @@ import Observation
 /// ViewModel para manejar la lógica relacionada con la obtención de un solo personaje.
 @Observable
 class SingileCheracterViewModel{
-
+    // Servicio para obtener los datos de un solo personaje.
+    private let singleCheracterService: SingleCheracterService = SingleCheracterService()
+    
     // Datos del personaje obtenido.
     var singlecheracter: SingleCharacter?
     var selectedCheracter: Character?  /// Personaje seleccionado (si es necesario).
     var isLoading: Bool = false        /// Flag para indicar si la carga está en curso.
     var showErrorMessage: Bool = false /// Flag para indicar si se debe mostrar un mensaje de error.
     var errorMessage: String = ""      /// Mesaje de error
-
-    // Servicio para obtener los datos de un solo personaje.
-    private let singleCheracterService: SingleCheracterService
-    init(singleCheracterService: SingleCheracterService) {
-        self.singleCheracterService = singleCheracterService
-    }
     
     /// Método para obtener los datos de un solo personaje.
     @MainActor
