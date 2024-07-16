@@ -19,7 +19,7 @@ struct ContentView: View {
                 VStack{
                     
                     NavigationLink(destination: {
-                        MemoryGameView()
+                        MemoryGameViewBuilder().build()
                     }, label: {
                         Image("logoDBGM").resizable()
                             .frame(width: 360, height: 200)
