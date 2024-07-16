@@ -28,13 +28,6 @@
 		6E600CED2C096B49002408CE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600CEC2C096B49002408CE /* Styles.swift */; };
 		6EA16BE02C113C8200CBC7B6 /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA16BDF2C113C8200CBC7B6 /* GifImage.swift */; };
 		6EA16BE32C11410300CBC7B6 /* Gif1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6EA16BE22C11410300CBC7B6 /* Gif1.gif */; };
-		722C64942C465CDD00B60721 /* NetworkClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C64932C465CDD00B60721 /* NetworkClientProtocol.swift */; };
-		722C64962C465CF000B60721 /* NetworkMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C64952C465CF000B60721 /* NetworkMethod.swift */; };
-		722C64982C465D0700B60721 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C64972C465D0700B60721 /* URLSessionProtocol.swift */; };
-		722C649C2C465D5400B60721 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C649B2C465D5400B60721 /* NetworkClient.swift */; };
-		722C649E2C465D7200B60721 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C649D2C465D7200B60721 /* Log.swift */; };
-		726B646A2C467EA70077F322 /* ExampleViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726B64692C467EA70077F322 /* ExampleViewBuilder.swift */; };
-		726B646C2C4681670077F322 /* MemoryGameViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726B646B2C4681670077F322 /* MemoryGameViewBuilder.swift */; };
 		B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */; };
 		B372A01E2C068E2300439428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B372A01D2C068E2300439428 /* ContentView.swift */; };
 		B372A0202C068E2500439428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A01F2C068E2500439428 /* Assets.xcassets */; };
@@ -63,13 +56,6 @@
 		6E600CEC2C096B49002408CE /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		6EA16BDF2C113C8200CBC7B6 /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
 		6EA16BE22C11410300CBC7B6 /* Gif1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Gif1.gif; sourceTree = "<group>"; };
-		722C64932C465CDD00B60721 /* NetworkClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientProtocol.swift; sourceTree = "<group>"; };
-		722C64952C465CF000B60721 /* NetworkMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethod.swift; sourceTree = "<group>"; };
-		722C64972C465D0700B60721 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
-		722C649B2C465D5400B60721 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		722C649D2C465D7200B60721 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		726B64692C467EA70077F322 /* ExampleViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewBuilder.swift; sourceTree = "<group>"; };
-		726B646B2C4681670077F322 /* MemoryGameViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameViewBuilder.swift; sourceTree = "<group>"; };
 		B372A0182C068E2300439428 /* DragonBallSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBallSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallSwiftApp.swift; sourceTree = "<group>"; };
 		B372A01D2C068E2300439428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -138,7 +124,6 @@
 		6E600C712C072E85002408CE /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				722C64922C465CD200B60721 /* Network */,
 				6E600C7F2C074B35002408CE /* AllCheracteersService.swift */,
 				6E600C852C074D2F002408CE /* AllPlanetsService.swift */,
 				6E600C832C074CD8002408CE /* SingleCheracterService.swift */,
@@ -201,27 +186,6 @@
 			path = GifImagen;
 			sourceTree = "<group>";
 		};
-		722C64922C465CD200B60721 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				722C649D2C465D7200B60721 /* Log.swift */,
-				722C64972C465D0700B60721 /* URLSessionProtocol.swift */,
-				722C64932C465CDD00B60721 /* NetworkClientProtocol.swift */,
-				722C649B2C465D5400B60721 /* NetworkClient.swift */,
-				722C64952C465CF000B60721 /* NetworkMethod.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		726B64682C467E6E0077F322 /* Builder */ = {
-			isa = PBXGroup;
-			children = (
-				726B64692C467EA70077F322 /* ExampleViewBuilder.swift */,
-				726B646B2C4681670077F322 /* MemoryGameViewBuilder.swift */,
-			);
-			path = Builder;
-			sourceTree = "<group>";
-		};
 		B372A00F2C068E2300439428 = {
 			isa = PBXGroup;
 			children = (
@@ -245,7 +209,6 @@
 				6E600C722C072F29002408CE /* Tools */,
 				6E600C712C072E85002408CE /* Server */,
 				6E600C642C06927F002408CE /* Model */,
-				726B64682C467E6E0077F322 /* Builder */,
 				6E600C652C0692C0002408CE /* ViewModel */,
 				6E600C662C0692FA002408CE /* View */,
 				B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */,
@@ -334,31 +297,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				726B646C2C4681670077F322 /* MemoryGameViewBuilder.swift in Sources */,
 				6E600C902C075B9D002408CE /* SinglePlanetViewModel.swift in Sources */,
-				722C64962C465CF000B60721 /* NetworkMethod.swift in Sources */,
 				B372A01E2C068E2300439428 /* ContentView.swift in Sources */,
 				6E600C802C074B35002408CE /* AllCheracteersService.swift in Sources */,
 				B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */,
-				722C64982C465D0700B60721 /* URLSessionProtocol.swift in Sources */,
 				6E600CE62C096A9F002408CE /* CardMemryModel.swift in Sources */,
-				722C64942C465CDD00B60721 /* NetworkClientProtocol.swift in Sources */,
 				6E5619222C0B1D3F00D4D5C1 /* ExampleView.swift in Sources */,
 				6E600C8C2C075AD6002408CE /* SingileCheracterViewModel.swift in Sources */,
 				6E600C762C073E0B002408CE /* SingleCheranterModel.swift in Sources */,
 				6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */,
 				6E600CEB2C096B0A002408CE /* MemoryGameView.swift in Sources */,
 				6EA16BE02C113C8200CBC7B6 /* GifImage.swift in Sources */,
-				722C649C2C465D5400B60721 /* NetworkClient.swift in Sources */,
 				6E600C7E2C07436F002408CE /* ApiErrorAndProtocols.swift in Sources */,
 				6E600C7B2C073F96002408CE /* SinglePlanetModel.swift in Sources */,
 				6E600C882C074D93002408CE /* SinglePlanetService.swift in Sources */,
 				6E600C842C074CD8002408CE /* SingleCheracterService.swift in Sources */,
 				6E600C8A2C075A6A002408CE /* AllCheractersViewModel.swift in Sources */,
-				726B646A2C467EA70077F322 /* ExampleViewBuilder.swift in Sources */,
 				6E600CED2C096B49002408CE /* Styles.swift in Sources */,
 				6E600C8E2C075B2C002408CE /* AllPlanetsViewModel.swift in Sources */,
-				722C649E2C465D7200B60721 /* Log.swift in Sources */,
 				6E600CEA2C096B0A002408CE /* CardMemoryView.swift in Sources */,
 				6E600C862C074D2F002408CE /* AllPlanetsService.swift in Sources */,
 				6E600C742C073CE0002408CE /* AllCheratersModel.swift in Sources */,

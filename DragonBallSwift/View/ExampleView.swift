@@ -9,11 +9,11 @@ import SwiftUI
 
 /// Vista de ejemplo que muestra listas de personajes y planetas.
 struct ExampleView: View {
-
     // ViewModel para manejar la lógica de los personajes.
-    @State var allCheractersViewModel: AllCheractersViewModel
+    @State private var allCheractersViewModel = AllCheractersViewModel()
+    
     // ViewModel para manejar la lógica de los planetas.
-    @State var allPlanetsViewModel: AllPlanetsViewModel
+    @State private var allPlanetsViewModel = AllPlanetsViewModel()    
     
     var body: some View {
         NavigationStack{
@@ -64,5 +64,5 @@ struct ExampleView: View {
 }
 
 #Preview {
-    ExampleViewBuilder().build()
+    ExampleView()
 }
