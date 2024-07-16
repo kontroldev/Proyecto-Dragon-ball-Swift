@@ -12,12 +12,16 @@ import Observation
 @Observable
 class SinglePlanetViewModel {
     // Servicio para obtener los datos de un solo planeta.
-    private let singlePlanetsService: SinglePlanetService = SinglePlanetService()
+    private let singlePlanetsService: SinglePlanetService
     
     var singlePlanet: SinglePlanet?     /// Datos del planeta obtenido.
     var isLoading: Bool = false         /// Flag para indicar si la carga está en curso.
     var showErrorMessage: Bool = false  /// Flag para indicar si se debe mostrar un mensaje de error.
     var errorMessage: String = ""       /// Mensaje de error.
+
+    init(singlePlanetsService: SinglePlanetService) {
+        self.singlePlanetsService = singlePlanetsService
+    }
     
     // Método para obtener los datos de un solo planeta.
     @MainActor
