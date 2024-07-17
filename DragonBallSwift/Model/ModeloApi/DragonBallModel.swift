@@ -1,0 +1,49 @@
+//
+//  DragonBallModel.swift
+//  DragonBallSwift
+//
+//  Created by Esteban Perez Castillejo on 17/7/24.
+//
+
+import Foundation
+import SwiftUI
+
+struct CharactersModel: Codable  {
+    let id, name: String
+    let genre: String
+    let race: String
+    let image: String
+    let planet: String
+    let description, biography: String
+}
+
+
+// MARK: - Single Characters Dragon Ball
+struct SingleCharacters: Codable {
+    let id, name, genre, race: String
+    let image: String
+    let planet, description, biography: String
+    let transformations: [Transformation]
+}
+
+struct Transformation: Codable {
+    let id, title: String
+    let image: String
+    let description: String
+}
+
+// MARK: -DragonsModel
+struct DragonsModel: Codable {
+    let id: String
+    let name: String
+    let image: String
+    let description: String
+    let biography: String
+}
+
+struct ItemMenu: Identifiable {
+    var id = UUID()
+    var name: String
+    var imegenName: String
+    var destination: AnyView
+}

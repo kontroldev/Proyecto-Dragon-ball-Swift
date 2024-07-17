@@ -10,6 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @State private var isShow = false
     
+    let menuItem = [
+      ItemMenu(name: "Dragon Ball", imegenName: "logoDB", destination: AnyView(ViewDB())),
+      ItemMenu(name: "Dragon Ball Z", imegenName: "logoDZ", destination: AnyView(ViewDZ())),
+      ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(ViewDragons()))
+    ]
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -19,7 +25,7 @@ struct ContentView: View {
                 VStack{
                     
                     NavigationLink(destination: {
-                        MemoryGameViewBuilder().build()
+                        MemoryGameView()
                     }, label: {
                         Image("logoDBGM").resizable()
                             .frame(width: 360, height: 200)
@@ -28,6 +34,27 @@ struct ContentView: View {
                         .frame(width: 220, height: 150)
                         .clipShape(Circle())
                     Spacer()
+                    
+                    List(menuItem){item in
+                        NavigationLink(destination: item.destination){
+                            HStack{
+                                
+                                Text(item.name).font(.title3).bold()
+                                Spacer()
+                                Circle()
+                                    .foregroundStyle(Color.blue)
+                                    .frame(width: 50)
+                                    .overlay(content: {
+                                        Image(item.imegenName).resizable()
+                                            .frame(width: 60, height: 60)
+                                            .padding()
+                                    })
+                                
+                            }.padding()
+                        }
+                        .listRowBackground(Color.clear)
+                    }
+                    .listStyle(PlainListStyle())
                 }
             
             }

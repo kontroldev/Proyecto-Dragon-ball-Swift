@@ -10,7 +10,7 @@ import SwiftUI
 /// Vista principal del juego de memoria.
 struct MemoryGameView: View {
     /// ViewModel para manejar la lógica del juego de memoria.
-    @State var memoryViewModel: MemoryGameViewModel
+    @State var memoryViewModel =  MemoryGameViewModel()
     
     var body: some View {
         NavigationStack{
@@ -88,5 +88,5 @@ struct MemoryGameView: View {
 }
 
 #Preview {
-    MemoryGameViewBuilder().build()
+    MemoryGameView()
 }
