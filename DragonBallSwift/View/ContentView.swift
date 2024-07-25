@@ -17,9 +17,12 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        VStack {
+        ZStack {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+            
             TabView {
-                Text("Wiki View")
+                WikiView()
                     .tabItem {
                         Label("Wiki", systemImage: "books.vertical.fill")
                     }
@@ -27,6 +30,7 @@ struct ContentView: View {
                 Text("Juegos")
                     .tabItem {
                         Label("Juegos", systemImage: "gamecontroller.fill")
+                            .tint(.accentColor)
                     }
             }
         }
