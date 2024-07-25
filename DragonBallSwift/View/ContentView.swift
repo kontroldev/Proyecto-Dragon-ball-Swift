@@ -27,7 +27,7 @@ struct ContentView: View {
                         Label("Wiki", systemImage: "books.vertical.fill")
                     }
                 
-                Text("Juegos")
+                GamesView()
                     .tabItem {
                         Label("Juegos", systemImage: "gamecontroller.fill")
                             .tint(.accentColor)
