@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var body: some View {
+    var body: some View { 
+        NavigationStack{
+
+
         ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
+
             
             TabView {
                 WikiView()
