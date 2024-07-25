@@ -13,7 +13,7 @@ struct ContentView: View {
     let menuItem = [
       ItemMenu(name: "Dragon Ball", imegenName: "logoDB", destination: AnyView(ViewDB())),
       ItemMenu(name: "Dragon Ball Z", imegenName: "logoDZ", destination: AnyView(ViewDZ())),
-      ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(ViewDragons()))
+//      ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(V))
     ]
     
     var body: some View {
