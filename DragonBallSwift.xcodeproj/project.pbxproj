@@ -68,6 +68,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A2BCB152C51DBD1008DFBBE /* Wiki */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wiki;
+			sourceTree = "<group>";
+		};
 		6E52A9DA2C0A86E5000F2162 /* MemoriGameViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +114,7 @@
 		6E600C662C0692FA002408CE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5A2BCB152C51DBD1008DFBBE /* Wiki */,
 				6E600CE92C096B0A002408CE /* MemoryGame */,
 				6E5619212C0B1D3F00D4D5C1 /* ViewDB.swift */,
 				6EAB82702C473F1500D75432 /* ViewDZ.swift */,

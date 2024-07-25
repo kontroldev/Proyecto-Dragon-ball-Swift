@@ -17,56 +17,69 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
-            
-                VStack{
-                    
-                    NavigationLink(destination: {
-                        MemoryGameView()
-                    }, label: {
-                        Image("logoDBGM").resizable()
-                            .frame(width: 360, height: 200)
-                    }).navigationSplitViewStyle(.automatic)
-                    GifImage("Gif1")
-                        .frame(width: 220, height: 150)
-                        .clipShape(Circle())
-                    Spacer()
-                    
-                    List(menuItem){item in
-                        NavigationLink(destination: item.destination){
-                            HStack{
-                                
-                                Text(item.name).font(.title3).bold()
-                                Spacer()
-                                Circle()
-                                    .foregroundStyle(Color.blue)
-                                    .frame(width: 50)
-                                    .overlay(content: {
-                                        Image(item.imegenName).resizable()
-                                            .frame(width: 60, height: 60)
-                                            .padding()
-                                    })
-                                
-                            }.padding()
-                        }
-                        .listRowBackground(Color.clear)
+        VStack {
+            TabView {
+                Text("Wiki View")
+                    .tabItem {
+                        Label("Wiki", systemImage: "books.vertical.fill")
                     }
-                    .listStyle(PlainListStyle())
-                }
-            
+                
+                Text("Juegos")
+                    .tabItem {
+                        Label("Juegos", systemImage: "gamecontroller.fill")
+                    }
             }
-//            .toolbar{
-//                NavigationLink("Ir AJuego", destination: {
-//                    
-//                    MemoryGameView()
-//                    
-//                })
-//            }
-            
         }
+//        NavigationStack{
+//            ZStack{
+//                LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)
+//                    .ignoresSafeArea()
+//            
+//                VStack{
+//                    
+//                    NavigationLink(destination: {
+//                        MemoryGameView()
+//                    }, label: {
+//                        Image("logoDBGM").resizable()
+//                            .frame(width: 360, height: 200)
+//                    }).navigationSplitViewStyle(.automatic)
+//                    GifImage("Gif1")
+//                        .frame(width: 220, height: 150)
+//                        .clipShape(Circle())
+//                    Spacer()
+//                    
+//                    List(menuItem){item in
+//                        NavigationLink(destination: item.destination){
+//                            HStack{
+//                                
+//                                Text(item.name).font(.title3).bold()
+//                                Spacer()
+//                                Circle()
+//                                    .foregroundStyle(Color.blue)
+//                                    .frame(width: 50)
+//                                    .overlay(content: {
+//                                        Image(item.imegenName).resizable()
+//                                            .frame(width: 60, height: 60)
+//                                            .padding()
+//                                    })
+//                                
+//                            }.padding()
+//                        }
+//                        .listRowBackground(Color.clear)
+//                    }
+//                    .listStyle(PlainListStyle())
+//                }
+//            
+//            }
+////            .toolbar{
+////                NavigationLink("Ir AJuego", destination: {
+////                    
+////                    MemoryGameView()
+////                    
+////                })
+////            }
+//            
+//        }
     }
 }
 
