@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ViewDragons: View {
+struct DragonsView: View {
     
     @State private var viewModel: AllDragonsViewModel = AllDragonsViewModel()
     @State private var isLoadig = false
@@ -76,5 +76,5 @@ struct ViewDragons: View {
 }
 
 #Preview {
-    ViewDragons()
+    DragonsView()
 }

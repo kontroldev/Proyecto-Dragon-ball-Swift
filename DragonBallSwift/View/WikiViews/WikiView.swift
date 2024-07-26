@@ -10,9 +10,9 @@ import SwiftUI
 struct WikiView: View {
     
     let menuItem = [
-        ItemMenu(name: "Dragon Ball", imegenName: "DB Logo", destination: AnyView(ViewDB())),
-        ItemMenu(name: "Dragon Ball Z", imegenName: "Z Logo", destination: AnyView(ViewDZ())),
-        ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(ViewDragons()))
+        ItemMenu(name: "Dragon Ball", imegenName: "DB Logo", destination: AnyView(DBCharactersView())),
+        ItemMenu(name: "Dragon Ball Z", imegenName: "Z Logo", destination: AnyView(DBZCharactersView())),
+        ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(DragonsView()))
     ]
     
     var body: some View {

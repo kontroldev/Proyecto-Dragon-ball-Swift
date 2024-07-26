@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ViewDZ: View {
+struct DBZCharactersView: View {
     @State private var viewModel: AllCharactersDZViewModel = AllCharactersDZViewModel()
     @State private var isLoadig = false
     
@@ -42,5 +42,5 @@ struct ViewDZ: View {
 }
 
 #Preview {
-    ViewDZ()
+    DBZCharactersView()
 }

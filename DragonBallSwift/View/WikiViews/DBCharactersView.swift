@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ViewDB: View {
+struct DBCharactersView: View {
     @State private var viewModel: AllCharactersDBViewModel = AllCharactersDBViewModel()
     @State private var isLoadig = false
     
@@ -42,5 +42,5 @@ struct ViewDB: View {
 }
 
 #Preview {
-    ViewDB()
+    DBCharactersView()
 }
