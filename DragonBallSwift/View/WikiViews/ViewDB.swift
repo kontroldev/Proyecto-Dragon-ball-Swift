@@ -18,8 +18,8 @@ struct ViewDB: View {
             VStack {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(viewModel.AllCharacters, id: \.id) { item in
-                            BasicCharacterCardView(character: item)
+                        ForEach(viewModel.AllCharacters, id: \.id) { character in
+                            BasicCharacterCardView(character: character)
                         }
                     }
                 }
