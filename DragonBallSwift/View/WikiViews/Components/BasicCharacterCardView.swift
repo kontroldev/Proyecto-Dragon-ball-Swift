@@ -13,27 +13,22 @@ struct BasicCharacterCardView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            LazyVStack(alignment: .trailing) {
                 AsyncImage(url: URL(string: character.image)) { image in
                     image
                         .resizable()
                         .scaledToFit()
-                        .offset(x: 60, y: 30)
+                        .offset(x: 10, y: 30)
+                        .frame(width: 120, height: 120)
+                        .scaleEffect(1.5)
                 } placeholder: {
-                    HStack{
-                        GifImage("tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250")
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .offset(x: 100, y: -36)
-                        Text("Please wait ...")
-                            .foregroundStyle(.white).offset(x: 95, y: -30)
+                    ZStack {
                         ProgressView()
+                            .padding(.trailing, 20)
                     }
-
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-            .scaleEffect(2)
+            .frame(maxWidth: .infinity, alignment: .trailing)
             
             VStack {
                 Text(character.name)
