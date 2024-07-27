@@ -13,23 +13,30 @@ struct ContentView: View {
         ZStack {
             Color("BackgroundColor")
                 .ignoresSafeArea()
+
             
-            TabView {
-                WikiView()
-                    .tabItem {
-                        Label("Wiki", systemImage: "books.vertical.fill")
-                    }
+            
+            ZStack {
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
                 
-                GamesView()
-                    .tabItem {
-                        Label("Juegos", systemImage: "gamecontroller.fill")
-                            .tint(.accentColor)
-                    }
+                
+                TabView {
+                    WikiView()
+                        .tabItem {
+                            Label("Wiki", systemImage: "books.vertical.fill")
+                        }
+                    
+                    GamesView()
+                        .tabItem {
+                            Label("Juegos", systemImage: "gamecontroller.fill")
+                                .tint(.accentColor)
+                        }
+                }
             }
         }
     }
 }
-
 #Preview {
     ContentView()
 }

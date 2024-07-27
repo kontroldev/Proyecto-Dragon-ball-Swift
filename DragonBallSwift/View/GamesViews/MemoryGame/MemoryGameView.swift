@@ -17,7 +17,7 @@ struct MemoryGameView: View {
             // Diseño principal de la vista.
             ZStack{
                 // Fondo de la vista.
-                Color(red: 0.0, green: 0.3, blue: 0.5)
+                Color("BackgroundColor")
                     .ignoresSafeArea()
                 // Scroll view para mostrar las cartas del juego y las cartas por emparejar.
                 ScrollView{
@@ -36,7 +36,7 @@ struct MemoryGameView: View {
                             // Sección para mostrar las cartas por emparejar.
                             VStack{
                                 // Título de la sección.
-                                Text("Match these cards to win:").bold()
+                                Text("Match these cards to win:").font(.system(size: 12).bold())
                                 
                                 // Cuadrícula para mostrar las cartas por emparejar.
                                 LazyVGrid(columns: memoryViewModel.sixColumGrid, spacing: 5){
@@ -45,8 +45,9 @@ struct MemoryGameView: View {
                                         
                                         if !memoryViewModel.matchedCards.contains(where: {$0.text == cardValue}){
                                             Image(cardValue).resizable()
-                                                .frame(width: 35 , height: 35)
-                                                .padding(2)
+                                                .frame(width: 30 , height: 30)
+                                                .shadow(color: .blue,  radius: 3)
+                                                
                                             
                                         }
                                     }

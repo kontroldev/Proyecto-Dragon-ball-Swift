@@ -20,7 +20,16 @@ struct BasicCharacterCardView: View {
                         .scaledToFit()
                         .offset(x: 60, y: 30)
                 } placeholder: {
-                    ProgressView()
+                    HStack{
+                        GifImage("tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250")
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .offset(x: 100, y: -36)
+                        Text("Please wait ...")
+                            .foregroundStyle(.white).offset(x: 95, y: -30)
+                        ProgressView()
+                    }
+
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)

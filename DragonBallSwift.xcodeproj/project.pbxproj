@@ -13,6 +13,7 @@
 		5AE3DB3C2C51EAD000F95566 /* WikiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3DB3B2C51EAD000F95566 /* WikiView.swift */; };
 		6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */; };
 		6E5619222C0B1D3F00D4D5C1 /* DBCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5619212C0B1D3F00D4D5C1 /* DBCharactersView.swift */; };
+		6E56B1482C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6E56B1472C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif */; };
 		6E600C7E2C07436F002408CE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C7D2C07436F002408CE /* ApiError.swift */; };
 		6E600CE62C096A9F002408CE /* CardMemryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600CE42C096A9F002408CE /* CardMemryModel.swift */; };
 		6E600CEA2C096B0A002408CE /* CardMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600CE72C096B0A002408CE /* CardMemoryView.swift */; };
@@ -41,6 +42,7 @@
 		5AE3DB3B2C51EAD000F95566 /* WikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiView.swift; sourceTree = "<group>"; };
 		6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameViewModel.swift; sourceTree = "<group>"; };
 		6E5619212C0B1D3F00D4D5C1 /* DBCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCharactersView.swift; sourceTree = "<group>"; };
+		6E56B1472C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif; sourceTree = "<group>"; };
 		6E600C7D2C07436F002408CE /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		6E600CE42C096A9F002408CE /* CardMemryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardMemryModel.swift; sourceTree = "<group>"; };
 		6E600CE72C096B0A002408CE /* CardMemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardMemoryView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		6E600C722C072F29002408CE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6EA16BE12C1140ED00CBC7B6 /* GifImagen */,
 				6E600CE12C08936E002408CE /* StyleMemoryGame */,
 				6EA16BDF2C113C8200CBC7B6 /* GifImage.swift */,
 				6E600C7D2C07436F002408CE /* ApiError.swift */,
@@ -206,6 +209,7 @@
 		6EA16BE12C1140ED00CBC7B6 /* GifImagen */ = {
 			isa = PBXGroup;
 			children = (
+				6E56B1472C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif */,
 				6EA16BE22C11410300CBC7B6 /* Gif1.gif */,
 			);
 			path = GifImagen;
@@ -230,7 +234,6 @@
 		B372A01A2C068E2300439428 /* DragonBallSwift */ = {
 			isa = PBXGroup;
 			children = (
-				6EA16BE12C1140ED00CBC7B6 /* GifImagen */,
 				6E600C722C072F29002408CE /* Tools */,
 				6E600C712C072E85002408CE /* Server */,
 				6E600C642C06927F002408CE /* Model */,
@@ -310,6 +313,7 @@
 			files = (
 				B372A0232C068E2500439428 /* Preview Assets.xcassets in Resources */,
 				6EA16BE32C11410300CBC7B6 /* Gif1.gif in Resources */,
+				6E56B1482C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif in Resources */,
 				B372A0202C068E2500439428 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
