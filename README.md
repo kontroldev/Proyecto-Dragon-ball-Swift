@@ -1,7 +1,5 @@
 # Proyecto Colaborativo de una App de Dragon Ball en Swift
-
-![Captura de pantalla 2024-05-30 a las 4 02 11](https://github.com/lordzzz777/Proyecto-Dragon-ball-Swift/assets/114311106/76827e21-ddae-4883-ba29-d446eb4c3939)
-
+ 
 ¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/Dragon-Ball).
 
 ## Cómo contribuir
@@ -40,3 +38,14 @@ La API está disponible [aquí](https://apidragonball.vercel.app) y es mantenida
 Si tienes alguna pregunta o sugerencia lo puedes hacer en el grupo de estudio de la comunidad MoureDev -> [Proyecto colaborativo App's Swift & Kotlin](https://discord.com/channels/729672926432985098/1244617601729171496)
 
 ¡Esperamos ver tus contribuciones pronto!
+
+
+
+<img width="273" alt="Captura de pantalla 2024-07-27 a las 21 46 332" src="https://github.com/user-attachments/assets/5286b8ce-85df-4679-99de-fb63c737d107">
+<img width="273" alt="Captura de pantalla 2024-07-27 a las 21 46 41" src="https://github.com/user-attachments/assets/8f7cd693-d9fe-4b27-a541-8b10a0945f04">
+<img width="273" alt="Captura de pantalla 2024-07-27 a las 21 46 52" src="https://github.com/user-attachments/assets/43ca5a4b-678c-48d9-baab-55864e2b189d">
+
+
+ **Versión actual de iOS y Android**
+
+<img width="427" alt="Captura de pantalla 2024-07-27 a las 21 42 28" src="https://github.com/user-attachments/assets/9fe61197-023d-4c17-8ab6-35eb0bff5551">  
