@@ -19,7 +19,11 @@ struct DBCharactersView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(viewModel.AllCharacters, id: \.id) { character in
-                            BasicCharacterCardView(character: character)
+                            NavigationLink{
+                                // ... de detalles ...
+                            } label: {
+                                BasicCharacterCardView(character: character)
+                            }
                         }
                     }
                 }
