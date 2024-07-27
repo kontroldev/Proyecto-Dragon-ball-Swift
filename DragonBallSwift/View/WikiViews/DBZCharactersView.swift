@@ -19,21 +19,25 @@ struct DBZCharactersView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(viewModel.AllCharacters, id: \.id) { character in
-                            BasicCharacterCardView(character: character)
+                            NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
+                                ViewDetails(Caracter: character)
+                            } label: {
+                                BasicCharacterCardView(character: character)
+                            }
                         }
                     }
                 }
-            }
-            .navigationTitle("Personajes")
-            .navigationBarTitleDisplayMode(.inline)
-            .padding(.horizontal, 4)
-            .background(Color("BackgroundColor"))
-            .toolbar {
-                ToolbarItem {
-                    Button {
-                        //TODO: Implementar funcionalidad de buscar personaje
-                    } label: {
-                        Image(systemName: "magnifyingglass")
+                .navigationTitle("Personajes")
+                .navigationBarTitleDisplayMode(.inline)
+                .padding(.horizontal, 4)
+                .background(Color("BackgroundColor"))
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            //TODO: Implementar funcionalidad de buscar personaje
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                        }
                     }
                 }
             }
