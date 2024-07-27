@@ -16,6 +16,7 @@ class AllCharactersDBViewModel{
     var isLoading: Bool = false
     var showErrorMessage: Bool = false
     var errorMessage: String = ""
+    var logo: String = "DBLogo"
     
     init () {
         Task {

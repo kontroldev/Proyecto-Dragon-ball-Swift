@@ -20,7 +20,7 @@ struct DBZCharactersView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(viewModel.AllCharacters, id: \.id) { character in
                             NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
-                                ViewDetails(Caracter: character)
+                                ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
                                 BasicCharacterCardView(character: character)
                             }

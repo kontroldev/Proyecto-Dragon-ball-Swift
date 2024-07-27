@@ -16,6 +16,7 @@ class AllDragonsViewModel {
     var isLoading: Bool = false
     var showErrorMessage: Bool = false
     var errorMessage: String = ""
+    var logo: String = "LogoDragones"
     
     init () {
         Task {
