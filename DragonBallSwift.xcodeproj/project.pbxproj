@@ -29,6 +29,7 @@
 		6EAB826F2C473EBD00D75432 /* AllCharactersDZViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB826E2C473EBD00D75432 /* AllCharactersDZViewModel.swift */; };
 		6EAB82712C473F1500D75432 /* DBZCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB82702C473F1500D75432 /* DBZCharactersView.swift */; };
 		6EAB82732C47412A00D75432 /* AllDragonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */; };
+		B31739EE2C54E870008CEA6F /* ViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31739ED2C54E870008CEA6F /* ViewDetails.swift */; };
 		B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */; };
 		B372A01E2C068E2300439428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B372A01D2C068E2300439428 /* ContentView.swift */; };
 		B372A0202C068E2500439428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A01F2C068E2500439428 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		6EAB826E2C473EBD00D75432 /* AllCharactersDZViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCharactersDZViewModel.swift; sourceTree = "<group>"; };
 		6EAB82702C473F1500D75432 /* DBZCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBZCharactersView.swift; sourceTree = "<group>"; };
 		6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDragonsViewModel.swift; sourceTree = "<group>"; };
+		B31739ED2C54E870008CEA6F /* ViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetails.swift; sourceTree = "<group>"; };
 		B372A0182C068E2300439428 /* DragonBallSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBallSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallSwiftApp.swift; sourceTree = "<group>"; };
 		B372A01D2C068E2300439428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				6EAB82702C473F1500D75432 /* DBZCharactersView.swift */,
 				5AE3DB3B2C51EAD000F95566 /* WikiView.swift */,
 				5A6AAF7A2C52D16900930C0A /* DragonsView.swift */,
+				B31739ED2C54E870008CEA6F /* ViewDetails.swift */,
 			);
 			path = WikiViews;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				6E600CE62C096A9F002408CE /* CardMemryModel.swift in Sources */,
 				6EAB82652C472E9500D75432 /* DragonBallModel.swift in Sources */,
 				6EAB826D2C47373800D75432 /* AllCharactersDBViewModel.swift in Sources */,
+				B31739EE2C54E870008CEA6F /* ViewDetails.swift in Sources */,
 				6EAB82632C472D6F00D75432 /* ApiProtocol.swift in Sources */,
 				6E5619222C0B1D3F00D4D5C1 /* DBCharactersView.swift in Sources */,
 				6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */,

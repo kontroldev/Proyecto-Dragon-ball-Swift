@@ -20,7 +20,7 @@ struct DBCharactersView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(viewModel.AllCharacters, id: \.id) { character in
                             NavigationLink{
-                                // ... de detalles ...
+                                ViewDetails(Caracter: character)
                             } label: {
                                 BasicCharacterCardView(character: character)
                             }
