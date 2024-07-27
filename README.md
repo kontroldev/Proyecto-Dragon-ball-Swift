@@ -2,8 +2,7 @@
 
 ![Captura de pantalla 2024-05-30 a las 4 02 11](https://github.com/lordzzz777/Proyecto-Dragon-ball-Swift/assets/114311106/76827e21-ddae-4883-ba29-d446eb4c3939)
 
-
-¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift(, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/Dragon-Ball)
+¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/Dragon-Ball).
 
 ## Cómo contribuir
 
@@ -22,15 +21,22 @@ Para este proyecto, utilizaremos las siguientes herramientas y lenguajes de prog
 - **SwiftUI**: Es el framework que utilizaremos para diseñar la interfaz de usuario de la aplicación.
 - **Git**: Es la herramienta que utilizaremos para el control de versiones.
 - **GitHub**: Es la plataforma donde alojaremos nuestro código y colaboraremos.
-- **Trello**: Es la herramienta que utilizaremos para hacer seguimiento del proyecto.(Si quieres colaborar, pide acceso al Kamban en el grupo de estudio)
+- **Trello**: Es la herramienta que utilizaremos para hacer seguimiento del proyecto. (Si quieres colaborar, pide acceso al Kamban en el grupo de estudio)
+- **API**: Usamos una API de Dragon Ball creada y usada para la comunidad disponible [aquí](https://apidragonball.vercel.app)
+- Versión actual del proyecto en: **iOS 17.5**
 
 ## Seguimiento del proyecto
 
 Para el seguimiento del proyecto, utilizaremos Trello. Puedes ver el tablero del proyecto [aquí](https://trello.com/b/M1vlLvRz/proyecto-dragon-ball-app).
 
+## Uso de la API
+
+Usamos la API de Dragon Ball para obtener datos y mejorar la funcionalidad de nuestra app.
+ 
+La API está disponible [aquí](https://apidragonball.vercel.app) y es mantenida por [Juan Pablo](https://github.com/juanppdev).
+
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia lo puedes hacer en el grupo de estudio de la comunidad MoureDev -> [Proyecto colaborativo App's Swift & Kotlin](https://discord.com/channels/729672926432985098/1244617601729171496)
-
 
 ¡Esperamos ver tus contribuciones pronto!
