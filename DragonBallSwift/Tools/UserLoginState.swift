@@ -8,5 +8,5 @@
 import Foundation
 
 enum UserLoginState: Int {
-    case login, checkForAnAccount, userHaveAnAccount, createNewAccount
+    case loggedOut, loggedIn
 }

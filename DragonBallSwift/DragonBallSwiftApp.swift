@@ -11,11 +11,18 @@ import SwiftUI
 struct DragonBallSwiftApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @AppStorage("LoginFlowState") private var loginFlowState = UserLoginState.loggedOut
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .preferredColorScheme(.dark)
+            switch loginFlowState {
+            case .loggedOut:
+                LoginView()
+                    .preferredColorScheme(.dark)
+            case .loggedIn:
+                ContentView()
+                    .preferredColorScheme(.dark)
+            }
         }
     }
 }
