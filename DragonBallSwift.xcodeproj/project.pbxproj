@@ -27,6 +27,24 @@
 		6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */; };
 		6E5619222C0B1D3F00D4D5C1 /* DBCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5619212C0B1D3F00D4D5C1 /* DBCharactersView.swift */; };
 		6E56B1482C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6E56B1472C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif */; };
+		6E56B1762C585E1700098F2C /* ExtensionsTetrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1752C585E1700098F2C /* ExtensionsTetrix.swift */; };
+		6E56B1782C585E7600098F2C /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1772C585E7600098F2C /* Protocol.swift */; };
+		6E56B17B2C585F4600098F2C /* SquareShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B17A2C585F4600098F2C /* SquareShape.swift */; };
+		6E56B17D2C585F8000098F2C /* IShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B17C2C585F8000098F2C /* IShape.swift */; };
+		6E56B17F2C585FB100098F2C /* TShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B17E2C585FB100098F2C /* TShape.swift */; };
+		6E56B1812C585FD100098F2C /* LShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1802C585FD100098F2C /* LShape.swift */; };
+		6E56B1832C58600300098F2C /* JShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1822C58600300098F2C /* JShape.swift */; };
+		6E56B1852C58602000098F2C /* SShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1842C58602000098F2C /* SShape.swift */; };
+		6E56B1872C58604C00098F2C /* ZShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1862C58604C00098F2C /* ZShape.swift */; };
+		6E56B1892C58607C00098F2C /* SquereGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1882C58607B00098F2C /* SquereGame.swift */; };
+		6E56B18B2C5860A300098F2C /* GridPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B18A2C5860A300098F2C /* GridPosition.swift */; };
+		6E56B18D2C58614000098F2C /* TetrisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B18C2C58614000098F2C /* TetrisViewModel.swift */; };
+		6E56B18F2C5861D000098F2C /* HomeTreixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B18E2C5861D000098F2C /* HomeTreixView.swift */; };
+		6E56B1912C5862CA00098F2C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1902C5862CA00098F2C /* GridView.swift */; };
+		6E56B1932C5862FB00098F2C /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1922C5862FB00098F2C /* ControlsView.swift */; };
+		6E56B1952C58635500098F2C /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1942C58635500098F2C /* ButtonView.swift */; };
+		6E56B1972C5863AB00098F2C /* IconsButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1962C5863AB00098F2C /* IconsButtons.swift */; };
+		6E56B1992C58640C00098F2C /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56B1982C58640C00098F2C /* Scoreboard.swift */; };
 		6E600C7E2C07436F002408CE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600C7D2C07436F002408CE /* ApiError.swift */; };
 		6E600CE62C096A9F002408CE /* CardMemryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600CE42C096A9F002408CE /* CardMemryModel.swift */; };
 		6E600CEA2C096B0A002408CE /* CardMemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600CE72C096B0A002408CE /* CardMemoryView.swift */; };
@@ -65,6 +83,24 @@
 		6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameViewModel.swift; sourceTree = "<group>"; };
 		6E5619212C0B1D3F00D4D5C1 /* DBCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCharactersView.swift; sourceTree = "<group>"; };
 		6E56B1472C546E1B00098F2C /* tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tumblr_5d02caa6c1505584156a309d7c38a5d5_ef84c56e_250.gif; sourceTree = "<group>"; };
+		6E56B1752C585E1700098F2C /* ExtensionsTetrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTetrix.swift; sourceTree = "<group>"; };
+		6E56B1772C585E7600098F2C /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		6E56B17A2C585F4600098F2C /* SquareShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareShape.swift; sourceTree = "<group>"; };
+		6E56B17C2C585F8000098F2C /* IShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IShape.swift; sourceTree = "<group>"; };
+		6E56B17E2C585FB100098F2C /* TShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TShape.swift; sourceTree = "<group>"; };
+		6E56B1802C585FD100098F2C /* LShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LShape.swift; sourceTree = "<group>"; };
+		6E56B1822C58600300098F2C /* JShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JShape.swift; sourceTree = "<group>"; };
+		6E56B1842C58602000098F2C /* SShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SShape.swift; sourceTree = "<group>"; };
+		6E56B1862C58604C00098F2C /* ZShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZShape.swift; sourceTree = "<group>"; };
+		6E56B1882C58607B00098F2C /* SquereGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquereGame.swift; sourceTree = "<group>"; };
+		6E56B18A2C5860A300098F2C /* GridPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPosition.swift; sourceTree = "<group>"; };
+		6E56B18C2C58614000098F2C /* TetrisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetrisViewModel.swift; sourceTree = "<group>"; };
+		6E56B18E2C5861D000098F2C /* HomeTreixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTreixView.swift; sourceTree = "<group>"; };
+		6E56B1902C5862CA00098F2C /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		6E56B1922C5862FB00098F2C /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
+		6E56B1942C58635500098F2C /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		6E56B1962C5863AB00098F2C /* IconsButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsButtons.swift; sourceTree = "<group>"; };
+		6E56B1982C58640C00098F2C /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		6E600C7D2C07436F002408CE /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		6E600CE42C096A9F002408CE /* CardMemryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardMemryModel.swift; sourceTree = "<group>"; };
 		6E600CE72C096B0A002408CE /* CardMemoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardMemoryView.swift; sourceTree = "<group>"; };
@@ -129,6 +165,7 @@
 		5A6AAF792C52CF2600930C0A /* GamesViews */ = {
 			isa = PBXGroup;
 			children = (
+				6E56B1732C585D7C00098F2C /* TetrixView */,
 				6E600CE92C096B0A002408CE /* MemoryGame */,
 				5A6AAF7C2C52D28700930C0A /* GamesView.swift */,
 			);
@@ -161,9 +198,64 @@
 			path = ViewModelApi;
 			sourceTree = "<group>";
 		};
+		6E56B1712C585C0100098F2C /* TetrisModel */ = {
+			isa = PBXGroup;
+			children = (
+				6E56B1792C585F0700098F2C /* PartsModel */,
+				6E56B1882C58607B00098F2C /* SquereGame.swift */,
+				6E56B18A2C5860A300098F2C /* GridPosition.swift */,
+				6E56B1962C5863AB00098F2C /* IconsButtons.swift */,
+			);
+			path = TetrisModel;
+			sourceTree = "<group>";
+		};
+		6E56B1722C585C2500098F2C /* TetrisViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6E56B18C2C58614000098F2C /* TetrisViewModel.swift */,
+			);
+			path = TetrisViewModel;
+			sourceTree = "<group>";
+		};
+		6E56B1732C585D7C00098F2C /* TetrixView */ = {
+			isa = PBXGroup;
+			children = (
+				6E56B18E2C5861D000098F2C /* HomeTreixView.swift */,
+				6E56B1902C5862CA00098F2C /* GridView.swift */,
+				6E56B1922C5862FB00098F2C /* ControlsView.swift */,
+				6E56B1942C58635500098F2C /* ButtonView.swift */,
+				6E56B1982C58640C00098F2C /* Scoreboard.swift */,
+			);
+			path = TetrixView;
+			sourceTree = "<group>";
+		};
+		6E56B1742C585DE200098F2C /* TetrixTools */ = {
+			isa = PBXGroup;
+			children = (
+				6E56B1752C585E1700098F2C /* ExtensionsTetrix.swift */,
+				6E56B1772C585E7600098F2C /* Protocol.swift */,
+			);
+			path = TetrixTools;
+			sourceTree = "<group>";
+		};
+		6E56B1792C585F0700098F2C /* PartsModel */ = {
+			isa = PBXGroup;
+			children = (
+				6E56B17A2C585F4600098F2C /* SquareShape.swift */,
+				6E56B17C2C585F8000098F2C /* IShape.swift */,
+				6E56B17E2C585FB100098F2C /* TShape.swift */,
+				6E56B1802C585FD100098F2C /* LShape.swift */,
+				6E56B1822C58600300098F2C /* JShape.swift */,
+				6E56B1842C58602000098F2C /* SShape.swift */,
+				6E56B1862C58604C00098F2C /* ZShape.swift */,
+			);
+			path = PartsModel;
+			sourceTree = "<group>";
+		};
 		6E600C642C06927F002408CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E56B1712C585C0100098F2C /* TetrisModel */,
 				6E600CE52C096A9F002408CE /* ModelMemoryGame */,
 				6E600C7C2C07401D002408CE /* ModeloApi */,
 			);
@@ -173,6 +265,7 @@
 		6E600C652C0692C0002408CE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6E56B1722C585C2500098F2C /* TetrisViewModel */,
 				6E52A9DD2C0A8A72000F2162 /* ViewModelApi */,
 				6E52A9DA2C0A86E5000F2162 /* MemoriGameViewModel */,
 				5A33F8882C57D0F70025A4E2 /* LoginViewModel.swift */,
@@ -204,6 +297,7 @@
 		6E600C722C072F29002408CE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6E56B1742C585DE200098F2C /* TetrixTools */,
 				6EA16BE12C1140ED00CBC7B6 /* GifImagen */,
 				6E600CE12C08936E002408CE /* StyleMemoryGame */,
 				6EA16BDF2C113C8200CBC7B6 /* GifImage.swift */,
@@ -384,9 +478,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E56B1912C5862CA00098F2C /* GridView.swift in Sources */,
+				6E56B1892C58607C00098F2C /* SquereGame.swift in Sources */,
 				5A33F8632C5726120025A4E2 /* AppDelegate.swift in Sources */,
+				6E56B1762C585E1700098F2C /* ExtensionsTetrix.swift in Sources */,
 				5A33F86E2C572ADE0025A4E2 /* GoogleService.swift in Sources */,
+				6E56B18F2C5861D000098F2C /* HomeTreixView.swift in Sources */,
 				B372A01E2C068E2300439428 /* ContentView.swift in Sources */,
+				6E56B17F2C585FB100098F2C /* TShape.swift in Sources */,
 				B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */,
 				6EAB82712C473F1500D75432 /* DBZCharactersView.swift in Sources */,
 				6E600CE62C096A9F002408CE /* CardMemryModel.swift in Sources */,
@@ -395,18 +494,31 @@
 				B31739EE2C54E870008CEA6F /* ViewDetails.swift in Sources */,
 				5A33F87E2C5737740025A4E2 /* ColorExtension.swift in Sources */,
 				6EAB82632C472D6F00D75432 /* ApiProtocol.swift in Sources */,
+				6E56B17D2C585F8000098F2C /* IShape.swift in Sources */,
+				6E56B1952C58635500098F2C /* ButtonView.swift in Sources */,
 				6E5619222C0B1D3F00D4D5C1 /* DBCharactersView.swift in Sources */,
+				6E56B1812C585FD100098F2C /* LShape.swift in Sources */,
 				6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */,
+				6E56B17B2C585F4600098F2C /* SquareShape.swift in Sources */,
 				5A6AAF802C532D0A00930C0A /* BasicCharacterCardView.swift in Sources */,
 				5A6AAF7D2C52D28700930C0A /* GamesView.swift in Sources */,
+				6E56B1972C5863AB00098F2C /* IconsButtons.swift in Sources */,
+				6E56B1852C58602000098F2C /* SShape.swift in Sources */,
 				5A33F8702C572B5F0025A4E2 /* UserLoginState.swift in Sources */,
 				6EAB82732C47412A00D75432 /* AllDragonsViewModel.swift in Sources */,
+				6E56B1832C58600300098F2C /* JShape.swift in Sources */,
 				6EAB82672C47312F00D75432 /* AllCharactersDBDataService.swift in Sources */,
 				6E600CEB2C096B0A002408CE /* MemoryGameView.swift in Sources */,
+				6E56B1872C58604C00098F2C /* ZShape.swift in Sources */,
+				6E56B1782C585E7600098F2C /* Protocol.swift in Sources */,
 				6EA16BE02C113C8200CBC7B6 /* GifImage.swift in Sources */,
+				6E56B1932C5862FB00098F2C /* ControlsView.swift in Sources */,
 				5A6AAF7B2C52D16900930C0A /* DragonsView.swift in Sources */,
+				6E56B1992C58640C00098F2C /* Scoreboard.swift in Sources */,
 				5A33F8892C57D0F70025A4E2 /* LoginViewModel.swift in Sources */,
+				6E56B18B2C5860A300098F2C /* GridPosition.swift in Sources */,
 				6EAB826B2C4734B800D75432 /* AllDragonsDataService.swift in Sources */,
+				6E56B18D2C58614000098F2C /* TetrisViewModel.swift in Sources */,
 				5A33F87C2C5736CC0025A4E2 /* LoginView.swift in Sources */,
 				6E600C7E2C07436F002408CE /* ApiError.swift in Sources */,
 				5AE3DB3C2C51EAD000F95566 /* WikiView.swift in Sources */,

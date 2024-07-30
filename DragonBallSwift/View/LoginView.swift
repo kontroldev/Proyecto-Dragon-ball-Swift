@@ -31,9 +31,25 @@ struct LoginView: View {
     func MainLoginView() -> some View {
         VStack {
             Spacer()
-            
-            Text("Dragon Ball App")
-                .font(.title)
+            Image("Dragon1").resizable()
+                .scaledToFit()
+                .shadow(color: .yellow, radius: 10)
+                .offset(y: -55)
+                .overlay{
+                    Image("LogoBall").resizable()
+                        .scaledToFit()
+                    // .frame(width: 300, height: 300)
+                        .shadow(color: .yellow, radius: 10)
+                        .offset(y: 155)
+                        .overlay{
+                            Text("App")
+                                .font(.system(size: 40).bold()).foregroundStyle(.white)
+                                .offset(x: 120, y: 310)
+                                .shadow(color: .yellow, radius: 10)
+                            
+                        }
+                }
+                
             
             Spacer()
             

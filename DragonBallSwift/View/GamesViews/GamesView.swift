@@ -11,6 +11,7 @@ struct GamesView: View {
     
     let menuItems = [
         ItemMenu(name: "Memory game", imegenName: "logoDBGM", destination: AnyView(MemoryGameView())),
+        ItemMenu(name: "Tetrix", imegenName: "GokuTetrix", destination: AnyView(HomeTreixView()))
     ]
     
     var body: some View {
@@ -25,7 +26,7 @@ struct GamesView: View {
                     ForEach(menuItems) { item in
                         NavigationLink(destination: item.destination) {
                             HStack {
-                                Text(item.name).font(.title3).bold()
+                                Text(item.name).font(.title2).bold()
                                     .foregroundStyle(.accent)
                                 
                                 Spacer()
@@ -33,7 +34,7 @@ struct GamesView: View {
                                 Image(item.imegenName)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(height: 70)
+                                    .frame(height: 150)
                             }
                             .padding()
                             .background(Color("CardColor"))
