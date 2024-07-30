@@ -22,7 +22,7 @@ struct DBZCharactersView: View {
                             NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo)
                             }
                         }
                     }

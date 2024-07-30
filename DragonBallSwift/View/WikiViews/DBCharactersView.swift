@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DBCharactersView: View {
     @State private var viewModel: AllCharactersDBViewModel = AllCharactersDBViewModel()
+    @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
     @State private var isLoadig = false
     
     let columns = [GridItem(), GridItem()]
@@ -22,7 +23,7 @@ struct DBCharactersView: View {
                             NavigationLink{
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo)
                             }
                         }
                     }
