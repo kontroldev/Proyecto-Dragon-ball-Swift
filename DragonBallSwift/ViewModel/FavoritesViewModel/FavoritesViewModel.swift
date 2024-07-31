@@ -19,4 +19,7 @@ class FavoritesViewModel {
         return favoriteCharacters.contains(where: { $0 == characterID })
     }
     
+    func removeFromFavorites(characterID: String) {
+        favoriteCharacters.removeAll(where: { $0 == characterID })
+    }
 }

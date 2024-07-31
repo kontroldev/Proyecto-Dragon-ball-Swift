@@ -57,7 +57,12 @@ struct BasicCharacterCardView: View {
             }
             
             Button {
-                favoriteCharactersViewModel.addToFavorites(characterID: character.id)
+                if isFavorite {
+                    favoriteCharactersViewModel.removeFromFavorites(characterID: character.id)
+                } else {
+                    favoriteCharactersViewModel.addToFavorites(characterID: character.id)
+                }
+                
                 isFavorite = favoriteCharactersViewModel.checkIsFavorite(characterID: character.id)
             } label: {
                 HStack {
