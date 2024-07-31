@@ -66,7 +66,7 @@ struct BasicCharacterCardView: View {
                 isFavorite = favoriteCharactersViewModel.checkIsFavorite(characterID: character.id)
             } label: {
                 HStack {
-                    Text("Agregar a favoritos")
+                    Text(isFavorite ? "Quitar de favoritos" : "Agregar a favoritos")
                     
                     Image(systemName: !isFavorite ? "heart" : "heart.fill")
                         .foregroundStyle(!isFavorite ? .accent : .red)
