@@ -23,7 +23,7 @@ struct DBCharactersView: View {
                             NavigationLink{
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: viewModel.logo)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharacters)
                             }
                         }
                     }
@@ -41,6 +41,9 @@ struct DBCharactersView: View {
                         Image(systemName: "magnifyingglass")
                     }
                 }
+            }
+            .task {
+                await favoritesViewModel.getFavoriteCharacters()
             }
         }
     }
