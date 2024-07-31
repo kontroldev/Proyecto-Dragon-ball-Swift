@@ -61,14 +61,20 @@ struct BasicCharacterCardView: View {
             
             Button {
                 Task {
-                    //Si el personaje ya está en favoritos y se presiona el botón se elimina el personaje de favoritos, sino se agrega a favoritos
+                    //Si el personaje ya está en favoritos y se presiona el botón, se elimina el personaje de favoritos, sino se agrega a favoritos
                     if isFavorite {
+                        // Si el personaje está en favoritos, intenta eliminarlo
                         deleteSuccessfull = await favoriteCharactersViewModel.removeFromFavorites(characterID: character.id)
-                        if deleteSuccessfull { //Si se eliminó correctamente, entonces no es personaje favorito
+                        
+                        // Si la eliminación fue exitosa, actualiza el estado a false
+                        if deleteSuccessfull {
                             isFavorite = false
                         }
                     } else {
+                        // Si el personaje no está en favoritos, intenta agregarlo
                         await favoriteCharactersViewModel.addToFavorites(characterID: character.id)
+                        
+                        // Actualiza el estado isFavorite después de intentar agregar
                         isFavorite = await favoriteCharactersViewModel.checkIsFavorite(characterID: character.id)
                     }
                 }
