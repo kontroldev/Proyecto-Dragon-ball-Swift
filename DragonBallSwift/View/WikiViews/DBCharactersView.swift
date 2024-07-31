@@ -12,6 +12,8 @@ struct DBCharactersView: View {
     @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
     @State private var isLoadig = false
     
+    @State private var deleteCharacterFromFavorites: Bool = false
+    
     let columns = [GridItem(), GridItem()]
     
     var body: some View {
@@ -23,7 +25,7 @@ struct DBCharactersView: View {
                             NavigationLink{
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharacters)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharacters, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
