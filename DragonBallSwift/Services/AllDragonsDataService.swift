@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AllDragonsDataService: AllDragosProtocols {
+class AllDragonsDataService: AllDragonsProtocols {
     
     ///Obtiene todos los personajes de Dragonball API
     /// - Returns: Una instancia de `Dragons` la cual contiene toda la información básica de cada personaje

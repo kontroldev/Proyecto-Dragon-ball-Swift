@@ -17,7 +17,7 @@ class AllCharactersDBViewModel{
     var showErrorMessage: Bool = false
     var errorMessage: String = ""
     var logo: String = "DBLogo"
-    
+
     init () {
         Task {
             await getAllCharacters()

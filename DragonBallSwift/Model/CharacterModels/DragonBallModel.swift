@@ -19,7 +19,7 @@ struct CharactersModel: Codable  {
 
 
 // MARK: - Single Characters Dragon Ball
-struct SingleCharacters: Codable {
+struct SingleCharacterModel: Codable {
     let id, name, genre, race: String
     let image: String
     let planet, description, biography: String

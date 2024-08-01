@@ -43,10 +43,11 @@ struct LoginView: View {
                         .offset(y: 155)
                         .overlay{
                             Text("App")
-                                .font(.system(size: 40).bold()).foregroundStyle(.white)
+                                .font(.custom("SaiyanSans", size: 60).bold()).foregroundStyle(.yellow)
                                 .offset(x: 120, y: 310)
+                                .shadow(color: .black, radius: 0, x: 1, y: 1)
+                                .shadow(color: .white, radius: 0, x: -1, y: -1)
                                 .shadow(color: .yellow, radius: 10)
-                            
                         }
                 }
                 
