@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ViewDetails: View {
+    //Logica de reconocimiento de colores
+    @State var crImages = CRImages()
     
     // Recibimos los datos de la API, no lo inicializamos.
     @State var Caracter: CharactersModel
@@ -17,21 +19,31 @@ struct ViewDetails: View {
         ZStack {
             
             //Esto crea el fondo de color con gradientes y el color por defecto de la App.
-            RadialGradient(colors: [.red, Color("BackgroundColor")], center: .center, startRadius: 30, endRadius: 380)
+            RadialGradient(colors: [ Color("BackgroundColor")], center: .center, startRadius: 30, endRadius: 380)
                 .ignoresSafeArea()
             
             ScrollView {
-                AsyncImage(url: URL(string: Caracter.image)) { image in
-                    image
-                        .resizable()
-                        .frame(width: 400, height: 400, alignment: .center)
-                        .offset(y: 15) // Ponemos un 15, para bajar la imagen
-                        .shadow(color: .yellow, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                        .padding()
-                    
-                } placeholder: {
-                    ProgressView()
-                }
+                Circle()
+                    .frame(width: 300, height: 300)
+                    .blur(radius: 90)
+                    .foregroundStyle(crImages.mostVibrantColor)
+                    .overlay{
+                        AsyncImage(url: URL(string: Caracter.image)) { image in
+                            image
+                                .resizable()
+                                .frame(width: 400, height: 400, alignment: .center)
+                                .offset(y: 15) // Ponemos un 15, para bajar la imagen
+                                .onAppear{
+                                    if let uiImage = image.asUIImage() {
+                                        crImages.detectColors(in: uiImage)
+                                    }
+                                }
+                                .padding()
+                            
+                        } placeholder: {
+                            ProgressView()
+                        }
+                    }.padding(.bottom, 40)
                 HStack {
                     Text(Caracter.name).font(.title)
                         .bold()
