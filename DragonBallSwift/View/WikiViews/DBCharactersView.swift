@@ -13,7 +13,10 @@ struct DBCharactersView: View {
     @State private var isLoadig = false
     
     @State private var deleteCharacterFromFavorites: Bool = false
+    
+    @Namespace private var animation
     @State private var isSearching: Bool = false
+    @FocusState private var searchBarFocus: Bool
     @State private var searchedCharacters: [CharactersModel] = []
     @State private var characterName: String = ""
     
@@ -34,7 +37,7 @@ struct DBCharactersView: View {
                     }
                 }
             }
-            .navigationTitle("Personajes")
+            .navigationTitle("Dragon Ball")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal, 4)
             .background(Color("BackgroundColor"))
@@ -42,18 +45,20 @@ struct DBCharactersView: View {
                 ToolbarItem {
                     if !isSearching {
                         Button {
-                            withAnimation {
+                            withAnimation(.bouncy(duration: 0.3, extraBounce: 0)) {
                                 isSearching = true
                             }
                         } label: {
                             Image(systemName: "magnifyingglass")
+                                .font(.footnote)
                         }
                     } else {
                         HStack(spacing: 4) {
                             Image(systemName: "magnifyingglass")
-                                .font(.headline)
+                                .font(.footnote)
                             
                             TextField("Busca un personaje", text: $characterName)
+                                .focused($searchBarFocus)
                                 .onChange(of: characterName) { _, _ in
                                     searchedCharacters = viewModel.searchCharacer(characterName: characterName)
                                 }
@@ -65,14 +70,18 @@ struct DBCharactersView: View {
                                 }
                             } label: {
                                 Image(systemName: "xmark.circle")
+                                    .font(.footnote)
                             }
                         }
-                        .padding(.horizontal, 4)
+                        .padding(4)
                         .overlay {
                             RoundedRectangle(cornerRadius: 12)
                                 .stroke(Color.gray.opacity(0.2), lineWidth: 1)
                         }
                         .frame(height: 12)
+                        .onAppear {
+                            searchBarFocus = true
+                        }
                     }
                 }
             }
