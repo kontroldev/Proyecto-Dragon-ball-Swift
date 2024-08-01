@@ -9,7 +9,10 @@ import SwiftUI
 
 struct DBZCharactersView: View {
     @State private var viewModel: AllCharactersDZViewModel = AllCharactersDZViewModel()
+    @State private var favoriteViewModel = FavoritesViewModel()
     @State private var isLoadig = false
+    
+    @State private var deleteCharacterFromFavorites = false
     
     let columns = [GridItem(), GridItem()]
     
@@ -22,7 +25,7 @@ struct DBZCharactersView: View {
                             NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoriteViewModel.favoriteCharacters, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
@@ -40,6 +43,9 @@ struct DBZCharactersView: View {
                         }
                     }
                 }
+            }
+            .task {
+                await favoriteViewModel.getFavoriteCharacters()
             }
         }
     }

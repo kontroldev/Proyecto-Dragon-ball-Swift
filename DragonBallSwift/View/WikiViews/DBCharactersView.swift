@@ -9,7 +9,10 @@ import SwiftUI
 
 struct DBCharactersView: View {
     @State private var viewModel: AllCharactersDBViewModel = AllCharactersDBViewModel()
+    @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
     @State private var isLoadig = false
+    
+    @State private var deleteCharacterFromFavorites: Bool = false
     
     let columns = [GridItem(), GridItem()]
     
@@ -22,7 +25,7 @@ struct DBCharactersView: View {
                             NavigationLink{
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharacters, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
@@ -40,6 +43,9 @@ struct DBCharactersView: View {
                         Image(systemName: "magnifyingglass")
                     }
                 }
+            }
+            .task {
+                await favoritesViewModel.getFavoriteCharacters()
             }
         }
     }
