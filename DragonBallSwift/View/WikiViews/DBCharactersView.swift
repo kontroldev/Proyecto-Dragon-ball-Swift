@@ -56,8 +56,10 @@ struct DBCharactersView: View {
                         HStack(spacing: 4) {
                             Image(systemName: "magnifyingglass")
                                 .font(.footnote)
+                                .foregroundStyle(Color.gray.opacity(0.7))
                             
                             TextField("Busca un personaje", text: $characterName)
+                                .font(.footnote)
                                 .focused($searchBarFocus)
                                 .onChange(of: characterName) { _, _ in
                                     searchedCharacters = viewModel.searchCharacer(characterName: characterName)
