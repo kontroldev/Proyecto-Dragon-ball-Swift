@@ -13,6 +13,9 @@ struct DBCharactersView: View {
     @State private var isLoadig = false
     
     @State private var deleteCharacterFromFavorites: Bool = false
+    @State private var isSearching: Bool = false
+    @State private var searchedCharacters: [CharactersModel] = []
+    @State private var characterName: String = ""
     
     let columns = [GridItem(), GridItem()]
     
@@ -21,7 +24,7 @@ struct DBCharactersView: View {
             VStack {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(viewModel.AllCharacters, id: \.id) { character in
+                        ForEach(searchedCharacters.isEmpty ? viewModel.allCharacters : searchedCharacters, id: \.id) { character in
                             NavigationLink{
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
@@ -37,10 +40,39 @@ struct DBCharactersView: View {
             .background(Color("BackgroundColor"))
             .toolbar {
                 ToolbarItem {
-                    Button {
-                        //TODO: Implementar funcionalidad de buscar personaje
-                    } label: {
-                        Image(systemName: "magnifyingglass")
+                    if !isSearching {
+                        Button {
+                            withAnimation {
+                                isSearching = true
+                            }
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                        }
+                    } else {
+                        HStack(spacing: 4) {
+                            Image(systemName: "magnifyingglass")
+                                .font(.headline)
+                            
+                            TextField("Busca un personaje", text: $characterName)
+                                .onChange(of: characterName) { _, _ in
+                                    searchedCharacters = viewModel.searchCharacer(characterName: characterName)
+                                }
+                            
+                            Button {
+                                withAnimation {
+                                    isSearching = false
+                                    searchedCharacters = []
+                                }
+                            } label: {
+                                Image(systemName: "xmark.circle")
+                            }
+                        }
+                        .padding(.horizontal, 4)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        }
+                        .frame(height: 12)
                     }
                 }
             }
