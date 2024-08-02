@@ -20,8 +20,9 @@ class AllCharactersDZViewModel{
     
     init () {
         Task {
+            isLoading = true
             await getAllCharacters()
-          
+            isLoading = false
         }
     }
     
