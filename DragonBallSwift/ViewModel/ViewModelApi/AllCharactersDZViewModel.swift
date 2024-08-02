@@ -12,7 +12,7 @@ import Observation
 class AllCharactersDZViewModel{
     
     private let allCharactersDataService: AllCharactersDBDataService = AllCharactersDBDataService()
-    var AllCharacters: [CharactersModel] = []
+    var allCharacters: [CharactersModel] = []
     var isLoading: Bool = false
     var showErrorMessage: Bool = false
     var errorMessage: String = ""
@@ -28,12 +28,17 @@ class AllCharactersDZViewModel{
     @MainActor
     func getAllCharacters() async {
         do {
-            AllCharacters = try await allCharactersDataService.getCharacters("dragonballz")
+            allCharacters = try await allCharactersDataService.getCharacters("dragonballz")
         }catch let error as NSError {
             print("Upss, ocurrio un error -> ",error.localizedDescription)
             errorMessage = "error al intentar optener los datos del servicio"
             showErrorMessage.toggle()
         }
+    }
+    
+    @MainActor
+    func searchCharacer(characterName: String) -> [CharactersModel] {
+        return allCharacters.filter { $0.name.contains(characterName) }
     }
 
 }
