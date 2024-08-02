@@ -10,7 +10,7 @@ import SwiftUI
 struct DBCharactersView: View {
     //Estados para obtener los personajes de la API
     @State private var viewModel: AllCharactersDBViewModel = AllCharactersDBViewModel()
-    @State private var isLoadig = false
+    @State private var isLoading = false
     
     //Estados para manejar los personajes favoritos
     @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
@@ -36,6 +36,12 @@ struct DBCharactersView: View {
                                 BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharacters, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
+                    }
+                }
+                .overlay {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .scaleEffect(1.5)
                     }
                 }
             }

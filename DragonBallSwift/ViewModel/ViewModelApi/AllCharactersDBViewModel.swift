@@ -20,8 +20,9 @@ class AllCharactersDBViewModel{
 
     init () {
         Task {
+            isLoading = true
             await getAllCharacters()
-          
+            isLoading = false
         }
     }
     

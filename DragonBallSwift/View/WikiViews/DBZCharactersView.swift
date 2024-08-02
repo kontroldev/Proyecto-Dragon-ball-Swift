@@ -38,17 +38,25 @@ struct DBZCharactersView: View {
                         }
                     }
                 }
-                .navigationTitle("Dragon Ball Z")
-                .navigationBarTitleDisplayMode(.inline)
-                .padding(.horizontal, 4)
-                .background(Color("BackgroundColor"))
-                .toolbar {
-                    ToolbarItem {
-                        SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
-                            .onChange(of: characterName) { _, _ in
-                                searchedCharacters = viewModel.searchCharacer(characterName: characterName)
-                            }
+                .overlay {
+                    ZStack {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .scaleEffect(1.5)
+                        }
                     }
+                }
+            }
+            .navigationTitle("Dragon Ball Z")
+            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal, 4)
+            .background(Color("BackgroundColor"))
+            .toolbar {
+                ToolbarItem {
+                    SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
+                        .onChange(of: characterName) { _, _ in
+                            searchedCharacters = viewModel.searchCharacer(characterName: characterName)
+                        }
                 }
             }
             .task {
