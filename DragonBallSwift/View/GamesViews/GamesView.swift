@@ -36,7 +36,7 @@ struct GamesView: View {
                             Image(item.imegenName)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 150)
+                                .frame(height: 80)
                         }
                         .padding()
                         .background(Color("CardColor"))
