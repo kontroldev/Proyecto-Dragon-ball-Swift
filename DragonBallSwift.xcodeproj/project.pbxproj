@@ -26,6 +26,7 @@
 		5A6AAF802C532D0A00930C0A /* BasicCharacterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6AAF7F2C532D0A00930C0A /* BasicCharacterCardView.swift */; };
 		5A849D5A2C5A9E7A000AA691 /* FavoriteCharacterDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A849D592C5A9E7A000AA691 /* FavoriteCharacterDataService.swift */; };
 		5A849D5C2C5AA3A4000AA691 /* FavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A849D5B2C5AA3A4000AA691 /* FavoriteCharacter.swift */; };
+		5ABF74A22C5C5A79000AC558 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF74A12C5C5A79000AC558 /* SearchBarView.swift */; };
 		5AE3DB3C2C51EAD000F95566 /* WikiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3DB3B2C51EAD000F95566 /* WikiView.swift */; };
 		6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */; };
 		6E5619222C0B1D3F00D4D5C1 /* DBCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5619212C0B1D3F00D4D5C1 /* DBCharactersView.swift */; };
@@ -87,6 +88,7 @@
 		5A6AAF7F2C532D0A00930C0A /* BasicCharacterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCharacterCardView.swift; sourceTree = "<group>"; };
 		5A849D592C5A9E7A000AA691 /* FavoriteCharacterDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacterDataService.swift; sourceTree = "<group>"; };
 		5A849D5B2C5AA3A4000AA691 /* FavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacter.swift; sourceTree = "<group>"; };
+		5ABF74A12C5C5A79000AC558 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		5AE3DB3B2C51EAD000F95566 /* WikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiView.swift; sourceTree = "<group>"; };
 		6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameViewModel.swift; sourceTree = "<group>"; };
 		6E5619212C0B1D3F00D4D5C1 /* DBCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCharactersView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				5A6AAF7F2C532D0A00930C0A /* BasicCharacterCardView.swift */,
+				5ABF74A12C5C5A79000AC558 /* SearchBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				6E56B1912C5862CA00098F2C /* GridView.swift in Sources */,
 				6E56B1892C58607C00098F2C /* SquereGame.swift in Sources */,
 				5A33F8632C5726120025A4E2 /* AppDelegate.swift in Sources */,
+				5ABF74A22C5C5A79000AC558 /* SearchBarView.swift in Sources */,
 				6E56B1762C585E1700098F2C /* ExtensionsTetrix.swift in Sources */,
 				5A33F86E2C572ADE0025A4E2 /* GoogleService.swift in Sources */,
 				6E56B18F2C5861D000098F2C /* HomeTreixView.swift in Sources */,

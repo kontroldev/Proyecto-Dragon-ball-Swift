@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct DBCharactersView: View {
+    //Estados para obtener los personajes de la API
     @State private var viewModel: AllCharactersDBViewModel = AllCharactersDBViewModel()
-    @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
     @State private var isLoadig = false
     
+    //Estados para manejar los personajes favoritos
+    @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
     @State private var deleteCharacterFromFavorites: Bool = false
     
-    @Namespace private var animation
+    //Estados para búsqueda de personajes
     @State private var isSearching: Bool = false
     @FocusState private var searchBarFocus: Bool
     @State private var searchedCharacters: [CharactersModel] = []
@@ -43,48 +45,10 @@ struct DBCharactersView: View {
             .background(Color("BackgroundColor"))
             .toolbar {
                 ToolbarItem {
-                    if !isSearching {
-                        Button {
-                            withAnimation(.bouncy(duration: 0.3, extraBounce: 0)) {
-                                isSearching = true
-                            }
-                        } label: {
-                            Image(systemName: "magnifyingglass")
-                                .font(.footnote)
+                    SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
+                        .onChange(of: characterName) { _, _ in
+                            searchedCharacters = viewModel.searchCharacer(characterName: characterName)
                         }
-                    } else {
-                        HStack(spacing: 4) {
-                            Image(systemName: "magnifyingglass")
-                                .font(.footnote)
-                                .foregroundStyle(Color.gray.opacity(0.7))
-                            
-                            TextField("Busca un personaje", text: $characterName)
-                                .font(.footnote)
-                                .focused($searchBarFocus)
-                                .onChange(of: characterName) { _, _ in
-                                    searchedCharacters = viewModel.searchCharacer(characterName: characterName)
-                                }
-                            
-                            Button {
-                                withAnimation {
-                                    isSearching = false
-                                    searchedCharacters = []
-                                }
-                            } label: {
-                                Image(systemName: "xmark.circle")
-                                    .font(.footnote)
-                            }
-                        }
-                        .padding(4)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
-                        }
-                        .frame(height: 12)
-                        .onAppear {
-                            searchBarFocus = true
-                        }
-                    }
                 }
             }
             .task {

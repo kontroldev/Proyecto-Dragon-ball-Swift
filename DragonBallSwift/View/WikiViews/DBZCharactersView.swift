@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct DBZCharactersView: View {
+    //Estados para obtener los personajes de la API
     @State private var viewModel: AllCharactersDZViewModel = AllCharactersDZViewModel()
-    @State private var favoriteViewModel = FavoritesViewModel()
     @State private var isLoadig = false
     
+    //Estados para manejar los personajes favoritos
+    @State private var favoriteViewModel = FavoritesViewModel()
     @State private var deleteCharacterFromFavorites = false
+    
+    //Estados para búsqueda de personajes
+    @State private var isSearching: Bool = false
+    @FocusState private var searchBarFocus: Bool
+    @State private var searchedCharacters: [CharactersModel] = []
+    @State private var characterName: String = ""
     
     let columns = [GridItem(), GridItem()]
     
@@ -21,7 +29,7 @@ struct DBZCharactersView: View {
             VStack {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(viewModel.AllCharacters, id: \.id) { character in
+                        ForEach(searchedCharacters.isEmpty ? viewModel.allCharacters : searchedCharacters, id: \.id) { character in
                             NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
@@ -30,17 +38,16 @@ struct DBZCharactersView: View {
                         }
                     }
                 }
-                .navigationTitle("Personajes")
+                .navigationTitle("Dragon Ball Z")
                 .navigationBarTitleDisplayMode(.inline)
                 .padding(.horizontal, 4)
                 .background(Color("BackgroundColor"))
                 .toolbar {
                     ToolbarItem {
-                        Button {
-                            //TODO: Implementar funcionalidad de buscar personaje
-                        } label: {
-                            Image(systemName: "magnifyingglass")
-                        }
+                        SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
+                            .onChange(of: characterName) { _, _ in
+                                searchedCharacters = viewModel.searchCharacer(characterName: characterName)
+                            }
                     }
                 }
             }
