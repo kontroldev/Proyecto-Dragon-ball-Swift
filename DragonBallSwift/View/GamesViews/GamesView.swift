@@ -10,7 +10,7 @@ import SwiftUI
 struct GamesView: View {
     
     @State private var isAnElementTapped: Bool = false
-    @State private var selectedGame: GameNames = .memoryGame
+    @State private var selectedGame: GameNames = .none
     
     let menuItems = [
         GameItemMenu(name: .memoryGame, imegenName: "logoDBGM", destination: AnyView(MemoryGameView(dismiss: .constant(false)))),
@@ -53,6 +53,8 @@ struct GamesView: View {
                         }
                         .fullScreenCover(isPresented: $isAnElementTapped) {
                             switch selectedGame {
+                            case .none:
+                                EmptyView()
                             case .memoryGame:
                                 MemoryGameView(dismiss: $isAnElementTapped)
                             case .tetrix:
