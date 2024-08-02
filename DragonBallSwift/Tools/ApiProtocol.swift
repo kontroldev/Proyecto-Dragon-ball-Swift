@@ -13,16 +13,16 @@ protocol AllCheractersProtocols{
 }
 
 // MARK: - Protocolo que define la interfaz para obtener todos los planetas.
-protocol AllDragosProtocols {
+protocol AllDragonsProtocols {
     func getDragons() async throws -> [DragonsModel]
 }
 
 // MARK: - Protocolo que define la interfaz para obtener los datos de un solo personaje.
 protocol SingleCharacterProtocol {
-    func getSingleCharacter(id: String) async throws -> SingleCharacters
+    func getSingleCharacter(_ referent: String, id: String) async throws -> SingleCharacterModel
 }
 
 // MARK: - Protocolo que define la interfaz para obtener los datos de un solo planeta.
-protocol SingleDragonsProtocol {
-    func getSingleDragos(id: String) async throws -> SingleCharacters
+protocol SingleDragonProtocol {
+    func getSingleDragos(id: String) async throws -> SingleCharacterModel
 }

@@ -45,9 +45,9 @@ struct ViewDetails: View {
                         }
                     }.padding(.bottom, 40)
                 HStack {
-                    Text(Caracter.name).font(.title)
+                    Text(Caracter.name).font(.custom("SaiyanSans", size: 30))
                         .bold()
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.yellow)
                     Spacer()
                     Image(LogoDB)
                         .resizable()
