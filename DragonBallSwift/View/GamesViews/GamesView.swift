@@ -10,11 +10,11 @@ import SwiftUI
 struct GamesView: View {
     
     @State private var isAnElementTapped: Bool = false
-    @State private var selectedGame: String = ""
+    @State private var selectedGame: GameNames = .memoryGame
     
     let menuItems = [
-        ItemMenu(name: "Memory game", imegenName: "logoDBGM", destination: AnyView(MemoryGameView(dismiss: .constant(false)))),
-        ItemMenu(name: "Tetrix", imegenName: "GokuTetrix", destination: AnyView(HomeTreixView()))
+        GameItemMenu(name: .memoryGame, imegenName: "logoDBGM", destination: AnyView(MemoryGameView(dismiss: .constant(false)))),
+        GameItemMenu(name: .tetrix, imegenName: "GokuTetrix", destination: AnyView(HomeTreixView(dismiss: .constant(false))))
     ]
     
     var body: some View {
@@ -28,7 +28,7 @@ struct GamesView: View {
                 ScrollView {
                     ForEach(menuItems) { item in
                         HStack {
-                            Text(item.name).font(.title2).bold()
+                            Text(item.name.rawValue).font(.title2).bold()
                                 .foregroundStyle(.accent)
                             
                             Spacer()
@@ -52,14 +52,20 @@ struct GamesView: View {
                             selectedGame = item.name
                         }
                         .fullScreenCover(isPresented: $isAnElementTapped) {
-                            if selectedGame == "Memory game" {
+                            switch selectedGame {
+                            case .memoryGame:
                                 MemoryGameView(dismiss: $isAnElementTapped)
+                            case .tetrix:
+                                HomeTreixView(dismiss: $isAnElementTapped)
                             }
                         }
                     }
                 }
             }
             .background(Color("BackgroundColor"))
+            .onAppear(perform: {
+                print(selectedGame)
+            })
         }
     }
 }

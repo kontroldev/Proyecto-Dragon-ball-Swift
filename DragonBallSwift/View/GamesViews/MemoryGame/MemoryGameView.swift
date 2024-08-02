@@ -103,7 +103,7 @@ struct MemoryGameView: View {
                             Image(systemName: "chevron.backward")
                                 .bold()
                             
-                            Text("Volver atrás")
+                            Text("Volver")
                                 .font(.callout)
                         }
                     }

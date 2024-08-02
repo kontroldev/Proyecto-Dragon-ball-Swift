@@ -9,39 +9,59 @@ import SwiftUI
 
 struct HomeTreixView: View {
     @State var viewModel = TetrisViewModel()
+    @Binding var dismiss: Bool
     
     var body: some View {
-        VStack{
-            HStack{
-                VStack{
-                    GridView(viewmodel: viewModel)
-                        .offset(y: 20)
+        NavigationStack {
+            VStack {
+                HStack {
+                    VStack {
+                        GridView(viewmodel: viewModel)
+                    }
+                    .padding(.horizontal, 20)
+                    
+                    Spacer()
+                    
+                    ZStack{
+                        Scoreboard(viewmodel: viewModel)
+    //                        .offset(x: -3, y : -15)
+                            .shadow(color: .blue, radius: 17)
+                        
+                        Image("GokuTetrix")
+                            .resizable()
+                            .scaledToFit()
+                            .offset(y: -160)
+                    }
                 }
-                .padding(.top, 80)
-                .padding(.horizontal, 20)
-                Spacer()
-                VStack{
-                    Image("GokuTetrix")
-                        .resizable()
-                        .scaledToFit()
-                        .offset(y: -15)
-                    Scoreboard(viewmodel: viewModel)
-                        .offset(x: -3, y : -15)
-                        .shadow(color: .blue, radius: 17)
+
+                ControlsView(viewmodel: viewModel)
+                    .padding(.top, 30)
+                    .padding(.horizontal)
+                    .padding(.bottom, 5)
+                    .shadow(color: .blue, radius: 8)
+            }
+            .frame(maxHeight: .infinity)
+            .background(Color.backgroundColor)
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Button {
+                        dismiss = false
+                    } label: {
+                        HStack(spacing: 2) {
+                            Image(systemName: "chevron.backward")
+                                .bold()
+                            
+                            Text("Volver")
+                                .font(.callout)
+                        }
+                    }
+
                 }
             }
-           Spacer()
-            ControlsView(viewmodel: viewModel).padding(.top)
-                .padding(.horizontal)
-                .padding(.bottom, 5)
-                .shadow(color: .blue, radius: 17)
         }
-        .ignoresSafeArea(.all)
-        .background(Color("BackgroundColor"))
-        
     }
 }
 
 #Preview {
-    HomeTreixView()
+    return HomeTreixView(dismiss: .constant(false))
 }
