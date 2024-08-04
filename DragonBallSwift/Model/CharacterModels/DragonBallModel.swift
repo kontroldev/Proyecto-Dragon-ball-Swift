@@ -47,3 +47,16 @@ struct ItemMenu: Identifiable {
     var imegenName: String
     var destination: AnyView
 }
+
+enum GameNames: String {
+    case none = ""
+    case memoryGame = "Memory game"
+    case tetrix = "Tetrix"
+}
+
+struct GameItemMenu: Identifiable {
+    var id = UUID()
+    var name: GameNames
+    var imegenName: String
+    var destination: AnyView
+}

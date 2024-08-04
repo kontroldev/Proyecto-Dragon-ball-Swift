@@ -11,6 +11,7 @@ import SwiftUI
 struct MemoryGameView: View {
     /// ViewModel para manejar la lógica del juego de memoria.
     @State var memoryViewModel =  MemoryGameViewModel()
+    @Binding var dismiss: Bool
     
     var body: some View {
         NavigationStack{
@@ -58,30 +59,55 @@ struct MemoryGameView: View {
                             
                         }
                     }.padding(9)
-                        .toolbar{
-                            ToolbarItem(placement: .automatic, content: {
-                                Button(action: {
-                                    memoryViewModel.resetGameAll()
-                                }, label: {
-                                   Image(systemName: "arrowshape.turn.up.left.circle.fill")
-                                        .foregroundStyle(.red)
-                                })
-                                    
-                            })
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar, content: {
+                    Button(action: {
+                        memoryViewModel.resetGameAll()
+                    }, label: {
+                        VStack {
+                            Image(systemName: "arrow.counterclockwise.circle.fill")
+                                 .foregroundStyle(.red)
+                                 .font(.title)
+                                 .fontWeight(.black)
                             
-                            ToolbarItem(placement: .automatic, content: {
-                                Image("logoDBGM").resizable()
-                                    .frame(width: 140, height: 40)
-                            })
-                            
-                            
-                            ToolbarItem(placement: .automatic, content: {
-                                
-                                Text("Puntuación: \(memoryViewModel.score)")
-                                    .font(.system(size: 14)).bold()
-                                    .foregroundStyle(.white)
-                            })
+                            Text("Reiniciar")
+                                .font(.footnote)
+                                .fontWeight(.bold)
                         }
+                    })
+                    .padding(.top, 12)
+                        
+                })
+                
+//                            ToolbarItem(placement: .automatic, content: {
+//                                Image("logoDBGM").resizable()
+//                                    .frame(width: 140, height: 40)
+//                            })
+            
+                
+                ToolbarItem(placement: .automatic, content: {
+                    
+                    Text("Puntuación: \(memoryViewModel.score)")
+                        .font(.callout)
+                        .bold()
+                        .foregroundStyle(.accent)
+                })
+                
+                ToolbarItem(placement: .navigation) {
+                    Button {
+                        dismiss = false
+                    } label: {
+                        HStack(spacing: 2) {
+                            Image(systemName: "chevron.backward")
+                                .bold()
+                            
+                            Text("Volver")
+                                .font(.callout)
+                        }
+                    }
+
                 }
             }
         }
@@ -89,5 +115,5 @@ struct MemoryGameView: View {
 }
 
 #Preview {
-    MemoryGameView()
+    return MemoryGameView(dismiss: .constant(false))
 }

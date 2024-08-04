@@ -9,9 +9,12 @@ import SwiftUI
 
 struct GamesView: View {
     
+    @State private var isAnElementTapped: Bool = false
+    @State private var selectedGame: GameNames = .none
+    
     let menuItems = [
-        ItemMenu(name: "Memory game", imegenName: "logoDBGM", destination: AnyView(MemoryGameView())),
-        ItemMenu(name: "Tetrix", imegenName: "GokuTetrix", destination: AnyView(HomeTreixView()))
+        GameItemMenu(name: .memoryGame, imegenName: "logoDBGM", destination: AnyView(MemoryGameView(dismiss: .constant(false)))),
+        GameItemMenu(name: .tetrix, imegenName: "GokuTetrix", destination: AnyView(HomeTreixView(dismiss: .constant(false))))
     ]
     
     var body: some View {
@@ -24,32 +27,47 @@ struct GamesView: View {
                 
                 ScrollView {
                     ForEach(menuItems) { item in
-                        NavigationLink(destination: item.destination) {
-                            HStack {
-                                Text(item.name).font(.title2).bold()
-                                    .foregroundStyle(.accent)
-                                
-                                Spacer()
-                                
-                                Image(item.imegenName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 150)
-                            }
-                            .padding()
-                            .background(Color("CardColor"))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
-                            )
-                            .cornerRadius(12)
+                        HStack {
+                            Text(item.name.rawValue).font(.title2).bold()
+                                .foregroundStyle(.accent)
+                            
+                            Spacer()
+                            
+                            Image(item.imegenName)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 80)
                         }
+                        .padding()
+                        .background(Color("CardColor"))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        )
+                        .cornerRadius(12)
                         .padding(.horizontal)
                         .padding(.top, 8)
+                        .onTapGesture {
+                            isAnElementTapped = true
+                            selectedGame = item.name
+                        }
+                        .fullScreenCover(isPresented: $isAnElementTapped) {
+                            switch selectedGame {
+                            case .none:
+                                EmptyView()
+                            case .memoryGame:
+                                MemoryGameView(dismiss: $isAnElementTapped)
+                            case .tetrix:
+                                HomeTreixView(dismiss: $isAnElementTapped)
+                            }
+                        }
                     }
                 }
             }
             .background(Color("BackgroundColor"))
+            .onAppear(perform: {
+                print(selectedGame)
+            })
         }
     }
 }
