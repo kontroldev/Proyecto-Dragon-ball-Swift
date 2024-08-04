@@ -10,7 +10,9 @@ import Foundation
 @Observable
 class FavoritesViewModel {
     private let favoriteCharactersDataBaseService = FavoriteCharacterDataBaseService()
-    var favoriteCharacters: [FavoriteCharacter] = []
+    var favoriteCharactersIDs: [FavoriteCharacter] = []
+    var favoriteCharacters: [CharactersModel] = [] //Modelo con todos los datos de los personajes favoritos
+    var isLoading: Bool = false
     var showError: Bool = false
     var errorMessage: String = ""
     
@@ -27,9 +29,9 @@ class FavoritesViewModel {
     func addToFavorites(characterID: String) async {
         do {
             let character = FavoriteCharacter(characterID: characterID)
-            favoriteCharacters.append(character)
+            favoriteCharactersIDs.append(character)
             try await favoriteCharactersDataBaseService.addToFavorites(character: character)
-            await getFavoriteCharacters()
+            await getFavoriteCharactersIDs()
         } catch {
             showError = true
             errorMessage = "Error al agregar a favoritos"
@@ -40,13 +42,35 @@ class FavoritesViewModel {
     /// Obtiene la lista de personajes favoritos desde la base de datos de Firestore.
     ///
     /// Esta función actualiza la lista local `favoriteCharacters` con los datos obtenidos desde el servicio de Firestore `favoriteCharactersDataBaseService`.
-    func getFavoriteCharacters() async {
+    func getFavoriteCharactersIDs() async {
         do {
-            favoriteCharacters = try await favoriteCharactersDataBaseService.getFavorites()
+            favoriteCharactersIDs = try await favoriteCharactersDataBaseService.getFavorites()
         } catch {
             showError = true
             errorMessage = "Error al obtener personajes favoritos"
         }
+    }
+    
+    
+    /// Obtiene los modelos de personajes favoritos a partir de datos provenientes de la base de datos y la API.
+    ///
+    /// Esta función realiza las siguientes acciones:
+    ///
+    /// 1. **Crea un conjunto de IDs de personajes favoritos:** Convierte la lista `favoriteCharactersIDs` (que se asume contiene objetos con una propiedad `characterID`) en un conjunto (`Set`) para facilitar búsquedas eficientes.
+    /// 2. **Combina los personajes de ambas fuentes:** Concatena las listas `favoriteCharactersFromDB` y `favoriteCharactersFromDBZ` en una sola lista `allCharacters`, que contiene todos los personajes de ambos endpoints de la API.
+    /// 3. **Filtra los personajes favoritos:** Itera sobre `allCharacters` y mantiene solo aquellos personajes cuyo ID esté presente en el conjunto `favoriteCharacterIDsSet`. Los personajes resultantes se almacenan en la propiedad `favoriteCharacters`.
+    ///
+    /// - Parameters:
+    ///     - favoriteCharactersFromDB: Lista de modelos de personajes de Dragon Ball provenientes de la API.
+    ///     - favoriteCharactersFromDBZ: Lista de modelos de personajes de Dragon Ball Z provenientes de la API.
+    @MainActor
+    func getFavoriteCharactersModels(favoriteCharactersFromDB: [CharactersModel], favoriteCharactersFromDBZ: [CharactersModel]) {
+        //Creación de un Set (Recordar que los Set no permiten duplicidad de elementos y son más rápidos a la hora de iterar elementos)
+        let favoriteCharacterIDsSet = Set(favoriteCharactersIDs.map { $0.characterID })
+            
+        let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ
+            
+        favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains($0.id) }
     }
     
     
@@ -55,7 +79,7 @@ class FavoritesViewModel {
     /// - Parameter characterID: El ID del personaje a buscar.
     /// - Returns: `true` si el personaje está en favoritos, `false` en caso contrario.
     func checkIsFavorite(characterID: String) async -> Bool {
-        return favoriteCharacters.contains(where: { $0.characterID == characterID })
+        return favoriteCharactersIDs.contains(where: { $0.characterID == characterID })
     }
     
     
@@ -71,9 +95,9 @@ class FavoritesViewModel {
     /// - Returns: `true` si la eliminación fue exitosa, `false` si hubo un error.
     func removeFromFavorites(characterID: String) async -> Bool {
         do {
-            favoriteCharacters.removeAll(where: { $0.characterID == characterID })
+            favoriteCharactersIDs.removeAll(where: { $0.characterID == characterID })
             try await favoriteCharactersDataBaseService.deleteFavoriteCharacter(characterID: characterID)
-            await getFavoriteCharacters()
+            await getFavoriteCharactersIDs()
             return true
         } catch {
             showError = true

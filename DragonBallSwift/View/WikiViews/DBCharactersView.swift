@@ -33,7 +33,7 @@ struct DBCharactersView: View {
                             NavigationLink{
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharacters, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
@@ -58,7 +58,7 @@ struct DBCharactersView: View {
                 }
             }
             .task {
-                await favoritesViewModel.getFavoriteCharacters()
+                await favoritesViewModel.getFavoriteCharactersIDs()
             }
         }
     }

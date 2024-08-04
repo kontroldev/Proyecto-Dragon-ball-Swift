@@ -33,7 +33,7 @@ struct DBZCharactersView: View {
                             NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
                                 ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoriteViewModel.favoriteCharacters, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
@@ -60,7 +60,7 @@ struct DBZCharactersView: View {
                 }
             }
             .task {
-                await favoriteViewModel.getFavoriteCharacters()
+                await favoriteViewModel.getFavoriteCharactersIDs()
             }
         }
     }

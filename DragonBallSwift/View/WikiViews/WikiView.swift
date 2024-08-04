@@ -15,6 +15,8 @@ struct WikiView: View {
         ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(DragonsView()))
     ]
     
+    @State private var showFavorites: Bool = false
+    
     var body: some View {
         
         //Todo envuelto en un NavigationStack, para poder navegar a la vista seleccionada a través de un Navigation Link
@@ -53,6 +55,19 @@ struct WikiView: View {
                 }
             }
             .background(Color("BackgroundColor"))
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        showFavorites = true
+                    } label: {
+                        Label("favoritos", systemImage: "heart.fill")
+                            .labelStyle(.titleAndIcon)
+                    }
+                }
+            }
+            .sheet(isPresented: $showFavorites) {
+                FavoriteCharactersView()
+            }
         }
     }
 }
