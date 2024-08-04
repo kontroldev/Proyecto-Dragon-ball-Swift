@@ -53,8 +53,6 @@ struct FavoriteCharactersView: View {
                 favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.allCharacters, favoriteCharactersFromDBZ: dbzCharactersViewModel.allCharacters)
                 
                 favoriteViewModel.isLoading = false
-                
-                print(favoriteViewModel.favoriteCharacters.count)
             }
         }
     }

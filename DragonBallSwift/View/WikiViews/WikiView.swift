@@ -22,10 +22,10 @@ struct WikiView: View {
         //Todo envuelto en un NavigationStack, para poder navegar a la vista seleccionada a través de un Navigation Link
         NavigationStack {
             VStack {
-                Text("Personajes")
-                    .font(.title)
-                    .foregroundStyle(.accent)
-                    .fontWeight(.bold)
+//                Text("Personajes")
+//                    .font(.title)
+//                    .foregroundStyle(.accent)
+//                    .fontWeight(.bold)
                 
                 ScrollView {
                     ForEach(menuItem) { item in
@@ -54,14 +54,20 @@ struct WikiView: View {
                     }
                 }
             }
+            .navigationTitle("Personajes")
             .background(Color("BackgroundColor"))
             .toolbar {
                 ToolbarItem {
                     Button {
                         showFavorites = true
                     } label: {
-                        Label("favoritos", systemImage: "heart.fill")
-                            .labelStyle(.titleAndIcon)
+                        VStack(spacing: 0) {
+                            Image(systemName: "heart.fill")
+//                                .font(.footnote)
+                            
+//                            Text("Favoritos")
+//                                .font(.caption2)
+                        }
                     }
                 }
             }
