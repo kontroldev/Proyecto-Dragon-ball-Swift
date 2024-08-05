@@ -27,6 +27,12 @@ struct ContentView: View {
                             Label("Wiki", systemImage: "books.vertical.fill")
                         }
                     
+                    SongListView(songs: SongsModel())
+                        .tabItem {
+                            Label("Reproductor", systemImage:"music.note")
+                        }
+                     
+                    
                     GamesView()
                         .tabItem {
                             Label("Juegos", systemImage: "gamecontroller.fill")
