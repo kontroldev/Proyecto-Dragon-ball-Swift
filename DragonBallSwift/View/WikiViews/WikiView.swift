@@ -15,15 +15,17 @@ struct WikiView: View {
         ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(DragonsView()))
     ]
     
+    @State private var showFavorites: Bool = false
+    
     var body: some View {
         
         //Todo envuelto en un NavigationStack, para poder navegar a la vista seleccionada a través de un Navigation Link
         NavigationStack {
             VStack {
-                Text("Personajes")
-                    .font(.title)
-                    .foregroundStyle(.accent)
-                    .fontWeight(.bold)
+//                Text("Personajes")
+//                    .font(.title)
+//                    .foregroundStyle(.accent)
+//                    .fontWeight(.bold)
                 
                 ScrollView {
                     ForEach(menuItem) { item in
@@ -52,7 +54,26 @@ struct WikiView: View {
                     }
                 }
             }
+            .navigationTitle("Personajes")
             .background(Color("BackgroundColor"))
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        showFavorites = true
+                    } label: {
+                        VStack(spacing: 0) {
+                            Image(systemName: "heart.fill")
+//                                .font(.footnote)
+                            
+//                            Text("Favoritos")
+//                                .font(.caption2)
+                        }
+                    }
+                }
+            }
+            .sheet(isPresented: $showFavorites) {
+                FavoriteCharactersView()
+            }
         }
     }
 }

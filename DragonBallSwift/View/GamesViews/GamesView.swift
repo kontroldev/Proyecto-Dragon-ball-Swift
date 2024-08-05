@@ -20,10 +20,10 @@ struct GamesView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Juegos")
-                    .font(.title)
-                    .foregroundStyle(.accent)
-                    .fontWeight(.bold)
+//                Text("Juegos")
+//                    .font(.title)
+//                    .foregroundStyle(.accent)
+//                    .fontWeight(.bold)
                 
                 ScrollView {
                     ForEach(menuItems) { item in
@@ -65,9 +65,7 @@ struct GamesView: View {
                 }
             }
             .background(Color("BackgroundColor"))
-            .onAppear(perform: {
-                print(selectedGame)
-            })
+            .navigationTitle("Juegos")
         }
     }
 }
