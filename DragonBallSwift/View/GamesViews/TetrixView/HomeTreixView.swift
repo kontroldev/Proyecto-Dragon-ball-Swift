@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeTreixView: View {
     @State var viewModel = TetrisViewModel()
+    
     @Binding var dismiss: Bool
     
     var body: some View {
@@ -24,18 +25,26 @@ struct HomeTreixView: View {
                     
                     ZStack{
                         Scoreboard(viewmodel: viewModel)
-    //                        .offset(x: -3, y : -15)
                             .shadow(color: .blue, radius: 17)
+                            .offset(y: 30)
                         
                         Image("GokuTetrix")
                             .resizable()
                             .scaledToFit()
-                            .offset(y: -160)
+                            .offset(y: -210)
+                        
+                        Button("Star Game") {
+                            viewModel.restartGame()
+                        }.disabled(viewModel.gameIsOver || viewModel.gameIsStopped ?  false : true)
+                        .bold()
+                        .buttonStyle(GrowingButton(color: viewModel.gameIsOver || viewModel.gameIsStopped ? .red : .red.opacity(0.5)))
+                        .shadow(color: .blue, radius: 10)
+                        .offset(y: 250)
                     }
                 }
 
                 ControlsView(viewmodel: viewModel)
-                    .padding(.top, 30)
+                    .padding(.top, 10)
                     .padding(.horizontal)
                     .padding(.bottom, 5)
                     .shadow(color: .blue, radius: 8)
@@ -58,7 +67,13 @@ struct HomeTreixView: View {
 
                 }
             }
+            .overlay{
+                if viewModel.gameIsOver{
+                    GameOver(viewModel: viewModel)
+                }
+            }
         }
+        
     }
 }
 

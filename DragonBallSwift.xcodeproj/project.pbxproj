@@ -71,6 +71,8 @@
 		6EAB826F2C473EBD00D75432 /* AllCharactersDZViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB826E2C473EBD00D75432 /* AllCharactersDZViewModel.swift */; };
 		6EAB82712C473F1500D75432 /* DBZCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB82702C473F1500D75432 /* DBZCharactersView.swift */; };
 		6EAB82732C47412A00D75432 /* AllDragonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */; };
+		6EB264122C61769D004C8F4E /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264112C61769D004C8F4E /* GrowingButton.swift */; };
+		6EB264142C617DDD004C8F4E /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264132C617DDD004C8F4E /* GameOver.swift */; };
 		A5F3EEF02C5D46C200460521 /* 02_DragonBall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEE92C5D46C200460521 /* 02_DragonBall.mp3 */; };
 		A5F3EEF12C5D46C200460521 /* Dragon Ball GT.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEA2C5D46C200460521 /* Dragon Ball GT.mp3 */; };
 		A5F3EEF22C5D46C200460521 /* Dragon Ball Super.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEB2C5D46C200460521 /* Dragon Ball Super.mp3 */; };
@@ -149,6 +151,8 @@
 		6EAB826E2C473EBD00D75432 /* AllCharactersDZViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCharactersDZViewModel.swift; sourceTree = "<group>"; };
 		6EAB82702C473F1500D75432 /* DBZCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBZCharactersView.swift; sourceTree = "<group>"; };
 		6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDragonsViewModel.swift; sourceTree = "<group>"; };
+		6EB264112C61769D004C8F4E /* GrowingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButton.swift; sourceTree = "<group>"; };
+		6EB264132C617DDD004C8F4E /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		A5F3EEE92C5D46C200460521 /* 02_DragonBall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 02_DragonBall.mp3; sourceTree = "<group>"; };
 		A5F3EEEA2C5D46C200460521 /* Dragon Ball GT.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball GT.mp3"; sourceTree = "<group>"; };
 		A5F3EEEB2C5D46C200460521 /* Dragon Ball Super.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball Super.mp3"; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				6E56B1922C5862FB00098F2C /* ControlsView.swift */,
 				6E56B1942C58635500098F2C /* ButtonView.swift */,
 				6E56B1982C58640C00098F2C /* Scoreboard.swift */,
+				6EB264132C617DDD004C8F4E /* GameOver.swift */,
 			);
 			path = TetrixView;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 		6E56B1742C585DE200098F2C /* TetrixTools */ = {
 			isa = PBXGroup;
 			children = (
+				6EB264112C61769D004C8F4E /* GrowingButton.swift */,
 				6E56B1752C585E1700098F2C /* ExtensionsTetrix.swift */,
 				6E56B1772C585E7600098F2C /* Protocol.swift */,
 			);
@@ -630,6 +636,7 @@
 				A5F3EF122C5FDC4C00460521 /* SongsViewModel.swift in Sources */,
 				B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */,
 				6EAB82712C473F1500D75432 /* DBZCharactersView.swift in Sources */,
+				6EB264122C61769D004C8F4E /* GrowingButton.swift in Sources */,
 				A5F3EF142C5FDD6600460521 /* SongsModel.swift in Sources */,
 				6E600CE62C096A9F002408CE /* CardMemryModel.swift in Sources */,
 				6EAB82652C472E9500D75432 /* DragonBallModel.swift in Sources */,
@@ -677,6 +684,7 @@
 				6E600CED2C096B49002408CE /* Styles.swift in Sources */,
 				6E600CEA2C096B0A002408CE /* CardMemoryView.swift in Sources */,
 				6EAB826F2C473EBD00D75432 /* AllCharactersDZViewModel.swift in Sources */,
+				6EB264142C617DDD004C8F4E /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
