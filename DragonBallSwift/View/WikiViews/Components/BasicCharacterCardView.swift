@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct BasicCharacterCardView: View {
     
@@ -13,6 +14,7 @@ struct BasicCharacterCardView: View {
     @State var character: CharactersModel
     @State var logo: String
     @State var isFavorite: Bool = false
+    @State var isLoading: Bool = true
     
     @Binding var favoriteCharacters: [FavoriteCharacter]
     @Binding var deleteSuccessfull: Bool
@@ -20,19 +22,20 @@ struct BasicCharacterCardView: View {
     var body: some View {
         ZStack {
             LazyVStack(alignment: .trailing) {
-                AsyncImage(url: URL(string: character.image)) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .offset(x: 10, y: 30)
-                        .frame(width: 120, height: 120)
-                        .scaleEffect(1.5)
-                } placeholder: {
-                    ZStack {
-                        ProgressView()
-                            .padding(.trailing, 20)
+                KFImage(URL(string: character.image))
+                    .onSuccess { _ in
+                        isLoading = false
                     }
-                }
+                    .resizable()
+                    .scaledToFit()
+                    .offset(x: 10, y: 30)
+                    .frame(width: 120, height: 120)
+                    .scaleEffect(1.5)
+                    .overlay {
+                        if isLoading {
+                            ProgressView()
+                        }
+                    }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             
