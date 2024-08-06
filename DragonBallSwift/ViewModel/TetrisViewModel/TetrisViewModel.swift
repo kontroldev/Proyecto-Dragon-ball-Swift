@@ -14,44 +14,41 @@ class TetrisViewModel {
     let width: Int = 9
     let height: Int = 26
    
-    var scorte: Int = 0 // Guuarda puntuaqcion
+    var score: Int = 0 // Guuarda puntuaqcion
     var level: Int = 1  // Guaerda el nivel
     var lines: Int = 0  // y el numero de lines creadas
     
     // Para calcular cuantes las lineas
-    private var linePerLevel: Int = 5
-    private var linesToLevelUp: Int = 5
+    private var linePerLevel: Int = 5 // cuantas lineas tenemos que conseguir en el nivel actual
+    private var linesToLevelUp: Int = 5 // nos indica las lineas para subie de nivel
     
     var speed: Double = 0.5 // velocidad en la que cae lñas lineas
+    
     var boardMatrix: [[SquereGame?]]
     var activeShape: Shape? = nil
+    var nextActiveShape: Shape? = nil
+    
+    var gameIsOver: Bool = false
+    var gameIsStopped : Bool = true
     
     var timer = Timer.publish(every: 0.5, on: .main, in: .common)
     var cancellableSet: Set<AnyCancellable> = []
     
     init() {
         boardMatrix = Array(repeating: Array(repeating: nil, count: width), count: height)
-        
-        if activeShape == nil {
-            activeShape = createRandonShape()
-        }
-        
-        timer
-            .autoconnect()
-            .sink{ timer in
-                self.moveDown()
-            }
-            .store(in: &cancellableSet)
     }
     
     func moveDown(){
+        if gameIsOver || gameIsStopped { // nos aseguramos que nuestro juego se termina
+            return
+        }
         activeShape?.moveDown()
         
         if let shape = activeShape {
             if !isInValidPosition(shape: shape){
                 activeShape?.moveUp()
                 if isOverLimit(shape: activeShape!){
-                    
+                    gameOver() // Se implementa la funcion de Finde juego
                     return
                   
                 }
@@ -61,16 +58,17 @@ class TetrisViewModel {
         }
     }
     
+    // Almacena nuestra ficha, en el tablero y calcula cuantas fila se han limpiado
     func landShape (){
         if let shape = activeShape {
             storeShapeInGrid (shape: shape)
             
-            let cleared = clearAllRows()
-            scorte += calculateScore(linesCleared: cleared, level: level)
+            let cleared = clearAllRows() // lines que se han limpiado
+            score += calculateScore(linesCleared: cleared, level: level) // Calcula la puntuación
             
-            lines += cleared
+            lines += cleared // Calcula el numero de lineas que llebamoas
             
-            linesToLevelUp -= cleared
+            linesToLevelUp -= cleared // realiza elcaculo para subir de nivel
             
             if linesToLevelUp <= 0 {
                 levelUp()
@@ -93,7 +91,8 @@ class TetrisViewModel {
             }
         }
         
-        activeShape = createRandonShape()
+        activeShape = nextActiveShape
+        nextActiveShape = createRandonShape()
     }
     
     func getSquareGame(x: Int, y: Int) -> SquereGame? {
@@ -244,7 +243,12 @@ class TetrisViewModel {
     }
     
     //Calcular las lineas
-    func calculateScore(linesCleared:Int, level: Int) -> Int{
+    func calculateScore(linesCleared: Int, level: Int) -> Int{
+        //clear one line --> 40 points x level
+        //clear two lines --> 100 points x lev
+        //clear three lines --> 300 points x level
+        //clear four lines --> 1200 points x level
+        
         var score = 0
         switch (linesCleared){
         case 1: score = 40 * level    //clear one line -> 40 points x level
@@ -258,15 +262,16 @@ class TetrisViewModel {
     
     // Para subir de nivel
     func levelUp(){
-        level += 1
-        linesToLevelUp = level * linePerLevel
+        level += 1 // subir de nivel
+        linesToLevelUp = level * linePerLevel // se incrementa las lineas que hace falta para subir de nivel
         
+        //Cambiaer la velocidad
         if speed >= 0.1 {
-            speed -= 0.05
+            speed -= 0.05 // Ir decrementando la velocidad
             
             cancellableSet = []
             
-            timer = Timer.publish(every: speed, on: .main, in: .common)
+            timer = Timer.publish(every: speed, on: .main, in: .common) // se setea el tiempo, indicando la nueva velocidad
             
             timer
                 .autoconnect().sink{ timer in
@@ -275,5 +280,40 @@ class TetrisViewModel {
         }
     }
     
+    // Funcion de final de juego
+    func gameOver(){
+        gameIsOver = true
+        gameIsStopped = true
+        activeShape = nil
+        nextActiveShape = nil
+        
+        boardMatrix = Array(repeating: Array(repeating: nil, count: width), count: height)
+    }
+    
+    func restartGame(){
+        cancellableSet = []
+        
+        level = 1
+        lines = 0
+        score = 0
+        speed = 0.5
+        linesToLevelUp = 5
+        
+        timer = Timer.publish(every: speed, on: .main, in: .common)
+        
+        timer
+            .autoconnect().sink{ timer in
+                self.moveDown()
+            }.store(in: &cancellableSet)
+        
+        gameIsOver = false
+        gameIsStopped = false
+        
+        if activeShape == nil {
+            activeShape = createRandonShape()
+            nextActiveShape = createRandonShape()
+        }
+    }
 }
+ 
  
