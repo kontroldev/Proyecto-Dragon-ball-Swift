@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeTreixView: View {
     @State var viewModel = TetrisViewModel()
     
-    @Binding var dismiss: Bool
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
@@ -54,7 +54,7 @@ struct HomeTreixView: View {
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Button {
-                        dismiss = false
+                        dismiss()
                     } label: {
                         HStack(spacing: 2) {
                             Image(systemName: "chevron.backward")
@@ -78,5 +78,5 @@ struct HomeTreixView: View {
 }
 
 #Preview {
-    return HomeTreixView(dismiss: .constant(false))
+    return HomeTreixView()
 }

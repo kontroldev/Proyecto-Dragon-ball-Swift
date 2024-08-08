@@ -49,7 +49,7 @@ struct ItemMenu: Identifiable {
 }
 
 enum GameNames: String {
-    case none = ""
+//    case none = ""
     case memoryGame = "Memory game"
     case tetrix = "Tetrix"
 }

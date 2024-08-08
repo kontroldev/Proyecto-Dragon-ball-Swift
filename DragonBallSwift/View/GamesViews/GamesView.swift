@@ -8,23 +8,16 @@
 import SwiftUI
 
 struct GamesView: View {
-    
-    @State private var isAnElementTapped: Bool = false
-    @State private var selectedGame: GameNames = .none
+    @State private var selectedGame: GameItemMenu?
     
     let menuItems = [
-        GameItemMenu(name: .memoryGame, imegenName: "logoDBGM", destination: AnyView(MemoryGameView(dismiss: .constant(false)))),
-        GameItemMenu(name: .tetrix, imegenName: "GokuTetrix", destination: AnyView(HomeTreixView(dismiss: .constant(false))))
+        GameItemMenu(name: .memoryGame, imegenName: "logoDBGM", destination: AnyView(MemoryGameView())),
+        GameItemMenu(name: .tetrix, imegenName: "GokuTetrix", destination: AnyView(HomeTreixView()))
     ]
     
     var body: some View {
         NavigationStack {
             VStack {
-//                Text("Juegos")
-//                    .font(.title)
-//                    .foregroundStyle(.accent)
-//                    .fontWeight(.bold)
-                
                 ScrollView {
                     ForEach(menuItems) { item in
                         HStack {
@@ -48,24 +41,16 @@ struct GamesView: View {
                         .padding(.horizontal)
                         .padding(.top, 8)
                         .onTapGesture {
-                            isAnElementTapped = true
-                            selectedGame = item.name
-                        }
-                        .fullScreenCover(isPresented: $isAnElementTapped) {
-                            switch selectedGame {
-                            case .none:
-                                EmptyView()
-                            case .memoryGame:
-                                MemoryGameView(dismiss: $isAnElementTapped)
-                            case .tetrix:
-                                HomeTreixView(dismiss: $isAnElementTapped)
-                            }
+                            selectedGame = item
                         }
                     }
                 }
             }
             .background(Color("BackgroundColor"))
             .navigationTitle("Juegos")
+            .fullScreenCover(item: $selectedGame) { game in
+                game.destination
+            }
         }
     }
 }
