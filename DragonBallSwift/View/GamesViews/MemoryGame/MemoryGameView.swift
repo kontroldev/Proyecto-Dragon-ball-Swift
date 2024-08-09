@@ -11,7 +11,7 @@ import SwiftUI
 struct MemoryGameView: View {
     /// ViewModel para manejar la lógica del juego de memoria.
     @State var memoryViewModel =  MemoryGameViewModel()
-    @Binding var dismiss: Bool
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack{
@@ -97,7 +97,7 @@ struct MemoryGameView: View {
                 
                 ToolbarItem(placement: .navigation) {
                     Button {
-                        dismiss = false
+                        dismiss()
                     } label: {
                         HStack(spacing: 2) {
                             Image(systemName: "chevron.backward")
@@ -115,5 +115,5 @@ struct MemoryGameView: View {
 }
 
 #Preview {
-    return MemoryGameView(dismiss: .constant(false))
+    return MemoryGameView()
 }
