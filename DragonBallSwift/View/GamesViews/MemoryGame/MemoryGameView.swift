@@ -11,8 +11,8 @@ import SwiftUI
 struct MemoryGameView: View {
     /// ViewModel para manejar la lógica del juego de memoria.
     @State var memoryViewModel =  MemoryGameViewModel()
+   
     @Environment(\.dismiss) var dismiss
-    
     var body: some View {
         NavigationStack{
             // Diseño principal de la vista.
@@ -27,7 +27,7 @@ struct MemoryGameView: View {
                         VStack{
                             // Cuadrícula para mostrar las cartas del juego.
                             LazyVGrid(columns: memoryViewModel.forColumGrid, spacing: 15){
-                                ForEach(memoryViewModel.createCardList().shuffled()){ card in
+                                ForEach(memoryViewModel.cardList){ card in
                                     CardMemoryView(cardMemory: card ,
                                                    memoryViewModel: memoryViewModel,
                                                    width: Int(geo.size.width/4 - 10))
@@ -56,15 +56,26 @@ struct MemoryGameView: View {
                                 }
                             }
                             .modifier(MemoryBacgroundSingle())
+
                             
                         }
                     }.padding(9)
                 }
+                if memoryViewModel.gameOver(memoryViewModel.attempts){
+                    GameOverMGView(memoryViewModel: memoryViewModel)
+                }
+
+            }
+
+
+            .onAppear{
+                memoryViewModel.cardList = memoryViewModel.createCardList()
+                memoryViewModel.resetGameAll(cardList: memoryViewModel.cardList)
             }
             .toolbar {
                 ToolbarItem(placement: .bottomBar, content: {
                     Button(action: {
-                        memoryViewModel.resetGameAll()
+                        memoryViewModel.resetGameAll(cardList: memoryViewModel.cardList)
                     }, label: {
                         VStack {
                             Image(systemName: "arrow.counterclockwise.circle.fill")
@@ -80,12 +91,6 @@ struct MemoryGameView: View {
                     .padding(.top, 12)
                         
                 })
-                
-//                            ToolbarItem(placement: .automatic, content: {
-//                                Image("logoDBGM").resizable()
-//                                    .frame(width: 140, height: 40)
-//                            })
-            
                 
                 ToolbarItem(placement: .automatic, content: {
                     
@@ -110,6 +115,7 @@ struct MemoryGameView: View {
 
                 }
             }
+            
         }
     }
 }

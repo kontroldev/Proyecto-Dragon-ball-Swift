@@ -22,7 +22,7 @@ class MemoryGameViewModel{
     var score: Int = 0 // Propiedad para almacenar el puntaje del usuario
     var attempts: Int = 0 // cuenta los intentos que realiza el usuario
     var completedScreens: Int = 0 // cuenta los paneles completados
-    
+
     /// Definición de la cuadrícula para cuatro Filas
     var forColumGrid = [GridItem(.flexible()),
                         GridItem(.flexible()),
@@ -47,10 +47,12 @@ class MemoryGameViewModel{
     init(cardMemoryModel: CardMemoryModel = CardMemoryModel(text: ""),
          cardList: [CardMemoryModel] = [],
          difficulty: Difficulty = .level_1) {
-
+        
         self.cardMemoryModel = cardMemoryModel
         self.cardList = cardList
         self.difficulty = difficulty
+        
+        
     }
     
     /// Matriz de referencias de imágenes para las cartas.
@@ -73,6 +75,10 @@ class MemoryGameViewModel{
     
     /// Método para verificar si todas las cartas han sido emparejadas
     func checkGaneCompletion() -> Bool {
+        if matchedCards.count == cardValues.count * 2{
+            //.. logica para subir de nivel
+            print("panel completado")
+        }
         return matchedCards.count == cardValues.count * 2
     }
     
@@ -83,16 +89,23 @@ class MemoryGameViewModel{
             matchedCards.append(userChoices[0])
             matchedCards.append(userChoices[1])
             score += 5 // aumenta la cantidad de puntos cada vez que el usuario acierta
-            
+            attempts -= 1
+            print(attempts)
+            if attempts <= 1{
+                attempts = 0
+            }
         } else {
             // disminulle la cantidad de punto si se equivoca
+            
             if score <= 1{
+               
                 score = 0 // controla que los puntos no sean negativos
             }else if score >= 0 {
                 score -= 1 // resta puntos
             }
             
             attempts += 1 // contabiliza el numero de intentos fallidos
+            print(attempts)
         }
         /// Se limpia la lista de cartas elegidas por el usuario.
         userChoices.removeAll()
@@ -107,22 +120,47 @@ class MemoryGameViewModel{
     }
     
     /// Metodo para reiniciar el juego
-    func resetGameAll() {
-        // Restablecer todas las cartas a su estado inicial
-        for index in 0..<cardList.count * 2 {
-            cardList[index].isFaceUp = false
-            cardList[index].isMctched = false
-            cardList[index].text = ""
+    func resetGameAll(cardMemoryModel: CardMemoryModel = CardMemoryModel(text: ""),  cardList: [CardMemoryModel], difficulty: Difficulty  = .level_1) {
+        for i in userChoices {
+            i.isFaceUp = false
         }
-        // Limpiar las listas de cartas emparejadas, y cartas seleccionadas
         matchedCards.removeAll()
         userChoices.removeAll()
-        cardList.removeAll()
+        self.cardMemoryModel = cardMemoryModel
+        self.cardList = cardList.shuffled()
+        self.difficulty = difficulty
         
         // coloca todo los conteos de variables a 0
         score = 0 // Reiniciar el conteo
         attempts = 0  // Reiniciar los intentos
         completedScreens = 0 // Reiniciar los aciertos
+        
+    }
+    
+
+    
+    /// Actualiza el nivel segun se ha completado paneles o no
+    func updateDifficulty() {
+        if completedScreens >= 4 {
+            difficulty = .level_3
+        }else if completedScreens >= 2 {
+            difficulty = .level_2
+        }
+    }
+  
+    
+    
+    /// logica que permite poner una restriccion de tiempo
+    func timeOff(){
+        // lógica pendiente ...
+    }
+    
+    /// Establece logic de fin de partida segun numero de intentos
+    func gameOver(_ attempts: Int) -> Bool {
+        if attempts >= 10 {
+            return true
+        }
+        return false
     }
     
     /// Permite al usuario subir de nivel (Logica pensdiente de crear)
@@ -140,17 +178,4 @@ class MemoryGameViewModel{
         }
     }
     
-    /// Actualiza el nivel segun se ha completado paneles o no
-    func updateDifficulty() {
-        if completedScreens >= 4 {
-            difficulty = .level_3
-        }else if completedScreens >= 2 {
-            difficulty = .level_2
-        }
-    }
-    
-    /// logica que permite poner una restriccion de tiempo
-    func timeOff(){
-        // lógica pendiente ...
-    }
 }
