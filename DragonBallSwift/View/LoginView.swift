@@ -12,6 +12,8 @@ struct LoginView: View {
     
     @State private var loginViewModel = LoginViewModel()
     @State private var isSignInWithGoogleButtonPressed: Bool = false
+    @State private var kiRadius: CGFloat = 10.0
+    @State private var isAnimmating = false
     
     @AppStorage("LoginFlowState") private var loginFlowState = UserLoginState.loggedOut
     
@@ -33,13 +35,13 @@ struct LoginView: View {
             Spacer()
             Image("Dragon1").resizable()
                 .scaledToFit()
-                .shadow(color: .yellow, radius: 10)
+                .shadow(color: .green, radius: kiRadius)
                 .offset(y: -55)
                 .overlay{
                     Image("LogoBall").resizable()
                         .scaledToFit()
                     // .frame(width: 300, height: 300)
-                        .shadow(color: .yellow, radius: 10)
+                        .shadow(color: .yellow, radius: kiRadius, x: 0, y: 0)
                         .offset(y: 155)
                         .overlay{
                             Text("App")
@@ -49,6 +51,11 @@ struct LoginView: View {
                                 .shadow(color: .white, radius: 0, x: -1, y: -1)
                                 .shadow(color: .yellow, radius: 10)
                         }
+                }
+                .onAppear{
+                    withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)){
+                        self.kiRadius = 30.0
+                    }
                 }
                 
             

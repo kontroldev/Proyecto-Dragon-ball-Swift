@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GameOver: View {
     @Bindable var viewModel: TetrisViewModel
+    
+    @State private var shadowWindowRadius: CGFloat = 10.0
 
     var body: some View {
         VStack{
@@ -31,7 +33,12 @@ struct GameOver: View {
                 .clipShape(.rect(cornerRadius: 8))
             ).clipShape(.rect(cornerRadius: 8))
             .zIndex(1)
-            .shadow(color: .blue, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            .shadow(color: .blue, radius: shadowWindowRadius)
+            .onAppear{
+                withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)){
+                    self.shadowWindowRadius = 30.0
+                }
+            }
     }
 }
 

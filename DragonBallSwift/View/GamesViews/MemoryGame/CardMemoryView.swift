@@ -37,11 +37,14 @@ struct CardMemoryView: View {
                         cardMemory.isFaceUp.toggle()
                         memoryViewModel.userChoices.append(cardMemory)
                         /// Realiza una animación de volteo de las cartas seleccionadas después de un tiempo.
-                        withAnimation(Animation.linear.delay(1)){
+                      
+                        withAnimation(Animation.linear(duration: 2)){
+                  
                             for thisCar in memoryViewModel.userChoices{
                                 thisCar.isFaceUp.toggle()
                             }
                         }
+                        
                         /// Verifica si hay coincidencia entre las cartas seleccionadas.
                         memoryViewModel.checkForMatch()
                     }
