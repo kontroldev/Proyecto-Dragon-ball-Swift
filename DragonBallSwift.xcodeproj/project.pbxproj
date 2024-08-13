@@ -75,12 +75,27 @@
 		6EAB82732C47412A00D75432 /* AllDragonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */; };
 		6EB264122C61769D004C8F4E /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264112C61769D004C8F4E /* GrowingButton.swift */; };
 		6EB264142C617DDD004C8F4E /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264132C617DDD004C8F4E /* GameOver.swift */; };
-		A5F3EEF02C5D46C200460521 /* 02_DragonBall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEE92C5D46C200460521 /* 02_DragonBall.mp3 */; };
+		A528727D2C624D69001AB797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A01F2C068E2500439428 /* Assets.xcassets */; };
+		A5997F852C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */; };
+		A5997F872C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */; };
+		A5997F892C65F10600A4AFA1 /* AudioPlayerAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */; };
+		A5997F8A2C65FE7700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */; };
+		A5997F8B2C660D0300A4AFA1 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF192C5FE56E00460521 /* PlayerView.swift */; };
+		A5EF786E2C623B9700CB0D59 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F3EF2D2C62355D00460521 /* WidgetKit.framework */; };
+		A5EF786F2C623B9700CB0D59 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F3EF2F2C62355D00460521 /* SwiftUI.framework */; };
+		A5EF78742C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF78732C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift */; };
+		A5EF78782C623B9700CB0D59 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF78772C623B9700CB0D59 /* AppIntent.swift */; };
+		A5EF787A2C623B9800CB0D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5EF78792C623B9800CB0D59 /* Assets.xcassets */; };
+		A5EF787E2C623B9800CB0D59 /* AudioPlayerDynamicIslandExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5EF786D2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5EF78822C62479600CB0D59 /* SongsPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF1B2C5FE61300460521 /* SongsPlayerViewModel.swift */; };
+		A5EF78832C6247A400CB0D59 /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF112C5FDC4C00460521 /* SongsViewModel.swift */; };
+		A5EF78842C6247AF00CB0D59 /* SongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF132C5FDD6600460521 /* SongsModel.swift */; };
+		A5F3EEF02C5D46C200460521 /* Dragon Ball nº2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEE92C5D46C200460521 /* Dragon Ball nº2.mp3 */; };
 		A5F3EEF12C5D46C200460521 /* Dragon Ball GT.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEA2C5D46C200460521 /* Dragon Ball GT.mp3 */; };
 		A5F3EEF22C5D46C200460521 /* Dragon Ball Super.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEB2C5D46C200460521 /* Dragon Ball Super.mp3 */; };
 		A5F3EEF32C5D46C200460521 /* Dragon Ball Z Kai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEC2C5D46C200460521 /* Dragon Ball Z Kai.mp3 */; };
 		A5F3EEF42C5D46C200460521 /* Dragon Ball Z.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEED2C5D46C200460521 /* Dragon Ball Z.mp3 */; };
-		A5F3EEF52C5D46C200460521 /* Dragon Ball.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEE2C5D46C200460521 /* Dragon Ball.mp3 */; };
+		A5F3EEF52C5D46C200460521 /* Dragon Ball nº1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEE2C5D46C200460521 /* Dragon Ball nº1.mp3 */; };
 		A5F3EF122C5FDC4C00460521 /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF112C5FDC4C00460521 /* SongsViewModel.swift */; };
 		A5F3EF142C5FDD6600460521 /* SongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF132C5FDD6600460521 /* SongsModel.swift */; };
 		A5F3EF182C5FE52000460521 /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF172C5FE52000460521 /* SongListView.swift */; };
@@ -92,6 +107,30 @@
 		B372A0202C068E2500439428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A01F2C068E2500439428 /* Assets.xcassets */; };
 		B372A0232C068E2500439428 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A0222C068E2500439428 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5EF787C2C623B9800CB0D59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B372A0102C068E2300439428 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5EF786C2C623B9700CB0D59;
+			remoteInfo = AudioPlayerDynamicIslandExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A5F3EF402C62355F00460521 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A5EF787E2C623B9800CB0D59 /* AudioPlayerDynamicIslandExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5A33F8622C5726120025A4E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,17 +195,26 @@
 		6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDragonsViewModel.swift; sourceTree = "<group>"; };
 		6EB264112C61769D004C8F4E /* GrowingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButton.swift; sourceTree = "<group>"; };
 		6EB264132C617DDD004C8F4E /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
-		A5F3EEE92C5D46C200460521 /* 02_DragonBall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 02_DragonBall.mp3; sourceTree = "<group>"; };
+		A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerAttributesModel.swift; sourceTree = "<group>"; };
+		A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerActivityUseCaseViewModel.swift; sourceTree = "<group>"; };
+		A5EF786D2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AudioPlayerDynamicIslandExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5EF78732C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerDynamicIslandLiveActivity.swift; sourceTree = "<group>"; };
+		A5EF78772C623B9700CB0D59 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		A5EF78792C623B9800CB0D59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5EF787B2C623B9800CB0D59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5F3EEE92C5D46C200460521 /* Dragon Ball nº2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball nº2.mp3"; sourceTree = "<group>"; };
 		A5F3EEEA2C5D46C200460521 /* Dragon Ball GT.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball GT.mp3"; sourceTree = "<group>"; };
 		A5F3EEEB2C5D46C200460521 /* Dragon Ball Super.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball Super.mp3"; sourceTree = "<group>"; };
 		A5F3EEEC2C5D46C200460521 /* Dragon Ball Z Kai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball Z Kai.mp3"; sourceTree = "<group>"; };
 		A5F3EEED2C5D46C200460521 /* Dragon Ball Z.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball Z.mp3"; sourceTree = "<group>"; };
-		A5F3EEEE2C5D46C200460521 /* Dragon Ball.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball.mp3"; sourceTree = "<group>"; };
+		A5F3EEEE2C5D46C200460521 /* Dragon Ball nº1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball nº1.mp3"; sourceTree = "<group>"; };
 		A5F3EF112C5FDC4C00460521 /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
 		A5F3EF132C5FDD6600460521 /* SongsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsModel.swift; sourceTree = "<group>"; };
 		A5F3EF172C5FE52000460521 /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		A5F3EF192C5FE56E00460521 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		A5F3EF1B2C5FE61300460521 /* SongsPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsPlayerViewModel.swift; sourceTree = "<group>"; };
+		A5F3EF2D2C62355D00460521 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A5F3EF2F2C62355D00460521 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B31739ED2C54E870008CEA6F /* ViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetails.swift; sourceTree = "<group>"; };
 		B372A0182C068E2300439428 /* DragonBallSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonBallSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B372A01B2C068E2300439428 /* DragonBallSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallSwiftApp.swift; sourceTree = "<group>"; };
@@ -176,6 +224,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A5EF786A2C623B9700CB0D59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5EF786F2C623B9700CB0D59 /* SwiftUI.framework in Frameworks */,
+				A5EF786E2C623B9700CB0D59 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B372A0152C068E2300439428 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +510,17 @@
 			path = GifImagen;
 			sourceTree = "<group>";
 		};
+		A5EF78702C623B9700CB0D59 /* AudioPlayerDynamicIsland */ = {
+			isa = PBXGroup;
+			children = (
+				A5EF78732C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift */,
+				A5EF78772C623B9700CB0D59 /* AppIntent.swift */,
+				A5EF78792C623B9800CB0D59 /* Assets.xcassets */,
+				A5EF787B2C623B9800CB0D59 /* Info.plist */,
+			);
+			path = AudioPlayerDynamicIsland;
+			sourceTree = "<group>";
+		};
 		A5F3EEE42C5D448700460521 /* AudioPlayerViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +535,7 @@
 			children = (
 				A5F3EF112C5FDC4C00460521 /* SongsViewModel.swift */,
 				A5F3EF1B2C5FE61300460521 /* SongsPlayerViewModel.swift */,
+				A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */,
 			);
 			path = AudioPlayerViewModel;
 			sourceTree = "<group>";
@@ -474,12 +543,12 @@
 		A5F3EEEF2C5D46C200460521 /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				A5F3EEE92C5D46C200460521 /* 02_DragonBall.mp3 */,
+				A5F3EEE92C5D46C200460521 /* Dragon Ball nº2.mp3 */,
 				A5F3EEEA2C5D46C200460521 /* Dragon Ball GT.mp3 */,
 				A5F3EEEB2C5D46C200460521 /* Dragon Ball Super.mp3 */,
 				A5F3EEEC2C5D46C200460521 /* Dragon Ball Z Kai.mp3 */,
 				A5F3EEED2C5D46C200460521 /* Dragon Ball Z.mp3 */,
-				A5F3EEEE2C5D46C200460521 /* Dragon Ball.mp3 */,
+				A5F3EEEE2C5D46C200460521 /* Dragon Ball nº1.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -488,14 +557,26 @@
 			isa = PBXGroup;
 			children = (
 				A5F3EF132C5FDD6600460521 /* SongsModel.swift */,
+				A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */,
 			);
 			path = AudioPlayerModel;
+			sourceTree = "<group>";
+		};
+		A5F3EF2C2C62355D00460521 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5F3EF2D2C62355D00460521 /* WidgetKit.framework */,
+				A5F3EF2F2C62355D00460521 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B372A00F2C068E2300439428 = {
 			isa = PBXGroup;
 			children = (
 				B372A01A2C068E2300439428 /* DragonBallSwift */,
+				A5EF78702C623B9700CB0D59 /* AudioPlayerDynamicIsland */,
+				A5F3EF2C2C62355D00460521 /* Frameworks */,
 				B372A0192C068E2300439428 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -504,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				B372A0182C068E2300439428 /* DragonBallSwift.app */,
+				A5EF786D2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -537,6 +619,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A5EF786C2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5EF78812C623B9800CB0D59 /* Build configuration list for PBXNativeTarget "AudioPlayerDynamicIslandExtension" */;
+			buildPhases = (
+				A5EF78692C623B9700CB0D59 /* Sources */,
+				A5EF786A2C623B9700CB0D59 /* Frameworks */,
+				A5EF786B2C623B9700CB0D59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AudioPlayerDynamicIslandExtension;
+			productName = AudioPlayerDynamicIslandExtension;
+			productReference = A5EF786D2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B372A0172C068E2300439428 /* DragonBallSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B372A0262C068E2500439428 /* Build configuration list for PBXNativeTarget "DragonBallSwift" */;
@@ -544,10 +643,12 @@
 				B372A0142C068E2300439428 /* Sources */,
 				B372A0152C068E2300439428 /* Frameworks */,
 				B372A0162C068E2300439428 /* Resources */,
+				A5F3EF402C62355F00460521 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A5EF787D2C623B9800CB0D59 /* PBXTargetDependency */,
 			);
 			name = DragonBallSwift;
 			packageProductDependencies = (
@@ -573,6 +674,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					A5EF786C2C623B9700CB0D59 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					B372A0172C068E2300439428 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -597,19 +701,29 @@
 			projectRoot = "";
 			targets = (
 				B372A0172C068E2300439428 /* DragonBallSwift */,
+				A5EF786C2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A5EF786B2C623B9700CB0D59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A528727D2C624D69001AB797 /* Assets.xcassets in Resources */,
+				A5EF787A2C623B9800CB0D59 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B372A0162C068E2300439428 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A5F3EEF32C5D46C200460521 /* Dragon Ball Z Kai.mp3 in Resources */,
-				A5F3EEF02C5D46C200460521 /* 02_DragonBall.mp3 in Resources */,
+				A5F3EEF02C5D46C200460521 /* Dragon Ball nº2.mp3 in Resources */,
 				A5F3EEF12C5D46C200460521 /* Dragon Ball GT.mp3 in Resources */,
-				A5F3EEF52C5D46C200460521 /* Dragon Ball.mp3 in Resources */,
+				A5F3EEF52C5D46C200460521 /* Dragon Ball nº1.mp3 in Resources */,
 				B372A0232C068E2500439428 /* Preview Assets.xcassets in Resources */,
 				6EA16BE32C11410300CBC7B6 /* Gif1.gif in Resources */,
 				6E5673A12C5B96D3002CF2D7 /* SaiyanSans.ttf in Resources */,
@@ -624,6 +738,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A5EF78692C623B9700CB0D59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5EF78822C62479600CB0D59 /* SongsPlayerViewModel.swift in Sources */,
+				A5EF78782C623B9700CB0D59 /* AppIntent.swift in Sources */,
+				A5EF78832C6247A400CB0D59 /* SongsViewModel.swift in Sources */,
+				A5997F8B2C660D0300A4AFA1 /* PlayerView.swift in Sources */,
+				A5EF78742C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift in Sources */,
+				A5997F892C65F10600A4AFA1 /* AudioPlayerAttributesModel.swift in Sources */,
+				A5997F8A2C65FE7700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift in Sources */,
+				A5EF78842C6247AF00CB0D59 /* SongsModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B372A0142C068E2300439428 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -631,7 +760,9 @@
 				6E56B1912C5862CA00098F2C /* GridView.swift in Sources */,
 				6E56B1892C58607C00098F2C /* SquereGame.swift in Sources */,
 				6E5673A72C5C320E002CF2D7 /* SingleCharacterDbViewModel.swift in Sources */,
+				A5997F872C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift in Sources */,
 				A5F3EF1A2C5FE56E00460521 /* PlayerView.swift in Sources */,
+				A5997F852C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift in Sources */,
 				5A33F8632C5726120025A4E2 /* AppDelegate.swift in Sources */,
 				5ABF74A22C5C5A79000AC558 /* SearchBarView.swift in Sources */,
 				6E56B1762C585E1700098F2C /* ExtensionsTetrix.swift in Sources */,
@@ -698,7 +829,71 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A5EF787D2C623B9800CB0D59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5EF786C2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension */;
+			targetProxy = A5EF787C2C623B9800CB0D59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		A5EF787F2C623B9800CB0D59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6Z8MU97UL5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioPlayerDynamicIsland/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AudioPlayerDynamicIsland;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Grupo-de-estudio.DragonBallSwift.AudioPlayerDynamicIsland";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5EF78802C623B9800CB0D59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6Z8MU97UL5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioPlayerDynamicIsland/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AudioPlayerDynamicIsland;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Grupo-de-estudio.DragonBallSwift.AudioPlayerDynamicIsland";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B372A0242C068E2500439428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -821,6 +1016,7 @@
 		B372A0272C068E2500439428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -832,6 +1028,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dragon Ball";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -854,6 +1051,7 @@
 		B372A0282C068E2500439428 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -865,6 +1063,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dragon Ball";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -887,6 +1086,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A5EF78812C623B9800CB0D59 /* Build configuration list for PBXNativeTarget "AudioPlayerDynamicIslandExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5EF787F2C623B9800CB0D59 /* Debug */,
+				A5EF78802C623B9800CB0D59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B372A0132C068E2300439428 /* Build configuration list for PBXProject "DragonBallSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

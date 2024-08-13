@@ -23,7 +23,7 @@ class SongsPlayerViewModel: ObservableObject {
     private var player: AVAudioPlayer?
     private var isPaused = false
     
-    func play (withURL url: URL) {
+    public func play (withURL url: URL) {
         
         if let player = player, isPaused {
             player.play()
@@ -37,13 +37,13 @@ class SongsPlayerViewModel: ObservableObject {
             startTimer()
         }
     }
-    func stop () {
+    public func stop () {
         player?.stop()
         player = nil
         stopTimer()
         currentTime = 0
     }
-    func pause () {
+    public func pause () {
         player?.pause()
         stopTimer()
         isPaused = true

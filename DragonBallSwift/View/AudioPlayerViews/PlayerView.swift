@@ -5,13 +5,16 @@
 //  Created by Manuel Bermudo on 4/8/24.
 //
 
+import ActivityKit
 import SwiftUI
 
 struct PlayerView: View {
     
     @State private var isPlaying = false
+    @State private var activityIdentifier: String = ""
     
     var song: URL?
+    var songName: String
     @ObservedObject var songsPlayer: SongsPlayerViewModel
     
     var body: some View {
@@ -20,7 +23,7 @@ struct PlayerView: View {
                 .ignoresSafeArea()
             VStack{
                 Spacer()
-                Text("Reproductor") //Establecer el nombre de la canción
+                Text(songName) //Establecer el nombre de la canción
                     .font(.title)
                     .foregroundStyle(.white)
                 Image("DragonBallZ")
@@ -38,11 +41,22 @@ struct PlayerView: View {
                         if isPlaying {
                             songsPlayer.pause()
                             isPlaying = false
+                            updateDynamicIsland()
                         } else {
                             if let url = song {
                                 songsPlayer.play(withURL: url)
                             }
                             isPlaying = true
+                            do{
+                                if activityIdentifier.isEmpty{
+                                    activityIdentifier = try AudioPlayerActivityUseCaseViewModel.startActivity(songName: songName)
+                                } else {
+                                    updateDynamicIsland()
+                                }
+                            }catch{
+                                print(error.localizedDescription)
+                            }
+                            updateDynamicIsland()
                         }
                     }label: {
                         Image(systemName: isPlaying ? "pause.fill" : "play.fill")
@@ -53,6 +67,9 @@ struct PlayerView: View {
                     Button{
                         songsPlayer.stop()
                         isPlaying = false
+                        Task{
+                            await AudioPlayerActivityUseCaseViewModel.endActivity(withActivityIdentifier:activityIdentifier)
+                        }
                     }label: {
                         Image(systemName: "stop.fill")
                             .resizable()
@@ -66,20 +83,36 @@ struct PlayerView: View {
             .safeAreaInset(edge: .top, spacing: 30) {
                 Color.clear.frame(height: 50)
             }
-            .onAppear{songsPlayer.play(withURL: song!)}
+            .onAppear{
+                songsPlayer.play(withURL: song!)
+                isPlaying = true
+                do{
+                    activityIdentifier = try AudioPlayerActivityUseCaseViewModel.startActivity(songName: songName)
+                }catch{
+                    print(error.localizedDescription)
+                }
+            }
+            .onChange(of: songsPlayer.currentTime){
+                updateDynamicIsland()
+            }
             .onDisappear{
                 songsPlayer.stop()
                 isPlaying = false
             }
         }
     }
+    func updateDynamicIsland (){
+        Task { 
+            await AudioPlayerActivityUseCaseViewModel.updateActivity(activityIdentifier: activityIdentifier, songName: songName, isPlaying: isPlaying, url: song, currentTime: songsPlayer.currentTime, duration: songsPlayer.duration)
+        }
+    }
 }
 
 #Preview {
     if let url = Bundle.main.url(forResource: "Dragon Ball GT", withExtension: "mp3") {
-        PlayerView(song: url, songsPlayer: SongsPlayerViewModel())
+        PlayerView(song: url,songName: "test", songsPlayer: SongsPlayerViewModel())
             } else {
-                PlayerView(song: nil, songsPlayer: SongsPlayerViewModel())
+                PlayerView(song: nil, songName: "test", songsPlayer: SongsPlayerViewModel())
             }
 
 }

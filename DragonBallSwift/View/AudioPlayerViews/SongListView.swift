@@ -21,7 +21,7 @@ struct SongListView: View {
                     .fontWeight(.bold)
                 ScrollView{
                     ForEach(songs.arrayOfSongs, id: \.self) { song in
-                        NavigationLink(destination: PlayerView(song: song.getURL(), songsPlayer: SongsPlayerViewModel())){
+                        NavigationLink(destination: PlayerView(song: song.getURL(),songName: song.name, songsPlayer: SongsPlayerViewModel())){
                             HStack {
                                 Text("\(song.name)")
                                     .font(.title3)
