@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct CharactersModel: Codable  {
-    let id, name: String
+    let id: Int
+    let name: String
     let genre: String
     let race: String
     let image: String
@@ -20,7 +21,8 @@ struct CharactersModel: Codable  {
 
 // MARK: - Single Characters Dragon Ball
 struct SingleCharacterModel: Codable {
-    let id, name, genre, race: String
+    let id: Int
+    let name, genre, race: String
     let image: String
     let planet, description, biography: String
     let transformations: [Transformation]
@@ -34,7 +36,7 @@ struct Transformation: Codable {
 
 // MARK: -DragonsModel
 struct DragonsModel: Codable {
-    let id: String
+    let id: Int
     let name: String
     let image: String
     let description: String

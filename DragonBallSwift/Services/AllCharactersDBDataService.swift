@@ -13,7 +13,7 @@ class AllCharactersDBDataService: AllCheractersProtocols {
     /// - Returns: Una instancia de `CharactersModel` la cual contiene toda la información básica de cada personaje
     func getCharacters(_ referent: String) async throws -> [CharactersModel] {
         do {
-            let allCharactersURL = "https://apidragonball.vercel.app/\(referent)/"
+            let allCharactersURL = "https://www.dragonballapi.com/\(referent)/"
             guard let url = URL(string: allCharactersURL) else {
                 throw ApiError.invalidURL
             }

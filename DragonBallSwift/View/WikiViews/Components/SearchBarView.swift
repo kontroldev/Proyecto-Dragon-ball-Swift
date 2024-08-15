@@ -58,5 +58,5 @@ struct SearchBarView: View {
 }
 
 #Preview {
-    SearchBarView(characterName: .constant("Goku"), isSearching: .constant(false), searchedCharacters: .constant([CharactersModel(id: "666808ce2a01878ca18a9f6d", name: "Goku", genre:"", race: "", image: "", planet: "", description: "", biography: "")]))
+    SearchBarView(characterName: .constant("Goku"), isSearching: .constant(false), searchedCharacters: .constant([CharactersModel(id: 16, name: "Goku", genre:"", race: "", image: "", planet: "", description: "", biography: "")]))
 }

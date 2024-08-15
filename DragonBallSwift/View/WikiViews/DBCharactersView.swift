@@ -58,7 +58,7 @@ struct DBCharactersView: View {
                 }
             }
             .task {
-                await favoritesViewModel.getFavoriteCharactersIDs()
+              //  await favoritesViewModel.getFavoriteCharactersIDs()
             }
         }
     }

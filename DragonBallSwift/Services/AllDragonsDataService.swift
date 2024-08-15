@@ -13,7 +13,7 @@ class AllDragonsDataService: AllDragonsProtocols {
     /// - Returns: Una instancia de `Dragons` la cual contiene toda la información básica de cada personaje
     func getDragons() async throws -> [DragonsModel] {
         do {
-            let allDragonsURL = "https://apidragonball.vercel.app/dragons/"
+            let allDragonsURL = "https://www.dragonballapi.com/dragons/"
             guard let url = URL(string: allDragonsURL) else {
                 throw ApiError.invalidURL
             }
