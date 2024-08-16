@@ -46,13 +46,13 @@ struct FavoriteCharactersView: View {
             .navigationTitle("Personajes Favoritos")
             .navigationBarTitleDisplayMode(.inline)
             .task {
-                favoriteViewModel.isLoading = true
-                await dbzCharactersViewModel.getAllCharacters()
-                await favoriteViewModel.getFavoriteCharactersIDs()
-                
-                favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.allCharacters, favoriteCharactersFromDBZ: dbzCharactersViewModel.allCharacters)
-                
-                favoriteViewModel.isLoading = false
+//                favoriteViewModel.isLoading = true
+//                await dbzCharactersViewModel.getAllCharacters()
+//                await favoriteViewModel.getFavoriteCharactersIDs()
+//                
+//                favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.allCharacters, favoriteCharactersFromDBZ: dbzCharactersViewModel.allCharacters)
+//                
+//                favoriteViewModel.isLoading = false
             }
         }
     }
