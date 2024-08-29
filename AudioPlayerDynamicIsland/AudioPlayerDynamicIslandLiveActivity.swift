@@ -71,12 +71,16 @@ struct AudioPlayerDynamicIslandLiveActivity: Widget {
                             Button(action: {
                                 songsPlayer.stop()
                                 Task{
-                                    await AudioPlayerActivityUseCaseViewModel.endActivity(withActivityIdentifier: activityIdentifier)
+                                    await AudioPlayerActivityUseCaseViewModel.endActivity(withActivityIdentifier: context.state.songName)
                                 }
                             }, label: {
                                 Image(systemName: "stop.fill")
                                     .frame(width: 20, height: 20)
                             })
+                            /*Button(intent:){
+                                Image(systemName: "stop.fill")
+                                    .frame(width: 20, height: 20)
+                            }*/
                         }
                     }
                 }

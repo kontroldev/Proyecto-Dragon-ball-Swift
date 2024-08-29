@@ -75,6 +75,7 @@
 		6EAB82732C47412A00D75432 /* AllDragonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */; };
 		6EB264122C61769D004C8F4E /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264112C61769D004C8F4E /* GrowingButton.swift */; };
 		6EB264142C617DDD004C8F4E /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264132C617DDD004C8F4E /* GameOver.swift */; };
+		A51EFDEB2C6C84EB007E15C1 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF78772C623B9700CB0D59 /* AppIntent.swift */; };
 		A528727D2C624D69001AB797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A01F2C068E2500439428 /* Assets.xcassets */; };
 		A5997F852C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */; };
 		A5997F872C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */; };
@@ -770,6 +771,7 @@
 				6E5673A92C5C3F6E002CF2D7 /* SingleCharacterDZViewModel.swift in Sources */,
 				6E56B18F2C5861D000098F2C /* HomeTreixView.swift in Sources */,
 				B372A01E2C068E2300439428 /* ContentView.swift in Sources */,
+				A51EFDEB2C6C84EB007E15C1 /* AppIntent.swift in Sources */,
 				6E56B17F2C585FB100098F2C /* TShape.swift in Sources */,
 				A5F3EF122C5FDC4C00460521 /* SongsViewModel.swift in Sources */,
 				B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */,
@@ -846,7 +848,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Z8MU97UL5;
+				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AudioPlayerDynamicIsland/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AudioPlayerDynamicIsland;
@@ -874,7 +876,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6Z8MU97UL5;
+				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AudioPlayerDynamicIsland/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AudioPlayerDynamicIsland;
@@ -1023,7 +1025,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragonBallSwift/Preview Content\"";
-				DEVELOPMENT_TEAM = 6Z8MU97UL5;
+				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;
@@ -1032,8 +1034,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1058,7 +1060,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragonBallSwift/Preview Content\"";
-				DEVELOPMENT_TEAM = 6Z8MU97UL5;
+				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;
@@ -1067,8 +1069,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

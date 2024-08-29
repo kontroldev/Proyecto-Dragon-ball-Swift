@@ -5,8 +5,9 @@
 //  Created by Manuel Bermudo on 6/8/24.
 //
 
-import WidgetKit
+import ActivityKit
 import AppIntents
+import WidgetKit
 
 struct ConfigurationAppIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "Configuration"
@@ -16,3 +17,4 @@ struct ConfigurationAppIntent: WidgetConfigurationIntent {
     @Parameter(title: "Favorite Emoji", default: "😃")
     var favoriteEmoji: String
 }
+

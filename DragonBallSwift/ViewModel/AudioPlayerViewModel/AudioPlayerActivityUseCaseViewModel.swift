@@ -33,7 +33,7 @@ final class AudioPlayerActivityUseCaseViewModel {
         let activityContent = ActivityContent(state: updateContentState, staleDate: .now)
         
         await activity?.update(activityContent)
-        }
+    }
     static func endActivity(withActivityIdentifier activityIdentifier: String) async {
         let value = Activity<AudioPlayerAttributesModel>.activities.first(where: { $0.id == activityIdentifier})
         await value?.end(nil)
