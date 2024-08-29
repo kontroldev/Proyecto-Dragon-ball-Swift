@@ -83,18 +83,11 @@ struct PlayerView: View {
                             if isPlaying {
                                 songsPlayer.pause()
                                 isPlaying = false
-                                updateDynamicIsland()
                             } else {
                                 if let url = song {
                                     songsPlayer.play(withURL: url)
                                 }
                                 isPlaying = true
-                                do{
-                                    activityIdentifier = try AudioPlayerActivityUseCaseViewModel.startActivity(songName: songName)
-                                }catch{
-                                    print(error.localizedDescription)
-                                }
-                                updateDynamicIsland()
                             }
                         }label: {
                             Image(systemName: isPlaying ? "pause.fill" : "play.fill")
@@ -142,27 +135,14 @@ struct PlayerView: View {
                             songsPlayer.currentSongIndex = songIndex
                         }
                     }
-                    //songsPlayer.play(withURL: song)
-                    //isPlaying = true
-                    do{
-                        activityIdentifier = try AudioPlayerActivityUseCaseViewModel.startActivity(songName: songName)
-                    }catch{
-                        print(error.localizedDescription)
-                    }
-                }
-                .onChange(of: songsPlayer.currentTime){
-                    updateDynamicIsland()
+                    songsPlayer.play(withURL: song)
+                    isPlaying = true
                 }
                 .onDisappear{
                     songsPlayer.stop()
                     isPlaying = false
                 }
             }
-        }
-    }
-    func updateDynamicIsland (){
-        Task {
-            await AudioPlayerActivityUseCaseViewModel.updateActivity(activityIdentifier: activityIdentifier, songName: songName, isPlaying: isPlaying, url: song, currentTime: songsPlayer.currentTime, duration: songsPlayer.duration)
         }
     }
 }
