@@ -60,7 +60,7 @@ struct DBZCharactersView: View {
                 }
             }
             .task {
-                await favoriteViewModel.getFavoriteCharactersIDs()
+              //  await favoriteViewModel.getFavoriteCharactersIDs()
             }
         }
     }

@@ -75,23 +75,16 @@
 		6EAB82732C47412A00D75432 /* AllDragonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */; };
 		6EB264122C61769D004C8F4E /* GrowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264112C61769D004C8F4E /* GrowingButton.swift */; };
 		6EB264142C617DDD004C8F4E /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB264132C617DDD004C8F4E /* GameOver.swift */; };
-		A51EFDEB2C6C84EB007E15C1 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF78772C623B9700CB0D59 /* AppIntent.swift */; };
 		A528727D2C624D69001AB797 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B372A01F2C068E2500439428 /* Assets.xcassets */; };
-		A5997F852C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */; };
-		A5997F872C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */; };
-		A5997F892C65F10600A4AFA1 /* AudioPlayerAttributesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */; };
-		A5997F8A2C65FE7700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */; };
 		A5997F8B2C660D0300A4AFA1 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF192C5FE56E00460521 /* PlayerView.swift */; };
-		A5EF786E2C623B9700CB0D59 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F3EF2D2C62355D00460521 /* WidgetKit.framework */; };
 		A5EF786F2C623B9700CB0D59 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F3EF2F2C62355D00460521 /* SwiftUI.framework */; };
-		A5EF78742C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF78732C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift */; };
-		A5EF78782C623B9700CB0D59 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF78772C623B9700CB0D59 /* AppIntent.swift */; };
 		A5EF787A2C623B9800CB0D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5EF78792C623B9800CB0D59 /* Assets.xcassets */; };
-		A5EF787E2C623B9800CB0D59 /* AudioPlayerDynamicIslandExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A5EF786D2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A5EF78822C62479600CB0D59 /* SongsPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF1B2C5FE61300460521 /* SongsPlayerViewModel.swift */; };
 		A5EF78832C6247A400CB0D59 /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF112C5FDC4C00460521 /* SongsViewModel.swift */; };
 		A5EF78842C6247AF00CB0D59 /* SongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F3EF132C5FDD6600460521 /* SongsModel.swift */; };
 		A5F3EEF02C5D46C200460521 /* Dragon Ball nº2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEE92C5D46C200460521 /* Dragon Ball nº2.mp3 */; };
+		6EF8704B2C6D5C40003F4A20 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8704A2C6D5C40003F4A20 /* Mocks.swift */; };
+		A5F3EEF02C5D46C200460521 /* 02_DragonBall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEE92C5D46C200460521 /* 02_DragonBall.mp3 */; };
 		A5F3EEF12C5D46C200460521 /* Dragon Ball GT.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEA2C5D46C200460521 /* Dragon Ball GT.mp3 */; };
 		A5F3EEF22C5D46C200460521 /* Dragon Ball Super.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEB2C5D46C200460521 /* Dragon Ball Super.mp3 */; };
 		A5F3EEF32C5D46C200460521 /* Dragon Ball Z Kai.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5F3EEEC2C5D46C200460521 /* Dragon Ball Z Kai.mp3 */; };
@@ -196,14 +189,12 @@
 		6EAB82722C47412A00D75432 /* AllDragonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDragonsViewModel.swift; sourceTree = "<group>"; };
 		6EB264112C61769D004C8F4E /* GrowingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButton.swift; sourceTree = "<group>"; };
 		6EB264132C617DDD004C8F4E /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
-		A5997F842C65EE3200A4AFA1 /* AudioPlayerAttributesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerAttributesModel.swift; sourceTree = "<group>"; };
-		A5997F862C65EEE700A4AFA1 /* AudioPlayerActivityUseCaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerActivityUseCaseViewModel.swift; sourceTree = "<group>"; };
-		A5EF786D2C623B9700CB0D59 /* AudioPlayerDynamicIslandExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AudioPlayerDynamicIslandExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5EF78732C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerDynamicIslandLiveActivity.swift; sourceTree = "<group>"; };
 		A5EF78772C623B9700CB0D59 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		A5EF78792C623B9800CB0D59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5EF787B2C623B9800CB0D59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5F3EEE92C5D46C200460521 /* Dragon Ball nº2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball nº2.mp3"; sourceTree = "<group>"; };
+		6EF8704A2C6D5C40003F4A20 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		A5F3EEE92C5D46C200460521 /* 02_DragonBall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 02_DragonBall.mp3; sourceTree = "<group>"; };
 		A5F3EEEA2C5D46C200460521 /* Dragon Ball GT.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball GT.mp3"; sourceTree = "<group>"; };
 		A5F3EEEB2C5D46C200460521 /* Dragon Ball Super.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball Super.mp3"; sourceTree = "<group>"; };
 		A5F3EEEC2C5D46C200460521 /* Dragon Ball Z Kai.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dragon Ball Z Kai.mp3"; sourceTree = "<group>"; };
@@ -453,6 +444,7 @@
 		6E600C722C072F29002408CE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6EF870492C6D5C20003F4A20 /* Mock */,
 				A5F3EEEF2C5D46C200460521 /* Music */,
 				6E5673A02C5B96D2002CF2D7 /* Fonts */,
 				6E56739A2C5B7DB8002CF2D7 /* Extension */,
@@ -511,15 +503,12 @@
 			path = GifImagen;
 			sourceTree = "<group>";
 		};
-		A5EF78702C623B9700CB0D59 /* AudioPlayerDynamicIsland */ = {
+		6EF870492C6D5C20003F4A20 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				A5EF78732C623B9700CB0D59 /* AudioPlayerDynamicIslandLiveActivity.swift */,
-				A5EF78772C623B9700CB0D59 /* AppIntent.swift */,
-				A5EF78792C623B9800CB0D59 /* Assets.xcassets */,
-				A5EF787B2C623B9800CB0D59 /* Info.plist */,
+				6EF8704A2C6D5C40003F4A20 /* Mocks.swift */,
 			);
-			path = AudioPlayerDynamicIsland;
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		A5F3EEE42C5D448700460521 /* AudioPlayerViews */ = {
@@ -771,7 +760,7 @@
 				6E5673A92C5C3F6E002CF2D7 /* SingleCharacterDZViewModel.swift in Sources */,
 				6E56B18F2C5861D000098F2C /* HomeTreixView.swift in Sources */,
 				B372A01E2C068E2300439428 /* ContentView.swift in Sources */,
-				A51EFDEB2C6C84EB007E15C1 /* AppIntent.swift in Sources */,
+				6EF8704B2C6D5C40003F4A20 /* Mocks.swift in Sources */,
 				6E56B17F2C585FB100098F2C /* TShape.swift in Sources */,
 				A5F3EF122C5FDC4C00460521 /* SongsViewModel.swift in Sources */,
 				B372A01C2C068E2300439428 /* DragonBallSwiftApp.swift in Sources */,

@@ -70,7 +70,7 @@ class FavoritesViewModel {
             
         let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ
             
-        favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains($0.id) }
+        favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains(String( $0.id)) }
     }
     
     
