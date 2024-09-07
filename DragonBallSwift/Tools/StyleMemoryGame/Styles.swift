@@ -16,11 +16,16 @@ struct MemoryGameStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(width: CGFloat(width), height: CGFloat(width)) // Define el tamaño de la carta.
-            .background(Color(red: 0.68, green: 0.83, blue: 0.96)) // Establece el color de fondo de la carta.
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.cardColorEX, .blue]),
+                startPoint: .top,
+                endPoint: .bottom
+            )) // Establece el color de fondo de la carta.
             .clipShape(.rect(cornerRadius: 10)) // Da forma rectangular a la carta con esquinas redondeadas.
             .overlay { // Agrega un borde a la carta.
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 0.18, green: 6.2, blue: 1.6), lineWidth: 3) // Define el grosor y color del borde.
+                    .stroke(Color.blue, lineWidth: 1) // Define el grosor y color del borde.
+                    
             }
     }
 }
@@ -31,9 +36,18 @@ struct MemoryBacgroundSingle: ViewModifier{
     func body(content: Content) -> some View {
         content
             .frame(maxWidth: .infinity) // Ocupa todo el ancho disponible.
-            .background(.regularMaterial) // Establece el color de fondo de la sección.
-            .clipShape(.rect(cornerRadius: 20)) // Da forma rectangular a la sección con esquinas redondeadas.
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.cardColorEX, .cardColor]),
+                startPoint: .top,
+                endPoint: .bottom
+            )) // Establece el color de fondo de la sección.
+            .clipShape(.rect(cornerRadius: 7))// Da forma rectangular a la sección con esquinas redondeadas.
+            .shadow(color: .white, radius: 2)
             .padding(.horizontal, 20) // Agrega relleno orizontal
-            .padding(.top, 6) // Agrega relleno superior.
+            .padding(.top, 8) // Agrega relleno superior.
     }
+}
+
+#Preview {
+    return MemoryGameView()
 }

@@ -15,6 +15,9 @@ struct BasicCharacterCardView: View {
     @State var logo: String
     @State var isFavorite: Bool = false
     @State var isLoading: Bool = true
+
+    //Logica de reconocimiento de colores
+    @State var crImages = CRImages()
     
     @Binding var favoriteCharacters: [FavoriteCharacter]
     @Binding var deleteSuccessfull: Bool
@@ -22,6 +25,28 @@ struct BasicCharacterCardView: View {
     var body: some View {
         ZStack {
             LazyVStack(alignment: .trailing) {
+                Circle()
+                    .frame(width: 100, height: 100)
+                    .blur(radius: 30)
+                    .foregroundStyle(Color.blue.opacity(0.6))
+                    //.foregroundStyle(crImages.mostVibrantColor)
+                    .overlay {
+//                        AsyncImage(url: URL(string: character.image)) { image in
+//                            image
+//                                .resizable()
+//                                .scaledToFit()
+//                                .offset(x: 10, y: 30)
+//                                .frame(width: 120, height: 120)
+//                                .onAppear{
+//                                    if let uiImage = image.asUIImage() {
+//                                        crImages.detectColors(in: uiImage)
+//                                    }
+//                                }
+//                                .padding()
+//                            
+//                        } placeholder: {
+//                            ProgressView()
+//                        }
                 KFImage(URL(string: character.image))
                     .onSuccess { _ in
                         isLoading = false
@@ -31,11 +56,12 @@ struct BasicCharacterCardView: View {
                     .offset(x: 10, y: 30)
                     .frame(width: 120, height: 120)
                     .scaleEffect(1.5)
-                    .overlay {
+                    
                         if isLoading {
-                            ProgressView()
+                         //   ProgressView()
                         }
-                    }
+
+                }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             
@@ -53,7 +79,7 @@ struct BasicCharacterCardView: View {
         }
         .contextMenu {
             NavigationLink {
-                ViewDetails(Caracter: character, LogoDB: $logo)
+                SagasViewDetails(character: character, logoDB: $logo)
             } label: {
                 HStack {
                     Text("Ver más información")
@@ -91,7 +117,11 @@ struct BasicCharacterCardView: View {
             }
         }
         .frame(height: 120)
-        .background(Color("CardColor"))
+        .background(LinearGradient(
+            gradient: Gradient(colors: [.cardColor, .cardColorEX]),
+            startPoint: .top,
+            endPoint: .bottom
+        ))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(content: {
                 RoundedRectangle(cornerRadius: 12)

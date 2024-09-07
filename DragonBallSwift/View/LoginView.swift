@@ -84,7 +84,7 @@ struct LoginView: View {
                             .fontWeight(.medium)
                     }
                     .padding(8)
-                    .background(Color.cardColor)
+                    .background(Color.cardColorEX)
                     .clipShape(
                         RoundedRectangle(cornerRadius: 12)
                     )
@@ -98,7 +98,11 @@ struct LoginView: View {
             .padding(.bottom, 10)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.backgroundColor)
+        .background(LinearGradient(
+            gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+            startPoint: .top,
+            endPoint: .bottom
+        ))
         .overlay {
             if isSignInWithGoogleButtonPressed {
                 ProgressView()

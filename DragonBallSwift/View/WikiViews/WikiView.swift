@@ -10,9 +10,11 @@ import SwiftUI
 struct WikiView: View {
     
     let menuItem = [
-        ItemMenu(name: "Dragon Ball", imegenName: "DBLogo", destination: AnyView(DBCharactersView())),
-        ItemMenu(name: "Dragon Ball Z", imegenName: "ZLogo", destination: AnyView(DBZCharactersView())),
-        ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(DragonsView()))
+        ItemMenu(name: "Dragon Ball", imegenName: "DBLogo", destination: AnyView(DragonBallView())),
+        ItemMenu(name: "Dragon Ball Z", imegenName: "ZLogo", destination: AnyView(DragonBallZView())),
+        ItemMenu(name: "Dragon Ball GT", imegenName: "GTLogo", destination: AnyView(DragonBallGTView())),
+        ItemMenu(name: "Dragon Ball Super", imegenName: "SuperLogo", destination: AnyView(DragonBallSView())),
+        ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(DragonBallDragonsView()))
     ]
     
     @State private var showFavorites: Bool = false
@@ -42,7 +44,11 @@ struct WikiView: View {
                                     .frame(height: 70)
                             }
                             .padding()
-                            .background(Color("CardColor"))
+                            .background(LinearGradient(
+                                gradient: Gradient(colors: [.cardColorEX, .cardColor]),
+                                startPoint: .top,
+                                endPoint: .bottom
+                            ))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)
                                     .stroke(Color.gray.opacity(0.2), lineWidth: 1)
@@ -54,8 +60,13 @@ struct WikiView: View {
                     }
                 }
             }
-            .navigationTitle("Personajes")
-            .background(Color("BackgroundColor"))
+            .navigationTitle("Sagas")
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                startPoint: .top,
+                endPoint: .bottom
+            ))
+            .shadow(color: .white, radius:0.5)
             .toolbar {
                 ToolbarItem {
                     Button {

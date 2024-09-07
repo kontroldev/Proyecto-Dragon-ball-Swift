@@ -7,19 +7,20 @@
 
 import SwiftUI
 
-struct ViewDetails: View {
+struct SagasViewDetails: View {
     //Logica de reconocimiento de colores
     @State var crImages = CRImages()
     
     // Recibimos los datos de la API, no lo inicializamos.
-    @State var Caracter: CharactersModel
-    @Binding var LogoDB: String
+    @State var character: CharactersModel
+    
+    @Binding var logoDB: String
     
     var body: some View {
         ZStack {
             
             //Esto crea el fondo de color con gradientes y el color por defecto de la App.
-            RadialGradient(colors: [ Color("BackgroundColor")], center: .center, startRadius: 30, endRadius: 380)
+            RadialGradient(colors: [ Color("BackgroundColor"), Color.backgroundColorEX], center: .center, startRadius: 30, endRadius: 380)
                 .ignoresSafeArea()
             
             ScrollView {
@@ -28,7 +29,7 @@ struct ViewDetails: View {
                     .blur(radius: 90)
                     .foregroundStyle(crImages.mostVibrantColor)
                     .overlay{
-                        AsyncImage(url: URL(string: Caracter.image)) { image in
+                        AsyncImage(url: URL(string: character.image)) { image in
                             image
                                 .resizable()
                                 .frame(width: 400, height: 400, alignment: .center)
@@ -45,19 +46,20 @@ struct ViewDetails: View {
                         }
                     }.padding(.bottom, 40)
                 HStack {
-                    Text(Caracter.name).font(.custom("SaiyanSans", size: 30))
+                    Text(character.name).font(.custom("SaiyanSans", size: 30))
                         .bold()
                         .foregroundStyle(.yellow)
                     Spacer()
-                    Image(LogoDB)
+                    Image(logoDB)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 90)
                     
                 }
+
                 .padding(.horizontal, 50)
                 VStack {
-                    Text(Caracter.description).font(.title3)
+                    Text(character.description).font(.title3)
                         .foregroundStyle(.white)
                     
                 }
@@ -65,19 +67,13 @@ struct ViewDetails: View {
                 .padding(30)
             }
         }
-        
-        
-        
     }
 }
 
 #Preview {
     @State var mock = Mocks()
     
-    @State var LogoDB = "DBLogo"
-    return ViewDetails(Caracter: mock.character, LogoDB: $LogoDB)
-    
-    
-    
+    @State var logoDB = "DBLogo"
+    return SagasViewDetails(character: mock.character, logoDB: $logoDB)
     
 }

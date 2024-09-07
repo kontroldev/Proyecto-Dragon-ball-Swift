@@ -1,20 +1,18 @@
 //
-//  AllCharactersDBDataService.swift
+//  CharactersServer.swift
 //  DragonBallSwift
 //
-//  Created by Esteban Perez Castillejo on 17/7/24.
+//  Created by Esteban Perez Castillejo on 6/9/24.
 //
 
 import Foundation
 
-class AllCharactersDBDataService: AllCheractersProtocols {
+class CharactersService: CheractersProtocols {
     
-    ///Obtiene todos los personajes de Dragonball API
-    /// - Returns: Una instancia de `CharactersModel` la cual contiene toda la información básica de cada personaje
     func getCharacters(_ referent: String) async throws -> [CharactersModel] {
-        do {
-            let allCharactersURL = "https://www.dragonballapi.com/\(referent)/"
-            guard let url = URL(string: allCharactersURL) else {
+        do{
+            let characterURL = "https://www.dragonballapi.com/" + referent
+            guard let url = URL(string: characterURL) else {
                 throw ApiError.invalidURL
             }
             
@@ -27,8 +25,7 @@ class AllCharactersDBDataService: AllCheractersProtocols {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return try decoder.decode([CharactersModel].self, from: data)
-            
-        }catch{
+        }catch {
             throw error
         }
     }
