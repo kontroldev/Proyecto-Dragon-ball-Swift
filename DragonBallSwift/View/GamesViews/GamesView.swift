@@ -32,21 +32,32 @@ struct GamesView: View {
                                 .frame(height: 80)
                         }
                         .padding()
-                        .background(Color("CardColor"))
+                        .background(LinearGradient(
+                            gradient: Gradient(colors: [.cardColorEX, .cardColor]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 12)
+                            RoundedRectangle(cornerRadius: 7)
                                 .stroke(Color.gray.opacity(0.2), lineWidth: 1)
                         )
-                        .cornerRadius(12)
+                        .cornerRadius(7)
                         .padding(.horizontal)
                         .padding(.top, 8)
                         .onTapGesture {
                             selectedGame = item
                         }
+                        .clipShape(.rect(cornerRadius: 7))
+                        .shadow(color: .white, radius: 0.5)
                     }
                 }
             }
-            .background(Color("BackgroundColor"))
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                startPoint: .top,
+                endPoint: .bottom
+                
+            ))
             .navigationTitle("Juegos")
             .fullScreenCover(item: $selectedGame) { game in
                 game.destination

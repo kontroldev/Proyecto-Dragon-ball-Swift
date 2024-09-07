@@ -1,15 +1,15 @@
 //
-//  SwiftUIView.swift
+//  DragonBallGTView.swift
 //  DragonBallSwift
 //
-//  Created by Esteban Perez Castillejo on 17/7/24.
+//  Created by Esteban Perez Castillejo on 6/9/24.
 //
 
 import SwiftUI
 
-struct DBZCharactersView: View {
+struct DragonBallGTView: View {
     //Estados para obtener los personajes de la API
-    @State private var viewModel: AllCharactersDZViewModel = AllCharactersDZViewModel()
+    @State private var viewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballgt", logo: "ZLogo")
     @State private var isLoadig = false
     
     //Estados para manejar los personajes favoritos
@@ -29,9 +29,9 @@ struct DBZCharactersView: View {
             VStack {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(searchedCharacters.isEmpty ? viewModel.allCharacters : searchedCharacters, id: \.id) { character in
-                            NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
-                                ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
+                        ForEach(searchedCharacters.isEmpty ? viewModel.characterModel : searchedCharacters, id: \.id) { character in
+                            NavigationLink{ 
+                                SagasViewDetails(character: character, logoDB: $viewModel.logo)
                             } label: {
                                 BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
@@ -50,7 +50,11 @@ struct DBZCharactersView: View {
             .navigationTitle("Dragon Ball Z")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal, 4)
-            .background(Color("BackgroundColor"))
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                startPoint: .top,
+                endPoint: .bottom
+            ))
             .toolbar {
                 ToolbarItem {
                     SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
@@ -67,5 +71,5 @@ struct DBZCharactersView: View {
 }
 
 #Preview {
-    DBZCharactersView()
+    DragonBallGTView()
 }

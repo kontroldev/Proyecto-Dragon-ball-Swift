@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct DBCharactersView: View {
+struct DragonBallView: View {
     //Estados para obtener los personajes de la API
-    @State private var viewModel: AllCharactersDBViewModel = AllCharactersDBViewModel()
+    @State private var viewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball", logo: "DBLogo")
     @State private var isLoading = false
     
     //Estados para manejar los personajes favoritos
@@ -29,9 +29,9 @@ struct DBCharactersView: View {
             VStack {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(searchedCharacters.isEmpty ? viewModel.allCharacters : searchedCharacters, id: \.id) { character in
+                        ForEach(searchedCharacters.isEmpty ? viewModel.characterModel : searchedCharacters, id: \.id) { character in
                             NavigationLink{
-                                ViewDetails(Caracter: character, LogoDB: $viewModel.logo)
+                                SagasViewDetails(character: character, logoDB: $viewModel.logo)
                             } label: {
                                 BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
@@ -48,7 +48,11 @@ struct DBCharactersView: View {
             .navigationTitle("Dragon Ball")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal, 4)
-            .background(Color("BackgroundColor"))
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                startPoint: .top,
+                endPoint: .bottom
+            ))
             .toolbar {
                 ToolbarItem {
                     SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
@@ -65,5 +69,5 @@ struct DBCharactersView: View {
 }
 
 #Preview {
-    DBCharactersView()
+    DragonBallView()
 }

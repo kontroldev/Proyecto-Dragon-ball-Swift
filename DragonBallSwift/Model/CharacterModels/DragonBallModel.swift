@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Modelo de todo los personajes
 struct CharactersModel: Codable  {
     let id: Int
     let name: String
@@ -16,32 +17,18 @@ struct CharactersModel: Codable  {
     let image: String
     let planet: String
     let description, biography: String
-}
-
-
-// MARK: - Single Characters Dragon Ball
-struct SingleCharacterModel: Codable {
-    let id: Int
-    let name, genre, race: String
-    let image: String
-    let planet, description, biography: String
     let transformations: [Transformation]
 }
 
+// MARK: - Transformation
 struct Transformation: Codable {
-    let id, title: String
+    let id: Int?
+    let title: String?
     let image: String
     let description: String
+//    let trans: Int?
 }
 
-// MARK: -DragonsModel
-struct DragonsModel: Codable {
-    let id: Int
-    let name: String
-    let image: String
-    let description: String
-    let biography: String
-}
 
 struct ItemMenu: Identifiable {
     var id = UUID()

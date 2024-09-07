@@ -18,7 +18,7 @@ struct MemoryGameView: View {
             // Diseño principal de la vista.
             ZStack{
                 // Fondo de la vista.
-                Color("BackgroundColor")
+                RadialGradient(colors: [ Color("BackgroundColor"), Color.backgroundColorEX], center: .center, startRadius: 30, endRadius: 380)
                     .ignoresSafeArea()
                 // Scroll view para mostrar las cartas del juego y las cartas por emparejar.
                 ScrollView{

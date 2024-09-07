@@ -9,8 +9,9 @@ import SwiftUI
 
 struct FavoriteCharactersView: View {
     
-    @State private var dbCharactersViewModel: AllCharactersDBViewModel = AllCharactersDBViewModel()
-    @State private var dbzCharactersViewModel: AllCharactersDZViewModel = AllCharactersDZViewModel()
+    @State private var dbCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball", logo: "DBLogo")
+    @State private var dbzCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballz", logo: "ZLogo")
+    @State private var dbdCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragons", logo: "dragons")
     @State private var favoriteViewModel = FavoritesViewModel()
     
     @State private var deleteCharacterFromFavorites = false
@@ -25,7 +26,7 @@ struct FavoriteCharactersView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(favoriteViewModel.favoriteCharacters, id: \.id) { character in
                             NavigationLink{
-                                ViewDetails(Caracter: character, LogoDB: $logo)
+                                SagasViewDetails(character: character, logoDB: $logo)
                             } label: {
                                 BasicCharacterCardView(character: character, logo: "", favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
@@ -42,7 +43,11 @@ struct FavoriteCharactersView: View {
                 }
             }
             .padding(.horizontal, 4)
-            .background(Color("BackgroundColor"))
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                startPoint: .top,
+                endPoint: .bottom
+            ))
             .navigationTitle("Personajes Favoritos")
             .navigationBarTitleDisplayMode(.inline)
             .task {
@@ -50,8 +55,8 @@ struct FavoriteCharactersView: View {
 //                await dbzCharactersViewModel.getAllCharacters()
 //                await favoriteViewModel.getFavoriteCharactersIDs()
 //                
-//                favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.allCharacters, favoriteCharactersFromDBZ: dbzCharactersViewModel.allCharacters)
-//                
+//                favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.characterModel, favoriteCharactersFromDBZ: dbzCharactersViewModel.characterModel)
+//
 //                favoriteViewModel.isLoading = false
             }
         }

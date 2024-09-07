@@ -50,7 +50,12 @@ struct HomeTreixView: View {
                     .shadow(color: .blue, radius: 8)
             }
             .frame(maxHeight: .infinity)
-            .background(Color.backgroundColor)
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                startPoint: .top,
+                endPoint: .bottom
+                
+            ))
             .toolbar {
                 ToolbarItem(placement: .navigation) {
                     Button {

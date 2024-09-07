@@ -39,19 +39,37 @@ struct SongListView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                             .padding()
-                            .background(Color("CardColor"))
+                            .background(LinearGradient(
+                                gradient: Gradient(colors: [.cardColorEX, .cardColor]),
+                                startPoint: .top,
+                                endPoint: .bottom
+                            ))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.gray.opacity(0.2))
                             )
-                            .background(Color("BackgroundColor"))
+                            .background(LinearGradient(
+                                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                                startPoint: .top,
+                                endPoint: .bottom
+                                
+                            ))
+                            .clipShape(.rect(cornerRadius: 7))
+                            .shadow(color: .white, radius: 0.5)
                         }
                         .padding(.horizontal)
                         .padding(.top, 8)
                     }
                 }
             }
-            .background(Color("BackgroundColor"))
+            .background(LinearGradient(
+                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                startPoint: .top,
+                endPoint: .bottom
+                
+            ))
+            
+            
 
         }
         // ---------------------------------

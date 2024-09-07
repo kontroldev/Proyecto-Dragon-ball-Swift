@@ -11,7 +11,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
+            Color.backgroundColorEX
                 .ignoresSafeArea()
 
             
@@ -36,6 +36,12 @@ struct ContentView: View {
                     GamesView()
                         .tabItem {
                             Label("Juegos", systemImage: "gamecontroller.fill")
+                                .tint(.accentColor)
+                        }
+                    
+                    Text("")
+                        .tabItem {
+                            Label("Obciones", systemImage: "gearshape.2.fill")
                                 .tint(.accentColor)
                         }
                 }
