@@ -11,21 +11,22 @@ import SwiftUI
 
 @Observable
 class CharactersViewModel {
-    private let charactersServer: CharactersService = CharactersService()
     
+    private let charactersServer: CharactersService = CharactersService()
     
     var characterModel: [CharactersModel] = []
     var isLoading: Bool = false
+    var sagas: String
     var referent: String
     var logo: String
     
     // Define las columnas dentro delña vistas de listados
     let columns = [GridItem(), GridItem()]
     
-    init(referent: String, logo: String) {
+    init(referent: String, logo: String, sagas: String) {
+        self.sagas = sagas
         self.logo = logo
         self.referent = referent
-        
         
         // Llamada inicial para cargar personajes del modelo especificado
         Task {

@@ -58,7 +58,7 @@ struct BasicCharacterCardView: View {
                     .scaleEffect(1.5)
                     
                         if isLoading {
-                         //   ProgressView()
+                            ProgressView()
                         }
 
                 }

@@ -12,16 +12,17 @@ struct DragonBallSwiftApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage("LoginFlowState") private var loginFlowState = UserLoginState.loggedOut
+    @AppStorage("isDarkMode") private var isDarkMode = false
     
     var body: some Scene {
         WindowGroup {
             switch loginFlowState {
             case .loggedOut:
                 LoginView()
-                    .preferredColorScheme(.dark)
+                    .preferredColorScheme(isDarkMode ? .dark : .light)
             case .loggedIn:
                 ContentView()
-                    .preferredColorScheme(.dark)
+                    .preferredColorScheme(isDarkMode ? .dark : .light)
             }
         }
     }

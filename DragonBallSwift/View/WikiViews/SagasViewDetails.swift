@@ -57,14 +57,20 @@ struct SagasViewDetails: View {
                     
                 }
 
-                .padding(.horizontal, 50)
-                VStack {
-                    Text(character.description).font(.title3)
+                .padding(.horizontal, 20)
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
+                        Text("Genero: ").font(.title2 .bold()).foregroundStyle(.cyan) + Text(character.genre)
+                        Text("Raza: ").font(.title2 .bold()).foregroundStyle(.yellow) + Text(character.race)
+                        Text("Planeta: ").font(.title2 .bold()).foregroundStyle(.green) + Text(character.planet)
+                    }
+                        .padding(.bottom)
+                    Text(character.description).font(.title3) 
                         .foregroundStyle(.white)
                     
                 }
                 // Ponemos un tamaño de 30 adaptado para los bordes de la descripcion.
-                .padding(30)
+                .padding(.horizontal, 20)
             }
         }
     }
