@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    
     var body: some View {
         ZStack {
             Color.backgroundColorEX
@@ -39,7 +40,7 @@ struct ContentView: View {
                                 .tint(.accentColor)
                         }
                     
-                    Text("")
+                    ProfileSettingsView()
                         .tabItem {
                             Label("Obciones", systemImage: "gearshape.2.fill")
                                 .tint(.accentColor)
@@ -50,5 +51,5 @@ struct ContentView: View {
     }
 }
 #Preview {
-    ContentView()
+ ContentView()
 }

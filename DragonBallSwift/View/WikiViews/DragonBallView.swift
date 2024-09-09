@@ -9,7 +9,12 @@ import SwiftUI
 
 struct DragonBallView: View {
     //Estados para obtener los personajes de la API
-    @State private var viewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball", logo: "DBLogo")
+    @State private var viewModel: CharactersViewModel
+    
+    init(referent: String, logo: String, sagas: String){
+        _viewModel = State(initialValue: CharactersViewModel(referent: referent, logo: logo, sagas: sagas))
+    }
+    
     @State private var isLoading = false
     
     //Estados para manejar los personajes favoritos
@@ -45,7 +50,7 @@ struct DragonBallView: View {
                     }
                 }
             }
-            .navigationTitle("Dragon Ball")
+            .navigationTitle("\(viewModel.sagas)")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal, 4)
             .background(LinearGradient(
@@ -69,5 +74,5 @@ struct DragonBallView: View {
 }
 
 #Preview {
-    DragonBallView()
+    DragonBallView(referent: "dragonball", logo: "DBLogo", sagas: "Dragon Ball")
 }

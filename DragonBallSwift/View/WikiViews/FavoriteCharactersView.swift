@@ -9,11 +9,23 @@ import SwiftUI
 
 struct FavoriteCharactersView: View {
     
-    @State private var dbCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball", logo: "DBLogo")
-    @State private var dbzCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballz", logo: "ZLogo")
-    @State private var dbdCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragons", logo: "dragons")
-    @State private var favoriteViewModel = FavoritesViewModel()
+    @State private var dbCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball", 
+                                                                                        logo: "DBLogo",
+                                                                                        sagas: "Dragon Ball")
     
+    @State private var dbzCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballz", 
+                                                                                         logo: "ZLogo",
+                                                                                         sagas: "Dragon Ball Z")
+    
+    @State private var dbgtCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballgt", 
+                                                                                          logo: "GTLogo",
+                                                                                          sagas: "Dragon Ball GT")
+    
+    @State private var dbdCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragons", 
+                                                                                         logo: "LogoDragones",
+                                                                                         sagas: "Dragones")
+    
+    @State private var favoriteViewModel = FavoritesViewModel()
     @State private var deleteCharacterFromFavorites = false
     @State private var logo: String = ""
     
@@ -28,7 +40,7 @@ struct FavoriteCharactersView: View {
                             NavigationLink{
                                 SagasViewDetails(character: character, logoDB: $logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: "", favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                BasicCharacterCardView(character: character, logo: logo, favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
