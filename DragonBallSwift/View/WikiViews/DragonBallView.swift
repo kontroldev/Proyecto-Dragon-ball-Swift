@@ -18,7 +18,7 @@ struct DragonBallView: View {
     @State private var isLoading = false
     
     //Estados para manejar los personajes favoritos
-    @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
+    @Environment(FavoritesViewModel.self) var favoritesViewModel
     @State private var deleteCharacterFromFavorites: Bool = false
     
     //Estados para búsqueda de personajes
@@ -38,7 +38,8 @@ struct DragonBallView: View {
                             NavigationLink{
                                 SagasViewDetails(character: character, logoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoritesViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: favoritesViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                    .environment(favoritesViewModel)
                             }
                         }
                     }
@@ -65,9 +66,6 @@ struct DragonBallView: View {
                             searchedCharacters = viewModel.searchCharacer(characterName: characterName)
                         }
                 }
-            }
-            .task {
-              //  await favoritesViewModel.getFavoriteCharactersIDs()
             }
         }
     }

@@ -26,7 +26,7 @@ class FavoritesViewModel {
     /// 5. En caso de error, establece las variables `showError` y `errorMessage` para mostrar un mensaje al usuario.
     ///
     /// - Parameter characterID: El ID del personaje que se agregará a favoritos.
-    func addToFavorites(characterID: String) async {
+    func addToFavorites(characterID: Int) async {
         do {
             let character = FavoriteCharacter(characterID: characterID)
             favoriteCharactersIDs.append(character)
@@ -70,7 +70,7 @@ class FavoritesViewModel {
             
         let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ
             
-        favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains(String( $0.id)) }
+        favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains(Int( $0.id)) }
     }
     
     
@@ -78,7 +78,7 @@ class FavoritesViewModel {
     ///
     /// - Parameter characterID: El ID del personaje a buscar.
     /// - Returns: `true` si el personaje está en favoritos, `false` en caso contrario.
-    func checkIsFavorite(characterID: String) async -> Bool {
+    func checkIsFavorite(characterID: Int) async -> Bool {
         return favoriteCharactersIDs.contains(where: { $0.characterID == characterID })
     }
     
@@ -93,8 +93,9 @@ class FavoritesViewModel {
     ///
     /// - Parameter characterID: El ID del personaje a eliminar.
     /// - Returns: `true` si la eliminación fue exitosa, `false` si hubo un error.
-    func removeFromFavorites(characterID: String) async -> Bool {
+    func removeFromFavorites(characterID: Int) async -> Bool {
         do {
+            favoriteCharacters.removeAll(where: { $0.id == characterID })
             favoriteCharactersIDs.removeAll(where: { $0.characterID == characterID })
             try await favoriteCharactersDataBaseService.deleteFavoriteCharacter(characterID: characterID)
             await getFavoriteCharactersIDs()

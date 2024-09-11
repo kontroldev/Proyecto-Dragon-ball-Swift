@@ -10,16 +10,16 @@ import Kingfisher
 
 struct BasicCharacterCardView: View {
     
-    @State private var favoriteCharactersViewModel: FavoritesViewModel = FavoritesViewModel()
+    @Environment(FavoritesViewModel.self) var favoriteCharactersViewModel
     @State var character: CharactersModel
     @State var logo: String
     @State var isFavorite: Bool = false
     @State var isLoading: Bool = true
-
+    
     //Logica de reconocimiento de colores
     @State var crImages = CRImages()
     
-    @Binding var favoriteCharacters: [FavoriteCharacter]
+    @State var favoriteCharacters: [FavoriteCharacter]
     @Binding var deleteSuccessfull: Bool
     
     var body: some View {
@@ -29,39 +29,22 @@ struct BasicCharacterCardView: View {
                     .frame(width: 100, height: 100)
                     .blur(radius: 30)
                     .foregroundStyle(Color.blue.opacity(0.6))
-                    //.foregroundStyle(crImages.mostVibrantColor)
                     .overlay {
-//                        AsyncImage(url: URL(string: character.image)) { image in
-//                            image
-//                                .resizable()
-//                                .scaledToFit()
-//                                .offset(x: 10, y: 30)
-//                                .frame(width: 120, height: 120)
-//                                .onAppear{
-//                                    if let uiImage = image.asUIImage() {
-//                                        crImages.detectColors(in: uiImage)
-//                                    }
-//                                }
-//                                .padding()
-//                            
-//                        } placeholder: {
-//                            ProgressView()
-//                        }
-                KFImage(URL(string: character.image))
-                    .onSuccess { _ in
-                        isLoading = false
-                    }
-                    .resizable()
-                    .scaledToFit()
-                    .offset(x: 10, y: 30)
-                    .frame(width: 120, height: 120)
-                    .scaleEffect(1.5)
-                    
+                        KFImage(URL(string: character.image))
+                            .onSuccess { _ in
+                                isLoading = false
+                            }
+                            .resizable()
+                            .scaledToFit()
+                            .offset(x: 10, y: 30)
+                            .frame(width: 120, height: 120)
+                            .scaleEffect(1.5)
+                        
                         if isLoading {
                             ProgressView()
                         }
-
-                }
+                        
+                    }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             
@@ -90,22 +73,22 @@ struct BasicCharacterCardView: View {
             
             Button {
                 Task {
-//                    //Si el personaje ya está en favoritos y se presiona el botón, se elimina el personaje de favoritos, sino se agrega a favoritos
-//                    if isFavorite {
-//                        // Si el personaje está en favoritos, intenta eliminarlo
-//                      deleteSuccessfull = await favoriteCharactersViewModel.removeFromFavorites(characterID:  character.id)
-//                        
-//                        // Si la eliminación fue exitosa, actualiza el estado a false
-//                        if deleteSuccessfull {
-//                            isFavorite = false
-//                        }
-//                    } else {
-//                        // Si el personaje no está en favoritos, intenta agregarlo
-//                        await favoriteCharactersViewModel.addToFavorites(characterID: character.id)
-//                        
-//                        // Actualiza el estado isFavorite después de intentar agregar
-//                        isFavorite = await favoriteCharactersViewModel.checkIsFavorite(characterID: character.id)
-//                    }
+                    //Si el personaje ya está en favoritos y se presiona el botón, se elimina el personaje de favoritos, sino se agrega a favoritos
+                    if isFavorite {
+                        // Si el personaje está en favoritos, intenta eliminarlo
+                        deleteSuccessfull = await favoriteCharactersViewModel.removeFromFavorites(characterID:  character.id)
+                        
+                        // Si la eliminación fue exitosa, actualiza el estado a false
+                        if deleteSuccessfull {
+                            isFavorite = false
+                        }
+                    } else {
+                        // Si el personaje no está en favoritos, intenta agregarlo
+                        await favoriteCharactersViewModel.addToFavorites(characterID: character.id)
+                        
+                        // Actualiza el estado isFavorite después de intentar agregar
+                        isFavorite = await favoriteCharactersViewModel.checkIsFavorite(characterID: character.id)
+                    }
                 }
             } label: {
                 HStack {
@@ -124,20 +107,20 @@ struct BasicCharacterCardView: View {
         ))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(content: {
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
             
         })
-
+        
         .padding(.horizontal, 4)
         .task {
-            isFavorite = favoriteCharacters.contains(where: {Int( $0.characterID) == character.id })
+            isFavorite = favoriteCharacters.contains(where: {Int($0.characterID) == character.id })
         }
     }
 }
 
 #Preview {
-    @State var mock = Mocks()
+    @Previewable @State var mock = Mocks()
     
-    return BasicCharacterCardView(character: mock.character, logo: "DBLogo", favoriteCharacters: .constant([FavoriteCharacter(characterID: "16")]), deleteSuccessfull: .constant(false))
+    return BasicCharacterCardView(character: mock.character, logo: "DBLogo", favoriteCharacters: [FavoriteCharacter(characterID: 16)], deleteSuccessfull: .constant(false))
 }
