@@ -8,7 +8,7 @@
 import Foundation
 
 struct FavoriteCharacter: Decodable {
-    let characterID: String
+    let characterID: Int
     
     var dictionary: [String: Any] {
         return ["characterID": characterID]

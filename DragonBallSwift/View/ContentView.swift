@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
+    
     
     var body: some View {
         ZStack {
@@ -24,6 +26,7 @@ struct ContentView: View {
                 
                 TabView {
                     WikiView()
+                        .environment(favoritesViewModel)
                         .tabItem {
                             Label("Wiki", systemImage: "books.vertical.fill")
                         }

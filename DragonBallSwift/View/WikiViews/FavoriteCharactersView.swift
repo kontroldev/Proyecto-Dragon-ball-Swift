@@ -9,23 +9,23 @@ import SwiftUI
 
 struct FavoriteCharactersView: View {
     
-    @State private var dbCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball", 
+    @State private var dbCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball",
                                                                                         logo: "DBLogo",
                                                                                         sagas: "Dragon Ball")
     
-    @State private var dbzCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballz", 
+    @State private var dbzCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballz",
                                                                                          logo: "ZLogo",
                                                                                          sagas: "Dragon Ball Z")
     
-    @State private var dbgtCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballgt", 
+    @State private var dbgtCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballgt",
                                                                                           logo: "GTLogo",
                                                                                           sagas: "Dragon Ball GT")
     
-    @State private var dbdCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragons", 
+    @State private var dbdCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragons",
                                                                                          logo: "LogoDragones",
                                                                                          sagas: "Dragones")
     
-    @State private var favoriteViewModel = FavoritesViewModel()
+    @Environment(FavoritesViewModel.self) var favoriteViewModel
     @State private var deleteCharacterFromFavorites = false
     @State private var logo: String = ""
     
@@ -40,7 +40,7 @@ struct FavoriteCharactersView: View {
                             NavigationLink{
                                 SagasViewDetails(character: character, logoDB: $logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: logo, favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                BasicCharacterCardView(character: character, logo: logo, favoriteCharacters: favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
@@ -63,13 +63,13 @@ struct FavoriteCharactersView: View {
             .navigationTitle("Personajes Favoritos")
             .navigationBarTitleDisplayMode(.inline)
             .task {
-//                favoriteViewModel.isLoading = true
-//                await dbzCharactersViewModel.getAllCharacters()
-//                await favoriteViewModel.getFavoriteCharactersIDs()
-//                
-//                favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.characterModel, favoriteCharactersFromDBZ: dbzCharactersViewModel.characterModel)
-//
-//                favoriteViewModel.isLoading = false
+                favoriteViewModel.isLoading = true
+                await dbzCharactersViewModel.getCharacters()
+                await favoriteViewModel.getFavoriteCharactersIDs()
+                
+                favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.characterModel, favoriteCharactersFromDBZ: dbzCharactersViewModel.characterModel)
+
+                favoriteViewModel.isLoading = false
             }
         }
     }

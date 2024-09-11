@@ -22,7 +22,8 @@ final class FavoriteCharacterDataBaseService {
     /// - Throws: Lanza un error si ocurre un problema al agregar el personaje a Firestore
     func addToFavorites(character: FavoriteCharacter) async throws {
         do {
-            try await database.collection(usersCollection).document(uid).collection(favoriteCharactersCollection).document(character.characterID).setData(character.dictionary)
+            let characterID = String(character.characterID)
+            try await database.collection(usersCollection).document(uid).collection(favoriteCharactersCollection).document(characterID).setData(character.dictionary)
         } catch {
             throw error
         }
@@ -48,8 +49,9 @@ final class FavoriteCharacterDataBaseService {
      ///- Parameters:
      ///   - characterID: El ID del personaje que se eliminará de los favoritos.
      ///- Throws: Lanza un error si ocurre un problema al eliminar el personaje de Firestore.
-    func deleteFavoriteCharacter(characterID: String) async throws {
+    func deleteFavoriteCharacter(characterID: Int) async throws {
         do {
+            let characterID = String(characterID)
             try await database.collection(usersCollection).document(uid).collection(favoriteCharactersCollection).document(characterID).delete()
         } catch {
             throw error
