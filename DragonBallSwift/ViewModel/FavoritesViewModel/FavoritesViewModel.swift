@@ -64,11 +64,11 @@ class FavoritesViewModel {
     ///     - favoriteCharactersFromDB: Lista de modelos de personajes de Dragon Ball provenientes de la API.
     ///     - favoriteCharactersFromDBZ: Lista de modelos de personajes de Dragon Ball Z provenientes de la API.
     @MainActor
-    func getFavoriteCharactersModels(favoriteCharactersFromDB: [CharactersModel], favoriteCharactersFromDBZ: [CharactersModel]) {
+    func getFavoriteCharactersModels(favoriteCharactersFromDB: [CharactersModel], favoriteCharactersFromDBZ: [CharactersModel], favoriteCharactersFromDBGT: [CharactersModel]) {
         //Creación de un Set (Recordar que los Set no permiten duplicidad de elementos y son más rápidos a la hora de iterar elementos)
         let favoriteCharacterIDsSet = Set(favoriteCharactersIDs.map { $0.characterID })
             
-        let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ
+        let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ + favoriteCharactersFromDBGT
             
         favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains(Int( $0.id)) }
     }
