@@ -35,7 +35,8 @@ struct WikiView: View {
                         NavigationLink(destination: item.destination) {
                             HStack {
                                 Text(item.name).font(.title3).bold()
-                                    .foregroundStyle(.accent)
+                                    .foregroundStyle(Color.textColor)
+                                
                                 
                                 Spacer()
                                 
@@ -74,7 +75,7 @@ struct WikiView: View {
                         showFavorites = true
                     } label: {
                         VStack(spacing: 0) {
-                            Image(systemName: "heart.fill")
+                            Image(systemName: "heart.fill").foregroundStyle(Color.textColor)
 //                                .font(.footnote)
                             
 //                            Text("Favoritos")

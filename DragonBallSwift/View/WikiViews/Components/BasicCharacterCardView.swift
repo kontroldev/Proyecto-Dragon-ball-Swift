@@ -120,7 +120,8 @@ struct BasicCharacterCardView: View {
 }
 
 #Preview {
-    @Previewable @State var mock = Mocks()
+   // @Previewable 
+    @State var mock = Mocks()
     
     return BasicCharacterCardView(character: mock.character, logo: "DBLogo", favoriteCharacters: [FavoriteCharacter(characterID: 16)], deleteSuccessfull: .constant(false))
 }

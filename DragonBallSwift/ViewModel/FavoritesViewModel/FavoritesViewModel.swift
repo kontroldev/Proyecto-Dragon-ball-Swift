@@ -64,15 +64,25 @@ class FavoritesViewModel {
     ///     - favoriteCharactersFromDB: Lista de modelos de personajes de Dragon Ball provenientes de la API.
     ///     - favoriteCharactersFromDBZ: Lista de modelos de personajes de Dragon Ball Z provenientes de la API.
     @MainActor
-    func getFavoriteCharactersModels(favoriteCharactersFromDB: [CharactersModel], favoriteCharactersFromDBZ: [CharactersModel]) {
+    func getFavoriteCharactersModels(dB favoriteCharactersFromDB: [CharactersModel],
+                                     dBz favoriteCharactersFromDBZ: [CharactersModel],
+                                     dBzt favoriteCharactersFromDBGT: [CharactersModel],
+                                     dBd favoriteCharactersFromDBD: [CharactersModel]) {
         //Creación de un Set (Recordar que los Set no permiten duplicidad de elementos y son más rápidos a la hora de iterar elementos)
         let favoriteCharacterIDsSet = Set(favoriteCharactersIDs.map { $0.characterID })
-            
-        let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ
-            
+        
+        let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ + favoriteCharactersFromDBGT + favoriteCharactersFromDBD
+        
         favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains(Int( $0.id)) }
     }
     
+//    @MainActor
+//    func getFavoriteCharactersModels(_ charactersModels: [CharactersModel]){
+//        //Creación de un Set (Recordar que los Set no permiten duplicidad de elementos y son más rápidos a la hora de iterar elementos)
+//        let favoriteCharacterIDsSet = Set(favoriteCharactersIDs.map { $0.characterID })
+//        let allCharacters = charactersModels
+//        favoriteCharacters = allCharacters.filter{ favoriteCharacterIDsSet.contains(Int($0.id))}
+//    }
     
     /// Verifica si un personaje está en la lista de favoritos.
     ///

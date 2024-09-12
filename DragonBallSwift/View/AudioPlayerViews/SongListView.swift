@@ -21,7 +21,7 @@ struct SongListView: View {
             VStack{
                 Text("Canciones")
                     .font(.title)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.textColor)
                     .fontWeight(.bold)
                 ScrollView{
                     ForEach(songs.arrayOfSongs, id: \.self) { song in
@@ -34,7 +34,7 @@ struct SongListView: View {
                                 Text("\(song.name)")
                                     .font(.title3)
                                     .bold()
-                                    .foregroundColor(.white)
+                                    .foregroundColor(Color.textColor)
                                     .padding()
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }

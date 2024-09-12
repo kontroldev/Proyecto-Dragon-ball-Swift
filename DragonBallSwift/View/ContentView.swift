@@ -29,11 +29,13 @@ struct ContentView: View {
                         .environment(favoritesViewModel)
                         .tabItem {
                             Label("Wiki", systemImage: "books.vertical.fill")
+                                .tint(.accentColor)
                         }
                     
                     SongListView(songs: SongsModel())
                         .tabItem {
                             Label("Reproductor", systemImage:"music.note")
+                                .tint(.accentColor)
                         }
                      
                     
