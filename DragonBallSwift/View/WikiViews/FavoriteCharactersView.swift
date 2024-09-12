@@ -73,6 +73,7 @@ struct FavoriteCharactersView: View {
             .task {
                 favoriteViewModel.isLoading = true
                 await dbzCharactersViewModel.getCharacters()
+
              //   await charactersViewModel.getCharacters()
                 await favoriteViewModel.getFavoriteCharactersIDs()
                 
@@ -80,6 +81,7 @@ struct FavoriteCharactersView: View {
                 
                 
            //     favoriteViewModel.getFavoriteCharactersModels(charactersViewModel.characterModel)
+
 
                 favoriteViewModel.isLoading = false
             }
