@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct FavoriteCharactersView: View {
+//    ///  Llamada unica al `charactersViewModel`, sin inicializar
+//    @State private var charactersViewModel: CharactersViewModel
+//    
+//    init(referent:String , logo: String , saga: String ){
+//        _charactersViewModel = State(initialValue: CharactersViewModel(referent: referent, logo: logo, sagas: saga))
+//    }
     
+    /// Este bloque llama al viewModel uno por cada sagas 
     @State private var dbCharactersViewModel: CharactersViewModel = CharactersViewModel(referent: "dragonball",
                                                                                         logo: "DBLogo",
                                                                                         sagas: "Dragon Ball")
@@ -26,6 +33,7 @@ struct FavoriteCharactersView: View {
                                                                                          sagas: "Dragones")
     
     @Environment(FavoritesViewModel.self) var favoriteViewModel
+    @Environment(\.dismiss) var dismiss
     @State private var deleteCharacterFromFavorites = false
     @State private var logo: String = ""
     
@@ -65,12 +73,25 @@ struct FavoriteCharactersView: View {
             .task {
                 favoriteViewModel.isLoading = true
                 await dbzCharactersViewModel.getCharacters()
-                await dbgtCharactersViewModel.getCharacters()
+
+             //   await charactersViewModel.getCharacters()
                 await favoriteViewModel.getFavoriteCharactersIDs()
                 
-                favoriteViewModel.getFavoriteCharactersModels(favoriteCharactersFromDB: dbCharactersViewModel.characterModel, favoriteCharactersFromDBZ: dbzCharactersViewModel.characterModel, favoriteCharactersFromDBGT: dbgtCharactersViewModel.characterModel)
+                favoriteViewModel.getFavoriteCharactersModels(dB: dbCharactersViewModel.characterModel, dBz: dbzCharactersViewModel.characterModel, dBzt: dbgtCharactersViewModel.characterModel, dBd: dbdCharactersViewModel.characterModel)
+                
+                
+           //     favoriteViewModel.getFavoriteCharactersModels(charactersViewModel.characterModel)
+
 
                 favoriteViewModel.isLoading = false
+            }
+            .toolbar{
+                Button(role: .cancel, action: {
+                    dismiss()
+                }, label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(.red)
+                })
             }
         }
     }

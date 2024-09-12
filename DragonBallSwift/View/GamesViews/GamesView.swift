@@ -22,7 +22,7 @@ struct GamesView: View {
                     ForEach(menuItems) { item in
                         HStack {
                             Text(item.name.rawValue).font(.title2).bold()
-                                .foregroundStyle(.accent)
+                                .foregroundStyle(Color.textColor)
                             
                             Spacer()
                             

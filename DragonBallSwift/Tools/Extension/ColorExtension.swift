@@ -125,13 +125,18 @@ import SwiftUI
 extension Color {
     // Uso de colores dinámicos según el modo de color actual
     static var backgroundColor: Color {
-        Color.dynamicColor(light: Color(red: 1.0, green: 0.8, blue: 0.6), dark: Color("BackgroundColor"))
+        Color.dynamicColor(light: Color(red: 0.8, green: 0.6, blue: 0.4), dark: Color("BackgroundColor"))
     }
+    
     
     static var cardColor: Color {
-        Color.dynamicColor(light: Color(red: 1.0, green: 0.9, blue: 0.8), dark: Color("CardColor"))
+        Color.dynamicColor(light: Color(red: 0.85, green: 0.75, blue: 0.65), dark: Color("CardColor"))
     }
     
+    static var textColor: Color {
+        Color.dynamicColor(light: Color(red: 0.4, green: 0.3, blue: 0.2), dark: Color(red: 0.85, green: 0.85, blue: 0.9))
+    }
+
     // Definición personalizada de colores RGB para modo claro/oscuro
     static var backgroundColorEX: Color {
         Color.dynamicColor(light: Color(red: 1.0, green: 0.8, blue: 0.6), dark: Color(red: 0.0249, green: 0.0627, blue: 0.2020))
