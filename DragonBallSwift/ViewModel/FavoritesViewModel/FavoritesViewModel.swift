@@ -10,7 +10,9 @@ import Foundation
 @Observable
 class FavoritesViewModel {
     private let favoriteCharactersDataBaseService = FavoriteCharacterDataBaseService()
-    private let charactersServer: CharactersService = CharactersService()
+
+    private let charactersService: CharactersService = CharactersService()
+
     var favoriteCharactersIDs: [FavoriteCharacter] = []
     var favoriteCharacters: [CharactersModel] = [] //Modelo con todos los datos de los personajes favoritos
     var isLoading: Bool = false
@@ -52,33 +54,43 @@ class FavoritesViewModel {
         }
     }
     
-    
+
+    /// - Descripción:
+    ///   ---------
+    /// Esta función asíncrona recupera y filtra los personajes favoritos de varias series del universo
+    /// Dragon Ball (`Dragon Ball`, `Dragon Ball Z`, `Dragon Ball GT`, `Dragon Ball Super` y
+    /// `Dragons`). Utiliza servicios externos para obtener los personajes de cada serie y luego filtra
+    ///  aquellos cuyos identificadores coinciden con los IDs almacenados en una lista de personajes favoritos.
+    ///
+    /// - Detalles:
+    ///   ------
+    ///  *1.-  Anotación  `@MainActor` :  Asegura que la función se ejecuta en el hilo principal, lo cual es importante para actualizar la UI de forma segura.
+    ///  *2.-  Asincronía: Usa `async` y `await` para realizar solicitudes asíncronas al servicio `charactersService`, evitando bloquear el hilo principal.
+    ///  *3.- Agrupación y filtrado: Combina los personajes obtenidos de las distintas series y los filtra, seleccionando solo aquellos que coinciden con los IDs favoritos.
+    ///  *4.- Manejo de errores: Usa `do-catch` para capturar cualquier posible error durante la obtención de personajes.
+    ///
+    /// - Ejecución:
+    ///   --------
+    ///  1.- Solicita los personajes de varias series.
+    ///  2.- Crea un conjunto `(Set)` de los IDs de personajes favoritos.
+    ///  3.- Combina todos los personajes y filtra solo aquellos que estén en el conjunto de favoritos.
+    ///  -------------------------------------------------------------------
+    ///  Es una función diseñada para manejar personajes favoritos de manera eficiente y segura desde múltiples fuentes.
     @MainActor
     func getFavoriteCharactersModels() async {
-        do {
-            let favoriteCharactersFromDB = try await charactersServer.getCharacters("dragonball")
-            let favoriteCharactersFromDBZ = try await charactersServer.getCharacters("dragonballz")
-            let favoriteCharactersFromDBGT = try await charactersServer.getCharacters("dragonballgt")
-            let favoriteCharactersFromDBD = try await charactersServer.getCharacters("dragons")
-            
-            //Creación de un Set (Recordar que los Set no permiten duplicidad de elementos y son más rápidos a la hora de iterar elementos)
+        do{
+            let favoriteCharacterFromDB = try await charactersService.getCharacters("dragonball")
+            let favoriteCharacterFromDZ = try await charactersService.getCharacters("dragonballz")
+            let favoriteCharacterFromDGT = try await charactersService.getCharacters("dragonballgt")
+            let favoriteCharacterFromDS = try await charactersService.getCharacters("dragonballsuper")
+            let favoriteCharacterFromDBD = try await charactersService.getCharacters("dragons")
             let favoriteCharacterIDsSet = Set(favoriteCharactersIDs.map { $0.characterID })
-            
-            let allCharacters = favoriteCharactersFromDB + favoriteCharactersFromDBZ + favoriteCharactersFromDBGT + favoriteCharactersFromDBD
-            
-            favoriteCharacters = allCharacters.filter { favoriteCharacterIDsSet.contains(Int( $0.id)) }
-        } catch {
+            let allCharacters = favoriteCharacterFromDB + favoriteCharacterFromDZ + favoriteCharacterFromDGT + favoriteCharacterFromDS + favoriteCharacterFromDBD
+            favoriteCharacters = allCharacters.filter{ favoriteCharacterIDsSet.contains(Int($0.id))}
+        }catch{
             
         }
     }
-    
-//    @MainActor
-//    func getFavoriteCharactersModels(_ charactersModels: [CharactersModel]){
-//        //Creación de un Set (Recordar que los Set no permiten duplicidad de elementos y son más rápidos a la hora de iterar elementos)
-//        let favoriteCharacterIDsSet = Set(favoriteCharactersIDs.map { $0.characterID })
-//        let allCharacters = charactersModels
-//        favoriteCharacters = allCharacters.filter{ favoriteCharacterIDsSet.contains(Int($0.id))}
-//    }
     
     /// Verifica si un personaje está en la lista de favoritos.
     ///
