@@ -10,7 +10,9 @@ import Foundation
 @Observable
 class FavoritesViewModel {
     private let favoriteCharactersDataBaseService = FavoriteCharacterDataBaseService()
+
     private let charactersService: CharactersService = CharactersService()
+
     var favoriteCharactersIDs: [FavoriteCharacter] = []
     var favoriteCharacters: [CharactersModel] = [] //Modelo con todos los datos de los personajes favoritos
     var isLoading: Bool = false
@@ -52,6 +54,7 @@ class FavoritesViewModel {
         }
     }
     
+
     /// - Descripción:
     ///   ---------
     /// Esta función asíncrona recupera y filtra los personajes favoritos de varias series del universo

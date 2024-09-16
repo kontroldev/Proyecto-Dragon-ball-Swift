@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoriteCharactersView: View {
-    
+
     @Environment(FavoritesViewModel.self) var favoriteViewModel
     @Environment(\.dismiss) var dismiss
     @State private var deleteCharacterFromFavorites = false
@@ -52,6 +52,7 @@ struct FavoriteCharactersView: View {
                 await favoriteViewModel.getFavoriteCharactersIDs()
                 await favoriteViewModel.getFavoriteCharactersModels()
                 favoriteViewModel.isLoading = false
+              
             }
             .toolbar{
                 Button(role: .cancel, action: {
