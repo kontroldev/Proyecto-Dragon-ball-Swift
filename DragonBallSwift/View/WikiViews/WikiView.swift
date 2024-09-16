@@ -13,7 +13,7 @@ struct WikiView: View {
         ItemMenu(name: "Dragon Ball", imegenName: "DBLogo", destination: AnyView(DragonBallView(referent: "dragonball", logo: "DBLogo", sagas: "Dragon Ball"))),
         ItemMenu(name: "Dragon Ball Z", imegenName: "ZLogo", destination: AnyView(DragonBallView(referent: "dragonballz", logo: "ZLogo", sagas: "Dragon Ball Z"))),
         ItemMenu(name: "Dragon Ball GT", imegenName: "GTLogo", destination: AnyView(DragonBallView(referent: "dragonballgt", logo: "GTLogo", sagas: "Dragon Ball GT"))),
-        ItemMenu(name: "Dragon Ball Super", imegenName: "SuperLogo", destination: AnyView(DragonBallSView())),
+        ItemMenu(name: "Dragon Ball Super", imegenName: "SuperLogo", destination: AnyView(DragonBallView(referent: "dragonballsuper", logo: "SuperLogo", sagas: "Dragon Ball Super"))),
         
         ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(DragonBallView(referent: "dragons", logo: "LogoDragones", sagas: "Dragones")))
     ]

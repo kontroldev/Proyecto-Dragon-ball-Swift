@@ -16,7 +16,7 @@ struct DragonBallSView: View {
      
      var body: some View {
          ZStack{
-             (Color.backgroundColorEX).ignoresSafeArea()
+             //(Color.backgroundColorEX).ignoresSafeArea()
              VStack{
                  Image("CCard")
                      .resizable()
