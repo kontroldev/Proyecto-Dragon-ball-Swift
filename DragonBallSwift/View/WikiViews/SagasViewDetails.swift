@@ -20,7 +20,7 @@ struct SagasViewDetails: View {
         ZStack {
             
             //Esto crea el fondo de color con gradientes y el color por defecto de la App.
-            RadialGradient(colors: [ Color("BackgroundColor"), Color.backgroundColorEX], center: .center, startRadius: 30, endRadius: 380)
+            RadialGradient(colors: [Color.backgroundColorEX, Color.backgroundColor], center: .center, startRadius: 30, endRadius: 380)
                 .ignoresSafeArea()
             
             ScrollView {
@@ -66,7 +66,7 @@ struct SagasViewDetails: View {
                     }
                         .padding(.bottom)
                     Text(character.description).font(.title3) 
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.textColor)
                     
                 }
                 // Ponemos un tamaño de 30 adaptado para los bordes de la descripcion.
@@ -77,9 +77,9 @@ struct SagasViewDetails: View {
 }
 
 #Preview {
-    @State var mock = Mocks()
+    @Previewable @State var mock = Mocks()
     
-    @State var logoDB = "DBLogo"
+    @Previewable @State var logoDB = "DBLogo"
     return SagasViewDetails(character: mock.character, logoDB: $logoDB)
     
 }

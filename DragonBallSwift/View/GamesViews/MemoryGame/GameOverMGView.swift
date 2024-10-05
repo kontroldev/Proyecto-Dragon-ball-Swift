@@ -43,6 +43,6 @@ struct GameOverMGView: View {
 }
 
 #Preview {
-    @State var memoryViewModel = MemoryGameViewModel()
+    @Previewable @State var memoryViewModel = MemoryGameViewModel()
     return GameOverMGView(memoryViewModel: memoryViewModel)
 }

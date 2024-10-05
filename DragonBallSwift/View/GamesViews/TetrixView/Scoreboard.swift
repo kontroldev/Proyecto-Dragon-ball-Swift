@@ -106,7 +106,7 @@ struct Scoreboard: View {
 }
 
 #Preview {
-    @State var preViewModel = TetrisViewModel()
+    @Previewable @State var preViewModel = TetrisViewModel()
    return Scoreboard(viewmodel: preViewModel)
 }
 
