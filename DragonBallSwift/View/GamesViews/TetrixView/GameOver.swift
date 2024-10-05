@@ -43,6 +43,6 @@ struct GameOver: View {
 }
 
 #Preview {
-    @State var viewModel = TetrisViewModel()
+    @Previewable @State var viewModel = TetrisViewModel()
     return GameOver(viewModel: viewModel)
 }

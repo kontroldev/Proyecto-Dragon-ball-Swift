@@ -73,4 +73,5 @@ struct DragonBallView: View {
 
 #Preview {
     DragonBallView(referent: "dragonball", logo: "DBLogo", sagas: "Dragon Ball")
+        .environment(FavoritesViewModel())
 }

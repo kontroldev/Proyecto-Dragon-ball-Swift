@@ -37,6 +37,6 @@ struct GridView: View {
 }
 
 #Preview {
-    @State var viewmodels = TetrisViewModel()
+    @Previewable @State var viewmodels = TetrisViewModel()
     return GridView(viewmodel: viewmodels)
 }

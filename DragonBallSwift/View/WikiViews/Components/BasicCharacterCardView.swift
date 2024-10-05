@@ -11,6 +11,8 @@ import Kingfisher
 struct BasicCharacterCardView: View {
     
     @Environment(FavoritesViewModel.self) var favoriteCharactersViewModel
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    
     @State var character: CharactersModel
     @State var logo: String
     @State var isFavorite: Bool = false
@@ -28,7 +30,7 @@ struct BasicCharacterCardView: View {
                 Circle()
                     .frame(width: 100, height: 100)
                     .blur(radius: 30)
-                    .foregroundStyle(Color.blue.opacity(0.6))
+                    .foregroundStyle(isDarkMode ? Color.blue.opacity(0.6) : Color.orange)
                     .overlay {
                         KFImage(URL(string: character.image))
                             .onSuccess { _ in
@@ -52,7 +54,7 @@ struct BasicCharacterCardView: View {
                 Text(character.name)
                     .font(.title3)
                     .bold()
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.textColor)
                     .padding(8)
                     .padding(.top, 10)
                     .multilineTextAlignment(.leading)
@@ -121,7 +123,9 @@ struct BasicCharacterCardView: View {
 
 #Preview {
    // @Previewable 
-    @State var mock = Mocks()
+    @Previewable @State var mock = Mocks()
     
-    return BasicCharacterCardView(character: mock.character, logo: "DBLogo", favoriteCharacters: [FavoriteCharacter(characterID: 16)], deleteSuccessfull: .constant(false))
+    BasicCharacterCardView(character: mock.character, logo: "DBLogo", favoriteCharacters: [FavoriteCharacter(characterID: 16)], deleteSuccessfull: .constant(false))
+        .environment(FavoritesViewModel())
+        
 }

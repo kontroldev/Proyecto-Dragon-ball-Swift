@@ -35,7 +35,7 @@ struct ControlsView: View {
 }
 
 #Preview {
-    @State var preViewModel = TetrisViewModel()
+    @Previewable @State var preViewModel = TetrisViewModel()
    return ControlsView(viewmodel: preViewModel)
 }
 
