@@ -9,10 +9,8 @@ import Foundation
 import Observation
 
 @Observable
-class FavoritesViewModel{
+class FavoritesViewModel: CheractersProtocols {
     private let favoriteCharactersDataBaseService = FavoriteCharacterDataBaseService()
-
-    private let charactersService: CharactersService = CharactersService()
 
     var favoriteCharactersIDs: [FavoriteCharacter] = []
     var favoriteCharacters: [CharactersModel] = [] //Modelo con todos los datos de los personajes favoritos
@@ -30,6 +28,7 @@ class FavoritesViewModel{
     /// 5. En caso de error, establece las variables `showError` y `errorMessage` para mostrar un mensaje al usuario.
     ///
     /// - Parameter characterID: El ID del personaje que se agregará a favoritos.
+    
     @MainActor
     func addToFavorites(characterID: Int) async {
         do {
@@ -43,10 +42,11 @@ class FavoritesViewModel{
         }
     }
     
-    
     /// Obtiene la lista de personajes favoritos desde la base de datos de Firestore.
     ///
-    /// Esta función actualiza la lista local `favoriteCharacters` con los datos obtenidos desde el servicio de Firestore `favoriteCharactersDataBaseService`.
+    /// Esta función actualiza la lista local `favoriteCharacters` con los datos obtenidos
+    /// desde el servicio de Firestore `favoriteCharactersDataBaseService`.
+    
     @MainActor
     func getFavoriteCharactersIDs() async {
         do {
@@ -56,7 +56,6 @@ class FavoritesViewModel{
             errorMessage = "Error al obtener personajes favoritos"
         }
     }
-    
 
     /// - Descripción:
     ///   ---------
@@ -67,9 +66,12 @@ class FavoritesViewModel{
     ///
     /// - Detalles:
     ///   ------
-    ///  *1.-  Anotación  `@MainActor` :  Asegura que la función se ejecuta en el hilo principal, lo cual es importante para actualizar la UI de forma segura.
-    ///  *2.-  Asincronía: Usa `async` y `await` para realizar solicitudes asíncronas al servicio `charactersService`, evitando bloquear el hilo principal.
-    ///  *3.- Agrupación y filtrado: Combina los personajes obtenidos de las distintas series y los filtra, seleccionando solo aquellos que coinciden con los IDs favoritos.
+    ///  *1.-  Anotación  `@MainActor` :  Asegura que la función se ejecuta en el hilo principal,
+    ///  lo cual es importante para actualizar la UI de forma segura.
+    ///  *2.-  Asincronía: Usa `async` y `await` para realizar solicitudes asíncronas al servicio
+    ///  `charactersService`, evitando bloquear el hilo principal.
+    ///  *3.- Agrupación y filtrado: Combina los personajes obtenidos de las distintas series y los filtra,
+    ///  seleccionando solo aquellos que coinciden con los IDs favoritos.
     ///  *4.- Manejo de errores: Usa `do-catch` para capturar cualquier posible error durante la obtención de personajes.
     ///
     /// - Ejecución:
@@ -79,14 +81,15 @@ class FavoritesViewModel{
     ///  3.- Combina todos los personajes y filtra solo aquellos que estén en el conjunto de favoritos.
     ///  -------------------------------------------------------------------
     ///  Es una función diseñada para manejar personajes favoritos de manera eficiente y segura desde múltiples fuentes.
+    
     @MainActor
     func getFavoriteCharactersModels() async {
         do{
-            let favoriteCharacterFromDB = try await charactersService.getCharacters("dragonball")
-            let favoriteCharacterFromDZ = try await charactersService.getCharacters("dragonballz")
-            let favoriteCharacterFromDGT = try await charactersService.getCharacters("dragonballgt")
-            let favoriteCharacterFromDS = try await charactersService.getCharacters("dragonballsuper")
-            let favoriteCharacterFromDBD = try await charactersService.getCharacters("dragons")
+            let favoriteCharacterFromDB = try await getCharacters("dragonball")
+            let favoriteCharacterFromDZ = try await getCharacters("dragonballz")
+            let favoriteCharacterFromDGT = try await getCharacters("dragonballgt")
+            let favoriteCharacterFromDS = try await getCharacters("dragonballsuper")
+            let favoriteCharacterFromDBD = try await getCharacters("dragons")
             let favoriteCharacterIDsSet = Set(favoriteCharactersIDs.map { $0.characterID })
             let allCharacters = favoriteCharacterFromDB + favoriteCharacterFromDZ + favoriteCharacterFromDGT + favoriteCharacterFromDS + favoriteCharacterFromDBD
             favoriteCharacters = allCharacters.filter{ favoriteCharacterIDsSet.contains(Int($0.id))}
@@ -99,6 +102,7 @@ class FavoritesViewModel{
     ///
     /// - Parameter characterID: El ID del personaje a buscar.
     /// - Returns: `true` si el personaje está en favoritos, `false` en caso contrario.
+    
     @MainActor
     func checkIsFavorite(characterID: Int) async -> Bool {
         return favoriteCharactersIDs.contains(where: { $0.characterID == characterID })
@@ -115,6 +119,7 @@ class FavoritesViewModel{
     ///
     /// - Parameter characterID: El ID del personaje a eliminar.
     /// - Returns: `true` si la eliminación fue exitosa, `false` si hubo un error.
+
     @MainActor
     func removeFromFavorites(characterID: Int) async -> Bool {
         do {
