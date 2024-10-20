@@ -8,7 +8,10 @@
 import Foundation
 
 class CharactersService: CheractersProtocols {
-    
+
+    /// **Obtiene todos los personajes de Dragonball API
+    /// - Returns: Una instancia de `CharactersModel` la cual contiene toda la información básica de cada personaje
+
     func getCharacters(_ referent: String) async throws -> [CharactersModel] {
         do{
             let characterURL = "https://www.dragonballapi.com/" + referent

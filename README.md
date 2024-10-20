@@ -1,6 +1,6 @@
 # Proyecto Colaborativo de una App de Dragon Ball en Swift
 
-¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/Dragon-Ball).
+¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/dragon-ball-app).
 
 ## Cómo contribuir
 

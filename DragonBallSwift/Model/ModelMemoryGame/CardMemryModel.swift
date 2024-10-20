@@ -2,7 +2,7 @@
 //  CardMemryModel.swift
 //  DragonBallSwift
 //
-//  Created by EProyecto Dragon Ball on 30/5/24.
+//  Created by https://www.educa.jcyl.es/adultos/es/oferta-educativa/ensenanzas-presenciales/programas-educacion-formal/programas-preparacion-pruebas-acceso-universidad-mayores-25Proyecto Dragon Ball on 30/5/24.
 //
 
 import Foundation

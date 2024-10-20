@@ -379,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				5A33F8882C57D0F70025A4E2 /* LoginViewModel.swift */,
+				5A6AAF792C52CF2600930C0A /* GamesViews */,
 				6E56739D2C5B8094002CF2D7 /* CRImages.swift */,
 				6E52A9DD2C0A8A72000F2162 /* CharactersViewModelApi */,
 				A5F3EEE72C5D459100460521 /* AudioPlayerViewModel */,
@@ -393,7 +394,6 @@
 			isa = PBXGroup;
 			children = (
 				A5F3EEE42C5D448700460521 /* AudioPlayerViews */,
-				5A6AAF792C52CF2600930C0A /* GamesViews */,
 				5A2BCB152C51DBD1008DFBBE /* WikiViews */,
 				B372A01D2C068E2300439428 /* ContentView.swift */,
 				5A33F87B2C5736CC0025A4E2 /* LoginView.swift */,
@@ -655,7 +655,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					A5EF786C2C623B9700CB0D59 = {
 						CreatedOnToolsVersion = 15.4;
@@ -816,11 +816,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
+				DEVELOPMENT_TEAM = TW5ALJNBYM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AudioPlayerDynamicIsland/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AudioPlayerDynamicIsland;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -844,11 +845,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
+				DEVELOPMENT_TEAM = TW5ALJNBYM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AudioPlayerDynamicIsland/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AudioPlayerDynamicIsland;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -986,14 +988,13 @@
 		B372A0272C068E2500439428 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragonBallSwift/Preview Content\"";
-				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
+				DEVELOPMENT_TEAM = TW5ALJNBYM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;
@@ -1021,14 +1022,13 @@
 		B372A0282C068E2500439428 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragonBallSwift/Preview Content\"";
-				DEVELOPMENT_TEAM = LBK7Y5YPPQ;
+				DEVELOPMENT_TEAM = TW5ALJNBYM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;

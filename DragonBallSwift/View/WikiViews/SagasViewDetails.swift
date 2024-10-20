@@ -79,7 +79,9 @@ struct SagasViewDetails: View {
 #Preview {
     @Previewable @State var mock = Mocks()
     
-    @Previewable @State var logoDB = "DBLogo"
+
+    @Previewable  @State var logoDB = "DBLogo"
+
     return SagasViewDetails(character: mock.character, logoDB: $logoDB)
     
 }
