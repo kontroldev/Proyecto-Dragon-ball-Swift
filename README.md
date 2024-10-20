@@ -1,6 +1,6 @@
 # Proyecto Colaborativo de una App de Dragon Ball en Swift
 
-¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/Dragon-Ball).
+¡Bienvenido al Proyecto Colaborativo de Dragon Ball! Este es un proyecto abierto en el que todos pueden contribuir. Si eres fan de Dragon Ball y tienes habilidades de programación en Swift, ¡nos encantaría contar con tu ayuda! [Aquí tienes el proyecto en Kotlin](https://github.com/juanppdev/dragon-ball-app).
 
 ## Cómo contribuir
 
@@ -21,7 +21,7 @@ Para este proyecto, utilizaremos las siguientes herramientas y lenguajes de prog
 - **GitHub**: Es la plataforma donde alojaremos nuestro código y colaboraremos.
 - **Trello**: Es la herramienta que utilizaremos para hacer seguimiento del proyecto. (Si quieres colaborar, pide acceso al Kamban en el grupo de estudio)
 - **API**: Usamos una API de Dragon Ball creada y usada para la comunidad disponible [aquí](https://apidragonball.vercel.app)
-- Versión actual del proyecto en: **iOS 17.5**
+- Versión actual del proyecto en: **iOS 18**
 
 ## Seguimiento del proyecto
 

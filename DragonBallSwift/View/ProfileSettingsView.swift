@@ -53,9 +53,9 @@ struct ProfileSettingsView: View {
  
                     Section("Quienes somos"){
                         
-                        Text("Participantes del prollecto: ").font(.title2.bold())
+                        Text("Participantes del proyecto: ").font(.title2.bold())
                         Text("""
-                              KontrolDV
+                              KontrolDev
                               ManuelCBR
                               Yeikobu
                               Lordzzz
@@ -73,7 +73,7 @@ struct ProfileSettingsView: View {
                 
                 
             }
-            .navigationTitle("Obciones:")
+            .navigationTitle("Opciones:")
             .scrollContentBackground(.hidden)
             .background(LinearGradient(
                 gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),

@@ -16,14 +16,9 @@ struct ContentView: View {
         ZStack {
             Color.backgroundColorEX
                 .ignoresSafeArea()
-
-            
-            
             ZStack {
                 Color("BackgroundColor")
                     .ignoresSafeArea()
-                
-                
                 TabView {
                     WikiView()
                         .environment(favoritesViewModel)
@@ -31,14 +26,11 @@ struct ContentView: View {
                             Label("Wiki", systemImage: "books.vertical.fill")
                                 .tint(.accentColor)
                         }
-                    
                     SongListView(songs: SongsModel())
                         .tabItem {
                             Label("Reproductor", systemImage:"music.note")
                                 .tint(.accentColor)
                         }
-                     
-                    
                     GamesView()
                         .tabItem {
                             Label("Juegos", systemImage: "gamecontroller.fill")
@@ -56,5 +48,5 @@ struct ContentView: View {
     }
 }
 #Preview {
- ContentView()
+    ContentView()
 }

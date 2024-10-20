@@ -122,7 +122,9 @@ struct BasicCharacterCardView: View {
 }
 
 #Preview {
+
     @Previewable @State var mock = Mocks()
+
     
     BasicCharacterCardView(character: mock.character, logo: "DBLogo", favoriteCharacters: [FavoriteCharacter(characterID: 16)], deleteSuccessfull: .constant(false))
         .environment(FavoritesViewModel())
