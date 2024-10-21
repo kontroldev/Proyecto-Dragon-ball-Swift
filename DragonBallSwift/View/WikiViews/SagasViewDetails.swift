@@ -19,11 +19,13 @@ struct SagasViewDetails: View {
     var body: some View {
         ZStack {
             
+                
             //Esto crea el fondo de color con gradientes y el color por defecto de la App.
             RadialGradient(colors: [Color.backgroundColorEX, Color.backgroundColor], center: .center, startRadius: 30, endRadius: 380)
                 .ignoresSafeArea()
             
             ScrollView {
+              //  CardTransformationView()
                 Circle()
                     .frame(width: 300, height: 300)
                     .blur(radius: 90)
@@ -59,12 +61,16 @@ struct SagasViewDetails: View {
 
                 .padding(.horizontal, 20)
                 VStack(alignment: .leading) {
-                    VStack(alignment: .leading) {
-                        Text("Genero: ").font(.title2 .bold()).foregroundStyle(.cyan) + Text(character.genre)
-                        Text("Raza: ").font(.title2 .bold()).foregroundStyle(.yellow) + Text(character.race)
-                        Text("Planeta: ").font(.title2 .bold()).foregroundStyle(.green) + Text(character.planet)
-                    }
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Genero: ").font(.title2 .bold()).foregroundStyle(.cyan) + Text(character.genre)
+                            Text("Raza: ").font(.title2 .bold()).foregroundStyle(.yellow) + Text(character.race)
+                            Text("Planeta: ").font(.title2 .bold()).foregroundStyle(.green) + Text(character.planet)
+                        }
                         .padding(.bottom)
+                       
+                        
+                    }
                     Text(character.description).font(.title3) 
                         .foregroundStyle(Color.textColor)
                     

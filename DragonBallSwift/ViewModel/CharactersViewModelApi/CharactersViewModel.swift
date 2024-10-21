@@ -10,9 +10,9 @@ import Observation
 import SwiftUI
 
 @Observable
-class CharactersViewModel {
+class CharactersViewModel: CheractersProtocols {
     
-    private let charactersServer: CharactersService = CharactersService()
+  
     
     var characterModel: [CharactersModel] = []
     var isLoading: Bool = false
@@ -40,7 +40,7 @@ class CharactersViewModel {
     @MainActor
     func getCharacters() async {
         do {
-            characterModel = try await charactersServer.getCharacters(referent)
+            characterModel = try await getCharacters(referent)
         } catch {
             print("Upss, Ocurrió un error ->", error.localizedDescription)
         }
