@@ -25,3 +25,4 @@ enum ApiError: Error {
 protocol CheractersProtocols{
     func getCharacters(_ referent: String) async throws -> [CharactersModel]
 }
+

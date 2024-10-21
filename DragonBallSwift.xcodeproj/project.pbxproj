@@ -28,6 +28,9 @@
 		5ABF74A22C5C5A79000AC558 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF74A12C5C5A79000AC558 /* SearchBarView.swift */; };
 		5AC483DB2C60204200F4878D /* FavoriteCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC483DA2C60204200F4878D /* FavoriteCharactersView.swift */; };
 		5AE3DB3C2C51EAD000F95566 /* WikiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE3DB3B2C51EAD000F95566 /* WikiView.swift */; };
+		6E478D482CB3DE1700FED340 /* ExtensionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478D472CB3DE1700FED340 /* ExtensionProtocol.swift */; };
+		6E478D6A2CB49F3900FED340 /* CardTransformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478D692CB49F3900FED340 /* CardTransformationView.swift */; };
+		6E478D6C2CB4A09F00FED340 /* CaedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E478D6B2CB4A09F00FED340 /* CaedContent.swift */; };
 		6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */; };
 		6E5619222C0B1D3F00D4D5C1 /* DragonBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5619212C0B1D3F00D4D5C1 /* DragonBallView.swift */; };
 		6E56739C2C5B7E17002CF2D7 /* ImgeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E56739B2C5B7E17002CF2D7 /* ImgeExtension.swift */; };
@@ -58,7 +61,6 @@
 		6E600CED2C096B49002408CE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E600CEC2C096B49002408CE /* Styles.swift */; };
 		6E65E4252C8B7AAE0016230B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E65E4242C8B7AAE0016230B /* Assets.xcassets */; };
 		6E65E4292C8B7C260016230B /* ProtocolAndEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65E4282C8B7C260016230B /* ProtocolAndEnum.swift */; };
-		6E65E42C2C8B8A180016230B /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65E42B2C8B8A180016230B /* CharactersService.swift */; };
 		6E65E42E2C8B8C880016230B /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65E42D2C8B8C880016230B /* CharactersViewModel.swift */; };
 		6E6B6E162C8E633800F701E4 /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6B6E152C8E633800F701E4 /* ProfileSettingsView.swift */; };
 		6E757DF42C98707C00D5408D /* DragonBallSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65E4312C8B99550016230B /* DragonBallSView.swift */; };
@@ -132,6 +134,9 @@
 		5ABF74A12C5C5A79000AC558 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		5AC483DA2C60204200F4878D /* FavoriteCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharactersView.swift; sourceTree = "<group>"; };
 		5AE3DB3B2C51EAD000F95566 /* WikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiView.swift; sourceTree = "<group>"; };
+		6E478D472CB3DE1700FED340 /* ExtensionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProtocol.swift; sourceTree = "<group>"; };
+		6E478D692CB49F3900FED340 /* CardTransformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransformationView.swift; sourceTree = "<group>"; };
+		6E478D6B2CB4A09F00FED340 /* CaedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaedContent.swift; sourceTree = "<group>"; };
 		6E52A9DB2C0A873C000F2162 /* MemoryGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameViewModel.swift; sourceTree = "<group>"; };
 		6E5619212C0B1D3F00D4D5C1 /* DragonBallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallView.swift; sourceTree = "<group>"; };
 		6E56739B2C5B7E17002CF2D7 /* ImgeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgeExtension.swift; sourceTree = "<group>"; };
@@ -162,7 +167,6 @@
 		6E600CEC2C096B49002408CE /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		6E65E4242C8B7AAE0016230B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = AudioPlayerDynamicIsland/Assets.xcassets; sourceTree = "<group>"; };
 		6E65E4282C8B7C260016230B /* ProtocolAndEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolAndEnum.swift; sourceTree = "<group>"; };
-		6E65E42B2C8B8A180016230B /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
 		6E65E42D2C8B8C880016230B /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 		6E65E4312C8B99550016230B /* DragonBallSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallSView.swift; sourceTree = "<group>"; };
 		6E6B6E152C8E633800F701E4 /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 			children = (
 				5A6AAF7F2C532D0A00930C0A /* BasicCharacterCardView.swift */,
 				5ABF74A12C5C5A79000AC558 /* SearchBarView.swift */,
+				6E478D692CB49F3900FED340 /* CardTransformationView.swift */,
+				6E478D6B2CB4A09F00FED340 /* CaedContent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -296,6 +302,7 @@
 			children = (
 				5A33F87D2C5737740025A4E2 /* ColorExtension.swift */,
 				6E56739B2C5B7E17002CF2D7 /* ImgeExtension.swift */,
+				6E478D472CB3DE1700FED340 /* ExtensionProtocol.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -476,7 +483,6 @@
 		6E65E42A2C8B89C80016230B /* DragonballServer */ = {
 			isa = PBXGroup;
 			children = (
-				6E65E42B2C8B8A180016230B /* CharactersService.swift */,
 			);
 			path = DragonballServer;
 			sourceTree = "<group>";
@@ -768,16 +774,18 @@
 				6E56739E2C5B8094002CF2D7 /* CRImages.swift in Sources */,
 				6E5619222C0B1D3F00D4D5C1 /* DragonBallView.swift in Sources */,
 				6E56B1812C585FD100098F2C /* LShape.swift in Sources */,
+				6E478D482CB3DE1700FED340 /* ExtensionProtocol.swift in Sources */,
 				6E52A9DC2C0A873C000F2162 /* MemoryGameViewModel.swift in Sources */,
 				6E56B17B2C585F4600098F2C /* SquareShape.swift in Sources */,
 				5A6AAF802C532D0A00930C0A /* BasicCharacterCardView.swift in Sources */,
 				5A6AAF7D2C52D28700930C0A /* GamesView.swift in Sources */,
 				5A849D5C2C5AA3A4000AA691 /* FavoriteCharacter.swift in Sources */,
+				6E478D6C2CB4A09F00FED340 /* CaedContent.swift in Sources */,
 				6E56B1972C5863AB00098F2C /* IconsButtons.swift in Sources */,
 				6E56B1852C58602000098F2C /* SShape.swift in Sources */,
-				6E65E42C2C8B8A180016230B /* CharactersService.swift in Sources */,
 				6E56B1832C58600300098F2C /* JShape.swift in Sources */,
 				5A849D5A2C5A9E7A000AA691 /* FavoriteCharacterDataService.swift in Sources */,
+				6E478D6A2CB49F3900FED340 /* CardTransformationView.swift in Sources */,
 				6E65E4292C8B7C260016230B /* ProtocolAndEnum.swift in Sources */,
 				6E6B6E162C8E633800F701E4 /* ProfileSettingsView.swift in Sources */,
 				6E600CEB2C096B0A002408CE /* MemoryGameView.swift in Sources */,
@@ -918,7 +926,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -926,6 +934,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -975,12 +984,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				"SWIFT_COMPILATION_MODE[arch=*]" = wholemodule;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -994,7 +1005,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragonBallSwift/Preview Content\"";
-				DEVELOPMENT_TEAM = TW5ALJNBYM;
+				DEVELOPMENT_TEAM = W5HZTU6SV8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;
@@ -1005,6 +1016,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1028,7 +1040,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragonBallSwift/Preview Content\"";
-				DEVELOPMENT_TEAM = TW5ALJNBYM;
+				DEVELOPMENT_TEAM = W5HZTU6SV8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DragonBallSwift/Info.plist;
@@ -1039,6 +1051,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

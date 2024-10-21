@@ -16,14 +16,16 @@ struct DragonBallSwiftApp: App {
     
     var body: some Scene {
         WindowGroup {
-            switch loginFlowState {
-            case .loggedOut:
-                LoginView()
-                    .preferredColorScheme(isDarkMode ? .dark : .light)
-            case .loggedIn:
-                ContentView()
-                    .preferredColorScheme(isDarkMode ? .dark : .light)
-            }
+            ContentView()
+                .preferredColorScheme(isDarkMode ? .dark : .light)
+//            switch loginFlowState {
+//            case .loggedOut:
+//                LoginView()
+//                    .preferredColorScheme(isDarkMode ? .dark : .light)
+//            case .loggedIn:
+//                ContentView()
+//                    .preferredColorScheme(isDarkMode ? .dark : .light)
+//            }
         }
     }
 }
