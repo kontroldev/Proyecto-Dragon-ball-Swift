@@ -25,7 +25,7 @@ final class GoogleService {
     ///     - `NSError(domain: "No presenting view controller", code: 0, userInfo: nil)`: Indica que no se pudo obtener el controlador de vista para presentar la interfaz de Google Sign-In.
     ///     - `NSError(domain: "Authentication failed", code: 0, userInfo: nil)`: Indica que la autenticación con Google o Firebase falló.
     ///     - Cualquier otro error devuelto por el SDK de Google Sign-In o Firebase Auth.
-    func authenticate(completion: @escaping(Result<Bool, Error>) -> Void) {
+    @MainActor func authenticate(completion: @escaping(Result<Bool, Error>) -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             completion(.failure(NSError(domain: "Falta el client ID de Firebase", code: 0, userInfo: nil)))
             return

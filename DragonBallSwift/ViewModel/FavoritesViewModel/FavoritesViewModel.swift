@@ -9,7 +9,7 @@ import Foundation
 import Observation
 
 @Observable
-class FavoritesViewModel: CheractersProtocols {
+class FavoritesViewModel:@unchecked Sendable, CheractersProtocols {
     private let favoriteCharactersDataBaseService = FavoriteCharacterDataBaseService()
 
     var favoriteCharactersIDs: [FavoriteCharacter] = []

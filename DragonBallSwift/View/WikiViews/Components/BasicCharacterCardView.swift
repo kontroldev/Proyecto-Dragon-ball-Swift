@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct BasicCharacterCardView: View {
+struct BasicCharacterCardView: @unchecked Sendable, View {
     
     @Environment(FavoritesViewModel.self) var favoriteCharactersViewModel
     @AppStorage("isDarkMode") private var isDarkMode = false

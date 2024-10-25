@@ -15,7 +15,7 @@ class LoginViewModel {
     var showError: Bool = false
     var errorMessage: String = ""
     
-    func signInWithGoogle(completion: @escaping(Bool) -> Void) {
+    @MainActor func signInWithGoogle(completion: @escaping(Bool) -> Void) {
         googleService.authenticate { result in
             switch result {
             case .success(let success):

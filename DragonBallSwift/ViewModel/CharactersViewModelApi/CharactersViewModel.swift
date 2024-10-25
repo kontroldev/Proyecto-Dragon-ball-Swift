@@ -10,16 +10,14 @@ import Observation
 import SwiftUI
 
 @Observable
-class CharactersViewModel: CheractersProtocols {
-    
-  
+class CharactersViewModel: @unchecked Sendable, CheractersProtocols{
     
     var characterModel: [CharactersModel] = []
     var isLoading: Bool = false
     var sagas: String
     var referent: String
     var logo: String
-    
+    var work: Task<Void, Never>?
     // Define las columnas dentro delña vistas de listados
     let columns = [GridItem(), GridItem()]
     
@@ -30,12 +28,12 @@ class CharactersViewModel: CheractersProtocols {
         
         // Llamada inicial para cargar personajes del modelo especificado
         Task {
-            isLoading = true
-            await getCharacters()
+             isLoading = true
+            await  getCharacters()
             isLoading = false
         }
+        
     }
-    
     
     @MainActor
     func getCharacters() async {
@@ -45,7 +43,6 @@ class CharactersViewModel: CheractersProtocols {
             print("Upss, Ocurrió un error ->", error.localizedDescription)
         }
     }
-    
     
     @MainActor
     func searchCharacer(characterName: String) -> [CharactersModel] {
