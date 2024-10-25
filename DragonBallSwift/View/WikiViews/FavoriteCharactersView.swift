@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FavoriteCharactersView: View {
+struct FavoriteCharactersView: @unchecked Sendable, View {
 
     @Environment(FavoritesViewModel.self) var favoriteViewModel
     @Environment(\.dismiss) var dismiss

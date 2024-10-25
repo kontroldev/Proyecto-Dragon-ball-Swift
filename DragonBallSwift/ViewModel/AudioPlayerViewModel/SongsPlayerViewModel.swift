@@ -19,7 +19,7 @@ extension TimeInterval {
         return String(format: "%02i:%02i", minutes, seconds)
     }
 }
-class SongsPlayerViewModel: ObservableObject {
+class SongsPlayerViewModel: @unchecked Sendable, ObservableObject {
     @Published var currentTime: TimeInterval = 0
     @Published var duration: TimeInterval = 0
     @Published var currentSongIndex = 0 {

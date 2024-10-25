@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Firebase
+@preconcurrency import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
@@ -32,6 +32,7 @@ final class FavoriteCharacterDataBaseService {
     /// Obtiene todos los personajes favoritos desde la lista de favoritos del usuario en Firestore
     /// - Returns: Un arreglo `[FavoriteCharacter]` con todos los personajes de la lista de favoritos del usuario
     /// - Throws: Lanza un error si ocurre un problema al obtener la lista de personajes favoritos dese Firestore
+    @MainActor
     func getFavorites() async throws  -> [FavoriteCharacter] {
         do {
             let snapshot = try await database.collection(usersCollection).document(uid).collection(favoriteCharactersCollection).getDocuments()
