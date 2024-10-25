@@ -22,6 +22,7 @@ Para este proyecto, utilizaremos las siguientes herramientas y lenguajes de prog
 - **Trello**: Es la herramienta que utilizaremos para hacer seguimiento del proyecto. (Si quieres colaborar, pide acceso al Kamban en el grupo de estudio)
 - **API**: Usamos una API de Dragon Ball creada y usada para la comunidad disponible [aquí](https://apidragonball.vercel.app)
 - Versión actual del proyecto en: **iOS 18**
+- Versión del compilador: **Swift 6**
 
 ## Seguimiento del proyecto
 
