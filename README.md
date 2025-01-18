@@ -32,7 +32,7 @@ Para el seguimiento del proyecto, utilizaremos Trello. Puedes ver el tablero del
 
 Usamos la API de Dragon Ball para obtener datos y mejorar la funcionalidad de nuestra app.
  
-La API está disponible [aquí](https://apidragonball.vercel.app) y es mantenida por [Juan Pablo](https://github.com/juanppdev).
+La API está disponible [aquí](https://www.dragonballapi.com) y es mantenida por [Juan Pablo](https://github.com/juanppdev).
 
 ## Contacto
 
