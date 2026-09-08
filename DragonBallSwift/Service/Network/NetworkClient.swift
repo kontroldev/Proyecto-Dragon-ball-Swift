@@ -31,23 +31,33 @@ final class NetworkClient: NetworkClientProtocol {
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue.uppercased()
+
+        let data: Data
+        let response: URLResponse
         do {
-            let (data, response) = try await urlSession.getDataFrom(request, type: T.self)
-            guard let response = response as? HTTPURLResponse else {
-                throw ApiError.invalidResponse
-            }
-            Log.thisRequest(response, data: data, request: request)
-            if (200..<300).contains(response.statusCode) {
-                return try JSONDecoder().decode(T.self, from: data)
-            } else if (400..<499).contains(response.statusCode) {
-                throw ApiError.notFound
-            } else if response.statusCode == 500 {
-                throw ApiError.clientError
-            } else {
-                throw ApiError.badResponse
-            }
+            (data, response) = try await urlSession.getDataFrom(request, type: T.self)
         } catch {
-            throw ApiError.badRequest
+            throw ApiError.requestFailed(error)
+        }
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw ApiError.invalidResponse
+        }
+        Log.thisRequest(httpResponse, data: data, request: request)
+
+        switch httpResponse.statusCode {
+        case 200..<300:
+            do {
+                return try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                throw ApiError.decodingFailed(error)
+            }
+        case 400..<500:
+            throw ApiError.notFound
+        case 500..<600:
+            throw ApiError.serverError
+        default:
+            throw ApiError.badResponse
         }
     }
 }

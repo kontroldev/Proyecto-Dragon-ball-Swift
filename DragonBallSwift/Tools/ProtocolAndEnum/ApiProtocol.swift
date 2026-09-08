@@ -4,14 +4,14 @@
 //
 //  Created by Esteban Perez Castillejo on 17/7/24.
 //
-//
-//import Foundation
-//
-//// MARK: - Protocolo que define la interfaz para obtener todos los personajes.
-//protocol AllCheractersProtocols{
-//    func getCharacters(_ referent: String) async throws -> [CharactersModel]
-//}
-//
+
+import Foundation
+
+// MARK: - Protocolo que define la interfaz para obtener todos los personajes de dragonball-api.com
+protocol AllCheractersProtocols {
+    func getAllCheracters() async throws -> Characters
+}
+
 //// MARK: - Protocolo que define la interfaz para obtener todos los planetas.
 //protocol AllDragonsProtocols {
 //    func getDragons() async throws -> [DragonsModel]
