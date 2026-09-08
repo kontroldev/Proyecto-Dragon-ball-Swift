@@ -16,7 +16,7 @@ struct SingleCharacter: Codable {
     let affiliation: String
     let deletedAt: Date?
     let originPlanet: OriginPlanet
-    let transformations: [Transformation]
+    let transformations: [APITransformation]
 }
 
 // MARK: - OriginPlanet
@@ -30,7 +30,7 @@ struct OriginPlanet: Codable {
 }
 
 // MARK: - Transformation
-struct Transformation: Codable {
+struct APITransformation: Codable {
     let id: Int
     let name: String
     let image: String
