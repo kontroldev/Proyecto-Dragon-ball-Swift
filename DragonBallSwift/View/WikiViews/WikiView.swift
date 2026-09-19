@@ -10,12 +10,11 @@ import SwiftUI
 struct WikiView: View {
     
     let menuItem = [
-        ItemMenu(name: "Dragon Ball", imegenName: "DBLogo", destination: AnyView(DragonBallView(referent: "dragonball", logo: "DBLogo", sagas: "Dragon Ball"))),
-        ItemMenu(name: "Dragon Ball Z", imegenName: "ZLogo", destination: AnyView(DragonBallView(referent: "dragonballz", logo: "ZLogo", sagas: "Dragon Ball Z"))),
-        ItemMenu(name: "Dragon Ball GT", imegenName: "GTLogo", destination: AnyView(DragonBallView(referent: "dragonballgt", logo: "GTLogo", sagas: "Dragon Ball GT"))),
-        ItemMenu(name: "Dragon Ball Super", imegenName: "SuperLogo", destination: AnyView(DragonBallView(referent: "dragonballsuper", logo: "SuperLogo", sagas: "Dragon Ball Super"))),
-        
-        ItemMenu(name: "Dragones", imegenName: "LogoDragones", destination: AnyView(DragonBallView(referent: "dragons", logo: "LogoDragones", sagas: "Dragones")))
+        ItemMenu(name: "Todos los personajes", imegenName: "DBLogo", destination: AnyView(DragonBallView(referent: "all", logo: "DBLogo", sagas: "Personajes"))),
+        ItemMenu(name: "Guerreros Z", imegenName: "ZLogo", destination: AnyView(DragonBallView(referent: "z-fighter", logo: "ZLogo", sagas: "Guerreros Z"))),
+        ItemMenu(name: "Villanos", imegenName: "GTLogo", destination: AnyView(DragonBallView(referent: "villain", logo: "GTLogo", sagas: "Villanos"))),
+        ItemMenu(name: "Saiyans", imegenName: "SuperLogo", destination: AnyView(DragonBallView(referent: "saiyan", logo: "SuperLogo", sagas: "Saiyans"))),
+        ItemMenu(name: "Androides", imegenName: "LogoDragones", destination: AnyView(DragonBallView(referent: "android", logo: "LogoDragones", sagas: "Androides")))
     ]
     
     @State private var showFavorites: Bool = false
@@ -62,7 +61,7 @@ struct WikiView: View {
                     }
                 }
             }
-            .navigationTitle("Sagas")
+            .navigationTitle("Personajes")
             .background(LinearGradient(
                 gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
                 startPoint: .top,

@@ -6,7 +6,7 @@ También puedes consultar [la versión del proyecto en Kotlin](https://github.co
 
 ## Funcionalidades principales
 
-- Wiki de personajes organizada por sagas: Dragon Ball, Dragon Ball Z, Dragon Ball GT, Dragon Ball Super y Dragones.
+- Wiki de personajes organizada con los filtros públicos disponibles: todos, Guerreros Z, villanos, Saiyans y androides.
 - Buscador de personajes y sección de favoritos.
 - Autenticación y persistencia de favoritos mediante Firebase.
 - Reproductor de música.
@@ -17,11 +17,22 @@ También puedes consultar [la versión del proyecto en Kotlin](https://github.co
 
 La rama `refactorizacion` moderniza la obtención de datos y corrige varios problemas de estabilidad sin eliminar las funcionalidades existentes del proyecto.
 
+### Cambios del 19 de septiembre de 2026
+
+- Se sustituyen los endpoints antiguos que habían dejado de responder por la API pública `https://dragonball-api.com/api/characters`.
+- Las cartas de personajes y los favoritos comparten ahora el mismo servicio de red y el mismo mapeo de modelos.
+- Las categorías anteriores por saga se reemplazan por filtros compatibles con el JSON actual: todos los personajes, Guerreros Z, villanos, Saiyans y androides.
+- Se corrige el buscador para que una consulta sin coincidencias no vuelva a mostrar automáticamente todos los personajes.
+- Se añade un estado de error visible con una acción para reintentar la descarga de las cartas.
+- Las imágenes de la vista de detalle conservan su proporción original mediante `.scaledToFit()`, evitando que aparezcan ensanchadas o aplastadas.
+- Se actualiza este README para documentar la migración y las correcciones realizadas.
+
 ### Red, modelos y favoritos
 
 - Se incorpora un cliente de red reutilizable basado en protocolos para desacoplar las peticiones de `URLSession`.
 - Los errores de URL, conexión, respuesta HTTP y decodificación se conservan y se traducen en mensajes comprensibles para la interfaz.
-- La carga de favoritos deja de realizar cinco peticiones, una por saga, y utiliza una única petición al listado de personajes de [Dragon Ball API](https://dragonball-api.com).
+- La wiki y la carga de favoritos utilizan una única petición al listado de personajes de [Dragon Ball API](https://dragonball-api.com).
+- Los filtros de la wiki se aplican sobre los campos `affiliation` y `race` del JSON actual, sin depender de las antiguas rutas por saga.
 - `CharacterMapping.swift` adapta el modelo recibido desde la API al modelo que ya utilizan las vistas, manteniendo compatible la interfaz existente.
 - `FavoritesViewModel` admite inyección del servicio de personajes, lo que reduce el acoplamiento y facilita futuras pruebas.
 - Los nuevos servicios, modelos y archivos de red se han incorporado correctamente al target principal de Xcode.
@@ -31,19 +42,15 @@ La rama `refactorizacion` moderniza la obtención de datos y corrige varios prob
 - La búsqueda de personajes ignora mayúsculas, minúsculas y espacios innecesarios.
 - Los errores de carga dejan de mostrarse únicamente en la consola y pasan a estar disponibles para la interfaz.
 - Se elimina un fondo duplicado en la vista principal y se corrige el texto de la pestaña «Opciones».
+- Las imágenes de la vista de detalle conservan ahora su proporción original mediante `.scaledToFit()`, evitando que los personajes aparezcan ensanchados o aplastados.
 - El análisis de colores de las imágenes evita accesos forzados que podían cerrar la app.
 - El procesamiento intensivo de píxeles se ejecuta fuera del actor principal usando datos seguros para concurrencia, mientras las actualizaciones visuales permanecen en el actor principal.
 
 ## APIs utilizadas
 
-Actualmente conviven dos formatos de datos:
+La wiki y los favoritos consumen `https://dragonball-api.com/api/characters`, una API pública que devuelve JSON mediante peticiones GET y no requiere clave para estas consultas.
 
-- El nuevo flujo de favoritos utiliza `https://dragonball-api.com/api/characters`.
-- Las vistas organizadas por saga conservan temporalmente la integración anterior mediante rutas como `https://www.dragonballapi.com/dragonball` y `https://www.dragonballapi.com/dragonballz`.
-
-La API de comunidad documentada originalmente por el proyecto puede consultarse en [www.dragonballapi.com](https://www.dragonballapi.com) y se atribuye a [Juan Pablo](https://github.com/juanppdev).
-
-El repositorio también conserva implementaciones históricas que hacen referencia a `https://apidragonball.vercel.app`. No forman parte del nuevo flujo de favoritos y deberán revisarse si se completa la migración de todas las sagas a una única API.
+El código conserva algunas implementaciones históricas comentadas que hacen referencia a `www.dragonballapi.com` y `apidragonball.vercel.app`, pero ya no forman parte del flujo utilizado por las cartas.
 
 ## Organización del proyecto
 

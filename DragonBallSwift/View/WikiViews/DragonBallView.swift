@@ -28,27 +28,45 @@ struct DragonBallView: View {
     @State private var characterName: String = ""
     
     let columns = [GridItem(), GridItem()]
+
+    private var displayedCharacters: [CharactersModel] {
+        characterName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            ? viewModel.characterModel
+            : searchedCharacters
+    }
     
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(searchedCharacters.isEmpty ? viewModel.characterModel : searchedCharacters, id: \.id) { character in
-                            NavigationLink{
-                                SagasViewDetails(character: character, logoDB: $viewModel.logo)
-                            } label: {
-                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: favoritesViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
-                                    .environment(favoritesViewModel)
+                if viewModel.showError && viewModel.characterModel.isEmpty {
+                    ContentUnavailableView {
+                        Label("No se pudieron cargar las cartas", systemImage: "wifi.exclamationmark")
+                    } description: {
+                        Text(viewModel.errorMessage)
+                    } actions: {
+                        Button("Reintentar") {
+                            Task { await viewModel.getCharacters() }
+                        }
+                    }
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(displayedCharacters, id: \.id) { character in
+                                NavigationLink{
+                                    SagasViewDetails(character: character, logoDB: $viewModel.logo)
+                                } label: {
+                                    BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: favoritesViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                        .environment(favoritesViewModel)
+                                }
                             }
                         }
                     }
                 }
-                .overlay {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .scaleEffect(1.5)
-                    }
+            }
+            .overlay {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .scaleEffect(1.5)
                 }
             }
             .navigationTitle("\(viewModel.sagas)")
@@ -72,6 +90,6 @@ struct DragonBallView: View {
 }
 
 #Preview {
-    DragonBallView(referent: "dragonball", logo: "DBLogo", sagas: "Dragon Ball")
+    DragonBallView(referent: "all", logo: "DBLogo", sagas: "Personajes")
         .environment(FavoritesViewModel())
 }

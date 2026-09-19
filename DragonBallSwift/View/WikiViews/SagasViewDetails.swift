@@ -34,7 +34,8 @@ struct SagasViewDetails: View {
                         AsyncImage(url: URL(string: character.image)) { image in
                             image
                                 .resizable()
-                                .frame(width: 400, height: 400, alignment: .center)
+                                .scaledToFit()
+                                .frame(maxWidth: 400, maxHeight: 400, alignment: .center)
                                 .offset(y: 15) // Ponemos un 15, para bajar la imagen
                                 .onAppear{
                                     if let uiImage = image.asUIImage() {

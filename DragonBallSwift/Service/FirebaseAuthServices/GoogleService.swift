@@ -11,6 +11,12 @@ import Firebase
 import GoogleSignIn
 
 
+/// Envoltorio para pasar de forma segura un closure no-Sendable a través de una frontera `@Sendable`.
+/// El SDK de Google Sign-In invoca su completion de forma serial en el hilo principal, por lo que no hay una condición de carrera real.
+private struct UncheckedSendableBox<Value>: @unchecked Sendable {
+    let value: Value
+}
+
 final class GoogleService {
     var showError = false
     var errorMessage: String = ""
@@ -39,26 +45,27 @@ final class GoogleService {
             return
         }
         
+        let boxedCompletion = UncheckedSendableBox(value: completion)
         GIDSignIn.sharedInstance.signIn(withPresenting: presentingVC) { user, error in
             if let error = error {
                 print(error.localizedDescription)
                 //Si el usuario cancela la acción de inciar con google se devuelve un false
-                completion(.success(false))
+                boxedCompletion.value(.success(false))
                 return
             }
-            
+
             guard let authentication = user?.user, let idToken = user?.user.idToken else {
-                completion(.failure(NSError(domain: "Falló la autenticación", code: 0, userInfo: nil)))
+                boxedCompletion.value(.failure(NSError(domain: "Falló la autenticación", code: 0, userInfo: nil)))
                 return
             }
-            
+
             let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: authentication.accessToken.tokenString)
-            
+
             Auth.auth().signIn(with: credential) { authResult, error in
                 if let error = error {
-                    completion(.failure(error))
+                    boxedCompletion.value(.failure(error))
                 } else {
-                    completion(.success(true))
+                    boxedCompletion.value(.success(true))
                 }
             }
         }
