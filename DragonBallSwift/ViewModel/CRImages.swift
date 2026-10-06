@@ -1,21 +1,11 @@
+import Observation
 //
 //  CRImages.swift
 //  DragonBallSwift
 //
 //  Created by Esteban Perez Castillejo on 1/8/24.
 //
-//  ⚠️ ARREGLADO:
-//  1. `CGContext(...)!` usaba un force-unwrap: si la creación del
-//     contexto fallaba (memoria baja, imagen corrupta...) la app
-//     crasheaba. Ahora se comprueba con `guard let`.
-//  2. El análisis de píxeles (bucle sobre cada uno de 50x50 = 2500
-//     píxeles) se ejecutaba directamente en el hilo desde el que se
-//     llamaba, que normalmente es el principal (UI). Ahora se hace
-//     en un Task con prioridad de background y se vuelve a `@MainActor`
-//     solo para publicar el resultado.
-
 import SwiftUI
-import Observation
 
 @Observable
 @MainActor
@@ -72,16 +62,17 @@ final class CRImages {
         var bytes = [UInt8](repeating: 0, count: width * height * 4)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
 
-        // FIX: antes era `CGContext(...)!`, forzando el unwrap. Si esta
-        // creación fallaba, la app crasheaba. Ahora se sale limpiamente.
         let didDraw = bytes.withUnsafeMutableBytes { rawBuffer -> Bool in
-            guard let context = CGContext(data: rawBuffer.baseAddress,
-                                          width: width,
-                                          height: height,
-                                          bitsPerComponent: 8,
-                                          bytesPerRow: width * 4,
-                                          space: colorSpace,
-                                          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
+            guard
+                let context = CGContext(
+                    data: rawBuffer.baseAddress,
+                    width: width,
+                    height: height,
+                    bitsPerComponent: 8,
+                    bytesPerRow: width * 4,
+                    space: colorSpace,
+                    bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
+            else {
                 return false
             }
             context.draw(inputImage, in: CGRect(x: 0, y: 0, width: width, height: height))
@@ -134,7 +125,8 @@ final class CRImages {
                         closestClusterIndex = index
                     }
                 }
-                clusters[closestClusterIndex] = mixColors(color1: clusters[closestClusterIndex], color2: color)
+                clusters[closestClusterIndex] = mixColors(
+                    color1: clusters[closestClusterIndex], color2: color)
             }
         }
 

@@ -4,16 +4,11 @@
 //
 //  Created by Raúl Gallego Alonso on 29/5/24.
 //
-//  ⚠️ ARREGLADO:
-//  1. La pestaña decía "Obciones" en vez de "Opciones".
-//  2. Había un ZStack anidado pintando dos fondos distintos
-//     (Color.backgroundColorEX y Color("BackgroundColor")), uno encima
-//     del otro. El de abajo queda completamente tapado por el de arriba,
-//     así que era código muerto: se deja solo el fondo que realmente se ve.
-
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(SessionStore.self) private var session
+    @State private var showsLogin = false
 
     @State private var favoritesViewModel: FavoritesViewModel = FavoritesViewModel()
 
@@ -23,7 +18,6 @@ struct ContentView: View {
                 .ignoresSafeArea()
             TabView {
                 WikiView()
-                    .environment(favoritesViewModel)
                     .tabItem {
                         Label("Wiki", systemImage: "books.vertical.fill")
                             .tint(.accentColor)
@@ -40,14 +34,27 @@ struct ContentView: View {
                     }
                 ProfileSettingsView()
                     .tabItem {
-                        // FIX: "Obciones" -> "Opciones"
                         Label("Opciones", systemImage: "gearshape.2.fill")
                             .tint(.accentColor)
                     }
             }
         }
+        .environment(favoritesViewModel)
+        .task(id: session.userID) {
+            favoritesViewModel.resetForSession()
+            await favoritesViewModel.getFavoriteCharactersIDs()
+        }
+        .sheet(isPresented: $showsLogin) { LoginView() }
+        .alert("Favoritos", isPresented: $favoritesViewModel.showError) {
+            if session.userID == nil {
+                Button("Iniciar sesión") { showsLogin = true }
+            }
+            Button("Aceptar", role: .cancel) {}
+        } message: {
+            Text(favoritesViewModel.errorMessage)
+        }
     }
 }
 #Preview {
-    ContentView()
+    ContentView().environment(SessionStore())
 }

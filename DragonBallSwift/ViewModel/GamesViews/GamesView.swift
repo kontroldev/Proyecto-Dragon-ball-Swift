@@ -12,7 +12,9 @@ struct GamesView: View {
     
     let menuItems = [
         GameItemMenu(name: .memoryGame, imegenName: "logoDBGM", destination: AnyView(MemoryGameView())),
-        GameItemMenu(name: .tetrix, imegenName: "GokuTetrix", destination: AnyView(HomeTreixView()))
+        GameItemMenu(name: .tetrix, imegenName: "GokuTetrix", destination: AnyView(HomeTreixView())),
+        GameItemMenu(name: .battleCards, imegenName: "GokuPeque", destination: AnyView(BattleCardsView())),
+        GameItemMenu(name: .battleOnline, imegenName: "Bulma", destination: AnyView(BattleOnlineView()))
     ]
     
     var body: some View {

@@ -12,38 +12,42 @@ import Observation
 @Observable
 class AllCheractersViewModel {
 
-    var allCheracters: [Character] = []      /// Lista de todos los personajes
-    var searchedCharecters: [Character] = [] /// Lista de personajes buscados
-    var isLoading: Bool = false              /// Flag para indicar si la carga está en curso
-    var showErroMessege: Bool = false        /// Flag para indicar si se debe mostrar un mensaje de error
-    var errorMessage: String = ""            /// Mensaje de error
-    
+    var allCheracters: [Character] = []
+    /// Lista de todos los personajes
+    var searchedCharecters: [Character] = []
+    /// Lista de personajes buscados
+    var isLoading: Bool = false
+    /// Flag para indicar si la carga está en curso
+    var showErroMessege: Bool = false
+    /// Flag para indicar si se debe mostrar un mensaje de error
+    var errorMessage: String = ""
+    /// Mensaje de error
+
     /// Servicio para obtener todos los personajes
-    private let allCheracteersService: AllCheracteersService
+    private let allCheracteersService: CharacterCatalogService
     /// Constructor
-    init(allCheracteersService: AllCheracteersService){
+    init(allCheracteersService: CharacterCatalogService) {
         self.allCheracteersService = allCheracteersService
-        Task{
-            await getAllCheracters()
+        Task {
+            await fetchCharacters()
         }
     }
-    
+
     /// Obtine todo los caracteres y los almacena en la propiedad `allCheracters`
     @MainActor
-    func getAllCheracters() async {
+    func fetchCharacters() async {
         do {
-            allCheracters = try await allCheracteersService.getAllCheracters().items
-        }catch {
+            allCheracters = try await allCheracteersService.fetchCharacters().items
+        } catch {
             print(error)
             errorMessage = ""
             showErroMessege.toggle()
         }
     }
-    
-    
+
     /// Permite buscar un personaje por el nombre y lo guarda en la propiedad `searchedCharacters`
-    func searchCharacters(characterName name: String){
-        searchedCharecters = allCheracters.filter({$0.name.contains(name)})
+    func searchCharacters(characterName name: String) {
+        searchedCharecters = allCheracters.filter({ $0.name.contains(name) })
     }
-    
+
 }

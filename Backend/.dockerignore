@@ -1,0 +1,7 @@
+.build
+.swiftpm
+.vercel
+.env
+.env.*
+Tests
+README.md

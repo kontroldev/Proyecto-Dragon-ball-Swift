@@ -9,16 +9,16 @@ import SwiftUI
 
 struct GameOverMGView: View {
     @Bindable var memoryViewModel: MemoryGameViewModel
-    
+
     @State private var buttonRadius: CGFloat = 20.0
     @State private var isGameOver: Bool = false
-    
+
     var body: some View {
-        VStack{
-            Text("GAME OVER").font(.custom("SaiyanSans", size: 50))
+        VStack {
+            Text("FIN DE PARTIDA").font(.custom("SaiyanSans", size: 50))
                 .foregroundStyle(.yellow).padding(5)
                 .shadow(color: .red, radius: 10)
-            Button("Star Game"){
+            Button("Volver a jugar") {
                 memoryViewModel.resetGameAll(cardList: memoryViewModel.cardList)
             }.padding(8)
                 .background(
@@ -31,14 +31,14 @@ struct GameOverMGView: View {
                     .stroke(Color.white, lineWidth: 2)
                     .background(Color("CardColor").opacity(0.70))
                     .clipShape(.rect(cornerRadius: 8))
-                ).clipShape(.rect(cornerRadius: 8))
-                .zIndex(1)
-                .shadow(color: .blue, radius: 10)
-                .onAppear{
-                    withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)){
-                        self.buttonRadius = 50.0
-                    }
+            ).clipShape(.rect(cornerRadius: 8))
+            .zIndex(1)
+            .shadow(color: .blue, radius: 10)
+            .onAppear {
+                withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                    self.buttonRadius = 50.0
                 }
+            }
     }
 }
 

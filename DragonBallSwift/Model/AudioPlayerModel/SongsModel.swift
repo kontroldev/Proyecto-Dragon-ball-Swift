@@ -8,7 +8,7 @@
 import Foundation
 
 struct SongsModel {
-    let arrayOfSongs: [SongsViewModel] = [
+    let arrayOfSongs: [SongResource] = [
         .init(name: "Dragon Ball 1"),
         .init(name: "Dragon Ball 2"),
         .init(name: "Dragon Ball GT"),

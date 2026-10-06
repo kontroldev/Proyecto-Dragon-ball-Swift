@@ -8,82 +8,48 @@
 import SwiftUI
 
 struct ProfileSettingsView: View {
-    @AppStorage("LoginFlowState") private var loginFlowState = UserLoginState.loggedOut
+    @Environment(SessionStore.self) private var session
     @AppStorage("isDarkMode") private var isDarkMode = false
-    
+    @State private var showsLogin = false
+    @State private var showsError = false
+    @State private var errorMessage = ""
+
     var body: some View {
-        NavigationStack{
-            VStack{
-                    // Cierra la sesion
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .foregroundStyle(LinearGradient(
-                            gradient: Gradient(colors: [.cardColorEX, .cardColor]),
-                            startPoint: .top,
-                            endPoint: .bottom
-                        ))
-                        .frame(height: 60)
-                        .overlay{
-                            // Elementos de formulario ....
-                            HStack{
-                                Button(action: {
-                                    loginFlowState = .loggedOut}
-                                ) {
-                                    Label("Cerrar Sesión", systemImage: "power")
-                                        .foregroundColor(.red)
+        NavigationStack {
+            Form {
+                Section("Cuenta") {
+                    if session.userID == nil {
+                        Button("Iniciar sesión") { showsLogin = true }
+                    } else {
+                        Button("Cerrar sesión", role: .destructive) {
+                            Task {
+                                do { try await session.signOut() } catch {
+                                    errorMessage = error.localizedDescription
+                                    showsError = true
                                 }
-                                Spacer()
-                            }.padding()
-                        }.padding(.horizontal)
-                    RoundedRectangle(cornerRadius: 10.0)
-                        .foregroundStyle(LinearGradient(
-                            gradient: Gradient(colors: [.cardColorEX, .cardColor]),
-                            startPoint: .top,
-                            endPoint: .bottom
-                        ))
-                        .frame(height: 60)
-                        .overlay{
-                            // Cambia entre modo oscuro y modo claro
-                            Toggle(isOn: $isDarkMode) {
-                                Label(isDarkMode ? "Modo Claro" : "Modo Oscuro", systemImage: isDarkMode ? "sun.max.fill" : "moon.fill")
-                            }.padding()
-                            
-                        }.padding(.horizontal)
-                
-                Form{
- 
-                    Section("Quienes somos"){
-                        
-                        Text("Participantes del proyecto: ").font(.title2.bold())
-                        Text("""
-                              KontrolDev
-                              ManuelCBR
-                              Yeikobu
-                              Lordzzz
-                            """)
-                        Text("Objetivos del proyecto:").font(.title2.bold())
-                        Text("Ojetivos .....")
+                            }
+                        }
                     }
-                    
-                }.scrollContentBackground(.hidden)
-                    .background(LinearGradient(
-                        gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
-                        startPoint: .top,
-                        endPoint: .bottom
-                    ))
-                
-                
+                }
+                Section("Apariencia") {
+                    Toggle("Modo oscuro", isOn: $isDarkMode)
+                }
+                Section("Quiénes somos") {
+                    Text(
+                        "Proyecto colaborativo para aprender Swift y SwiftUI con una wiki y minijuegos de Dragon Ball."
+                    )
+                    Text("KontrolDev · ManuelCBR · Yeikobu · Lordzzz")
+                }
             }
-            .navigationTitle("Opciones:")
-            .scrollContentBackground(.hidden)
-            .background(LinearGradient(
-                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
-                startPoint: .top,
-                endPoint: .bottom
-            ))
+            .navigationTitle("Opciones")
+            .sheet(isPresented: $showsLogin) { LoginView() }
+            .alert("No se pudo cerrar la sesión", isPresented: $showsError) {
+                Button("Aceptar", role: .cancel) {}
+            } message: {
+                Text(errorMessage)
+            }
         }
     }
 }
 
-#Preview {
-    ProfileSettingsView()
-}
+#Preview { ProfileSettingsView().environment(SessionStore()) }

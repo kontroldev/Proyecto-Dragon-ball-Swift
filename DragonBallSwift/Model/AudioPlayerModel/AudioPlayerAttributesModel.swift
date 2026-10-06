@@ -8,12 +8,13 @@
 import ActivityKit
 import Foundation
 
-struct AudioPlayerAttributesModel: ActivityAttributes {
-    public struct ContentState: Codable, Hashable {
+struct AudioPlayerAttributesModel: ActivityAttributes, Sendable {
+    public struct ContentState: Codable, Hashable, Sendable {
         var songName: String
         var url: URL?
         var currentTime: TimeInterval = 0
         var duration: TimeInterval = 0
+        var startedAt: Date? = nil
         var isPlaying: Bool
     }
 }

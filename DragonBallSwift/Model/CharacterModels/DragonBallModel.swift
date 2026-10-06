@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - Modelo de todo los personajes
-struct CharactersModel: Codable  {
+struct CharactersModel: Codable {
     let id: Int
     let name: String
     let genre: String
@@ -18,6 +18,7 @@ struct CharactersModel: Codable  {
     let planet: String
     let description, biography: String
     let transformations: [Transformation]
+    var affiliation: String = ""
 }
 
 // MARK: - Transformation
@@ -26,9 +27,8 @@ struct Transformation: Codable {
     let title: String?
     let image: String
     let description: String
-//    let trans: Int?
+    //    let trans: Int?
 }
-
 
 struct ItemMenu: Identifiable {
     var id = UUID()
@@ -38,9 +38,11 @@ struct ItemMenu: Identifiable {
 }
 
 enum GameNames: String {
-//    case none = ""
+    //    case none = ""
     case memoryGame = "Memory game"
     case tetrix = "Tetrix"
+    case battleCards = "Cartas vs máquina"
+    case battleOnline = "Cartas online"
 }
 
 struct GameItemMenu: Identifiable {

@@ -6,114 +6,41 @@
 //
 
 import ActivityKit
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
+/// Muestra el estado publicado por la app, sin crear otro reproductor.
 @main
 struct AudioPlayerDynamicIslandLiveActivity: Widget {
-    
-    @State private var activityIdentifier: String = ""
-    @EnvironmentObject var songsPlayer: SongsPlayerViewModel
-
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: AudioPlayerAttributesModel.self) { context in
-            // Lock screen/banner UI goes here
-            VStack {
-                Text("Hello)")
+            VStack(alignment: .leading, spacing: 8) {
+                Label(context.state.songName, systemImage: "music.note")
+                Text(context.state.isPlaying ? "Reproduciendo" : "En pausa")
+                playbackProgress(context.state)
             }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
-
+            .padding()
         } dynamicIsland: { context in
             DynamicIsland {
-                DynamicIslandExpandedRegion(.leading) {
-                    VStack(alignment: .center){
-                        if let _ = UIImage(named: "DragonBallZDI") {
-                                    Image("DragonBallZDI")
-                                        .resizable()
-                                        .frame(width: 45, height: 45)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                } else {
-                                    Text("Imagen no encontrada")
-                                        .foregroundColor(.red)
-                                }
-                    }
-                    .padding(.leading, 20)
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text(String(context.state.currentTime.toTimeString()))
-                        .padding(.trailing, 20)
-                }
-                DynamicIslandExpandedRegion(.center) {
-                    Text(context.state.songName)
-                }
-                DynamicIslandExpandedRegion(.bottom){
-                    VStack{
-                        ProgressView(value: context.state.currentTime, total: context.state.duration)
-                            .progressViewStyle(LinearProgressViewStyle(tint: .gray))
-                            .padding(.top, 10)
-                            .padding(.horizontal, 20)
-                            .padding(.bottom, 10)
-                        HStack{
-                            Button(action: {
-                                if context.state.isPlaying {
-                                    songsPlayer.pause()
-                                } else {
-                                    if let url = context.state.url {
-                                        songsPlayer.play(withURL: url)
-                                    }
-                                }
-                            }, label: {
-                                Image(systemName: context.state.isPlaying ? "pause.fill" : "play.fill")
-                                    .frame(width: 20, height: 20)
-                            })
-                            .contentShape(RoundedRectangle(cornerRadius: 20))
-                            Button(action: {
-                                songsPlayer.stop()
-                                Task{
-                                    await AudioPlayerActivityUseCaseViewModel.endActivity(withActivityIdentifier: context.state.songName)
-                                }
-                            }, label: {
-                                Image(systemName: "stop.fill")
-                                    .frame(width: 20, height: 20)
-                            })
-                            /*Button(intent:){
-                                Image(systemName: "stop.fill")
-                                    .frame(width: 20, height: 20)
-                            }*/
-                        }
-                    }
-                }
+                DynamicIslandExpandedRegion(.leading) { Image(systemName: "music.note") }
+                DynamicIslandExpandedRegion(.center) { Text(context.state.songName) }
+                DynamicIslandExpandedRegion(.bottom) { playbackProgress(context.state) }
             } compactLeading: {
-                Text("L")
+                Image(systemName: context.state.isPlaying ? "play.fill" : "pause.fill")
             } compactTrailing: {
-                Text("T")
+                Image(systemName: "music.note")
             } minimal: {
-                Text(context.state.songName)
+                Image(systemName: "music.note")
             }
-            .keylineTint(Color.red)
         }
     }
-}
 
-extension AudioPlayerAttributesModel {
-    fileprivate static var preview: AudioPlayerAttributesModel {
-        AudioPlayerAttributesModel()
+    @ViewBuilder
+    private func playbackProgress(_ state: AudioPlayerAttributesModel.ContentState) -> some View {
+        if state.isPlaying, let start = state.startedAt, state.duration > 0 {
+            ProgressView(timerInterval: start...start.addingTimeInterval(state.duration), countsDown: false)
+        } else {
+            ProgressView(value: state.currentTime, total: max(1, state.duration))
+        }
     }
-}
-
-extension AudioPlayerAttributesModel.ContentState {
-    fileprivate static var smiley: AudioPlayerAttributesModel.ContentState {        AudioPlayerAttributesModel.ContentState(songName: "songNameTest", isPlaying: false)
-     }
-     
-     fileprivate static var starEyes: AudioPlayerAttributesModel.ContentState {
-         AudioPlayerAttributesModel.ContentState(songName: "songNameTest", isPlaying: false)
-     }
-}
-
-#Preview("Notification", as: .content, using: AudioPlayerAttributesModel.preview) {
-   AudioPlayerDynamicIslandLiveActivity()
-} contentStates: {
-    AudioPlayerAttributesModel.ContentState.smiley
-    AudioPlayerAttributesModel.ContentState.starEyes
 }

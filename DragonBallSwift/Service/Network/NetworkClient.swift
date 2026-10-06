@@ -14,10 +14,12 @@ final class NetworkClient: NetworkClientProtocol {
         self.urlSession = urlSession
     }
 
-    func call<T>(urlString: String,
-                 method: NetworkMethod,
-                 queryParams: [String: Any]? = nil,
-                 of type: T.Type) async throws -> T where T: Decodable {
+    func call<T>(
+        urlString: String,
+        method: NetworkMethod,
+        queryParams: [String: Any]? = nil,
+        of type: T.Type
+    ) async throws -> T where T: Decodable {
 
         var urlComponents = URLComponents(string: urlString)
         // Query params
@@ -35,8 +37,11 @@ final class NetworkClient: NetworkClientProtocol {
         let data: Data
         let response: URLResponse
         do {
-            (data, response) = try await urlSession.getDataFrom(request, type: T.self)
+            (data, response) = try await urlSession.getDataFrom(request)
+        } catch is CancellationError {
+            throw CancellationError()
         } catch {
+            if (error as? URLError)?.code == .cancelled { throw CancellationError() }
             throw ApiError.requestFailed(error)
         }
 
@@ -52,8 +57,10 @@ final class NetworkClient: NetworkClientProtocol {
             } catch {
                 throw ApiError.decodingFailed(error)
             }
-        case 400..<500:
+        case 404:
             throw ApiError.notFound
+        case 400..<500:
+            throw ApiError.httpError(httpResponse.statusCode)
         case 500..<600:
             throw ApiError.serverError
         default:
