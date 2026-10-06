@@ -26,9 +26,9 @@ struct Character: Codable {
 
 // MARK: - Links
 struct Links: Codable {
-    let first: String
-    let previous: String
-    let next, last: String
+    let first: String?
+    let previous: String?
+    let next, last: String?
 }
 
 // MARK: - Meta
@@ -37,11 +37,10 @@ struct Meta: Codable {
     let currentPage: Int
 }
 
-
 // MARK: - View Card
-extension [Character]{
+extension [Character] {
     func zIndex(_ item: Character) -> CGFloat {
-        if let index = firstIndex(where: { $0.id == item.id}){
+        if let index = firstIndex(where: { $0.id == item.id }) {
             return CGFloat(count) - CGFloat(index)
         }
         return .zero

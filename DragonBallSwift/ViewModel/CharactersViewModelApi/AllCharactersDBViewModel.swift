@@ -10,7 +10,7 @@
 //
 //@Observable
 //class AllCharactersDBViewModel{
-//    
+//
 //    private let allCharactersDataService: AllCharactersDBDataService = AllCharactersDBDataService()
 //    var allCharacters: [CharactersModel] = []
 //    var isLoading: Bool = false
@@ -25,7 +25,7 @@
 //            isLoading = false
 //        }
 //    }
-//    
+//
 //    @MainActor
 //    func getAllCharacters() async {
 //        do {
@@ -36,10 +36,9 @@
 //            showErrorMessage.toggle()
 //        }
 //    }
-//    
+//
 //    @MainActor
-//    func searchCharacer(characterName: String) -> [CharactersModel] {
+//    func searchCharacters(characterName: String) -> [CharactersModel] {
 //        return allCharacters.filter { $0.name.contains(characterName) }
 //    }
 //}
-

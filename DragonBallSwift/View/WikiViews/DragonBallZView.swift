@@ -9,31 +9,38 @@ import SwiftUI
 
 struct DragonBallZView: View {
     //Estados para obtener los personajes de la API
-    @State private var viewModel: CharactersViewModel = CharactersViewModel(referent: "dragonballz", logo: "ZLogo")
+    @State private var viewModel: CharactersViewModel = CharactersViewModel(
+        referent: "dragonballz", logo: "ZLogo")
     @State private var isLoadig = false
-    
+
     //Estados para manejar los personajes favoritos
     @State private var favoriteViewModel = FavoritesViewModel()
     @State private var deleteCharacterFromFavorites = false
-    
+
     //Estados para búsqueda de personajes
     @State private var isSearching: Bool = false
     @FocusState private var searchBarFocus: Bool
     @State private var searchedCharacters: [CharactersModel] = []
     @State private var characterName: String = ""
-    
+
     let columns = [GridItem(), GridItem()]
-    
+
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(searchedCharacters.isEmpty ? viewModel.characterModel : searchedCharacters, id: \.id) { character in
-                            NavigationLink{ // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
+                        ForEach(
+                            searchedCharacters.isEmpty ? viewModel.characterModel : searchedCharacters,
+                            id: \.id
+                        ) { character in
+                            NavigationLink {  // ⬅️ Jacob, ya estan todas las tarjetas de personajes!!! 🤘
                                 SagasViewDetails(character: character, logoDB: $viewModel.logo)
                             } label: {
-                                BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
+                                BasicCharacterCardView(
+                                    character: character, logo: viewModel.logo,
+                                    favoriteCharacters: $favoriteViewModel.favoriteCharactersIDs,
+                                    deleteSuccessfull: $deleteCharacterFromFavorites)
                             }
                         }
                     }
@@ -50,21 +57,26 @@ struct DragonBallZView: View {
             .navigationTitle("Dragon Ball Z")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal, 4)
-            .background( LinearGradient(
-                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
-                startPoint: .top,
-                endPoint: .bottom
-            ))
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
             .toolbar {
                 ToolbarItem {
-                    SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
-                        .onChange(of: characterName) { _, _ in
-                            searchedCharacters = viewModel.searchCharacer(characterName: characterName)
-                        }
+                    SearchBarView(
+                        characterName: $characterName, isSearching: $isSearching,
+                        searchedCharacters: $searchedCharacters
+                    )
+                    .onChange(of: characterName) { _, _ in
+                        searchedCharacters = viewModel.searchCharacters(characterName: characterName)
+                    }
                 }
             }
             .task {
-              //  await favoriteViewModel.getFavoriteCharactersIDs()
+                //  await favoriteViewModel.getFavoriteCharactersIDs()
             }
         }
     }

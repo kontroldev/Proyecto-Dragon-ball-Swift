@@ -4,104 +4,121 @@
 //
 //  Created by Jacob Aguilar on 30-07-24.
 //
-//  CAMBIO IMPORTANTE: antes, para montar la lista de personajes favoritos,
-//  se hacían 5 peticiones (una por cada saga: dragonball, dragonballz,
-//  dragonballgt, dragonballsuper, dragons) contra la API que montó Juan
-//  Pablo en Vercel. Esa API ya no está disponible.
-//
-//  Ahora se usa `AllCheracteersService`, que habla con dragonball-api.com
-//  (viva, mantenida y ya la usábamos para el listado general de personajes).
-//  Esa API trae TODOS los personajes en un único sitio, así que ya no hace
-//  falta hacer 5 llamadas: con una sola de sobra.
-//
-//  Como el modelo que devuelve esa API (`Character`) no es igual que el
-//  que ya usan las vistas (`CharactersModel`), se convierte con
-//  `toCharactersModel()` (ver CharacterMapping.swift).
 
 import Foundation
 import Observation
 
+/// Publica escrituras confirmadas y descarta respuestas de sesiones anteriores.
 @Observable
-class FavoritesViewModel: @unchecked Sendable {
-    private let favoriteCharactersDataBaseService = FavoriteCharacterDataBaseService()
-    private let charactersService: AllCheractersProtocols
+@MainActor
+final class FavoritesViewModel {
+    private let store: FavoriteCharacterStoring
+    private let charactersService: CharacterCatalogProviding
+    private var sessionRevision = 0
+    private var pendingIDs: Set<Int> = []
 
-    var favoriteCharactersIDs: [FavoriteCharacter] = []
-    var favoriteCharacters: [CharactersModel] = [] // Datos completos de los personajes favoritos
-    var isLoading: Bool = false
-    var showError: Bool = false
-    var errorMessage: String = ""
+    private(set) var favoriteCharactersIDs: [FavoriteCharacter] = []
+    private(set) var favoriteCharacters: [CharactersModel] = []
+    var isLoading = false
+    var showError = false
+    var errorMessage = ""
 
-    /// Se puede pasar un servicio distinto en los tests; por defecto usa el real.
-    init(charactersService: AllCheractersProtocols = AllCheracteersService(networkClient: NetworkClient(urlSession: URLSession.shared))) {
+    init(
+        charactersService: CharacterCatalogProviding = CharacterCatalogService(
+            networkClient: NetworkClient(urlSession: URLSession.shared)),
+        store: FavoriteCharacterStoring = APIFavoriteStore()
+    ) {
         self.charactersService = charactersService
+        self.store = store
     }
 
-    /// Agrega un personaje a la lista de favoritos (en la memoria y en Firestore).
-    @MainActor
+    func resetForSession() {
+        sessionRevision += 1
+        favoriteCharactersIDs = []
+        favoriteCharacters = []
+        pendingIDs = []
+        showError = false
+        errorMessage = ""
+        isLoading = false
+    }
+
+    func isFavorite(characterID: Int) -> Bool {
+        favoriteCharactersIDs.contains { $0.characterID == characterID }
+    }
+
     func addToFavorites(characterID: Int) async {
+        guard !isFavorite(characterID: characterID), !pendingIDs.contains(characterID) else { return }
+        let revision = sessionRevision
+        let userID = store.userID
+        pendingIDs.insert(characterID)
+        defer { if revision == sessionRevision { pendingIDs.remove(characterID) } }
         do {
             let character = FavoriteCharacter(characterID: characterID)
+            try await store.addToFavorites(character: character)
+            guard revision == sessionRevision, userID == store.userID else { return }
             favoriteCharactersIDs.append(character)
-            try await favoriteCharactersDataBaseService.addToFavorites(character: character)
-            await getFavoriteCharactersIDs()
         } catch {
-            showError = true
-            errorMessage = "Error al agregar a favoritos"
+            guard revision == sessionRevision, userID == store.userID else { return }
+            present(error)
         }
     }
 
-    /// Obtiene la lista de IDs de personajes favoritos desde Firestore.
-    @MainActor
     func getFavoriteCharactersIDs() async {
+        guard store.userID != nil else { return }
+        let revision = sessionRevision
+        let userID = store.userID
         do {
-            favoriteCharactersIDs = try await favoriteCharactersDataBaseService.getFavorites()
+            let favorites = try await store.getFavorites()
+            guard revision == sessionRevision, userID == store.userID, !Task.isCancelled else { return }
+            favoriteCharactersIDs = favorites
         } catch {
-            showError = true
-            errorMessage = "Error al obtener personajes favoritos"
+            guard revision == sessionRevision, userID == store.userID, !Task.isCancelled else { return }
+            present(error)
         }
     }
 
-    /// Recupera los datos completos de los personajes marcados como favoritos.
-    ///
-    /// Antes esto hacía 5 llamadas (una por saga). Ahora es 1 sola llamada
-    /// que trae todos los personajes, y de ahí nos quedamos solo con los
-    /// que están en favoritos.
-    @MainActor
     func getFavoriteCharactersModels() async {
+        let revision = sessionRevision
+        let userID = store.userID
+        guard userID != nil else { return }
         isLoading = true
-        defer { isLoading = false }
+        defer { if revision == sessionRevision { isLoading = false } }
         do {
-            let allCharacters = try await charactersService.getAllCheracters().items
-            let favoriteIDs = Set(favoriteCharactersIDs.map { $0.characterID })
-            favoriteCharacters = allCharacters
-                .filter { favoriteIDs.contains($0.id) }
-                .map { $0.toCharactersModel() }
+            let characters = try await charactersService.fetchCharacters().items
+            guard revision == sessionRevision, userID == store.userID, !Task.isCancelled else { return }
+            let ids = Set(favoriteCharactersIDs.map(\.characterID))
+            favoriteCharacters = characters.filter { ids.contains($0.id) }.map { $0.toCharactersModel() }
         } catch {
-            showError = true
-            errorMessage = "No se pudieron cargar los personajes favoritos"
+            guard revision == sessionRevision, userID == store.userID, !Task.isCancelled else { return }
+            present(error)
         }
     }
 
-    /// Verifica si un personaje está en la lista de favoritos.
-    @MainActor
     func checkIsFavorite(characterID: Int) async -> Bool {
-        return favoriteCharactersIDs.contains(where: { $0.characterID == characterID })
+        isFavorite(characterID: characterID)
     }
 
-    /// Elimina un personaje de la lista de favoritos (de la memoria y de Firestore).
-    @MainActor
     func removeFromFavorites(characterID: Int) async -> Bool {
+        guard !pendingIDs.contains(characterID) else { return false }
+        let revision = sessionRevision
+        let userID = store.userID
+        pendingIDs.insert(characterID)
+        defer { if revision == sessionRevision { pendingIDs.remove(characterID) } }
         do {
-            favoriteCharacters.removeAll(where: { $0.id == characterID })
-            favoriteCharactersIDs.removeAll(where: { $0.characterID == characterID })
-            try await favoriteCharactersDataBaseService.deleteFavoriteCharacter(characterID: characterID)
-            await getFavoriteCharactersIDs()
+            try await store.deleteFavoriteCharacter(characterID: characterID)
+            guard revision == sessionRevision, userID == store.userID else { return false }
+            favoriteCharactersIDs.removeAll { $0.characterID == characterID }
+            favoriteCharacters.removeAll { $0.id == characterID }
             return true
         } catch {
-            showError = true
-            errorMessage = "No se pudo eliminar el personaje desde favoritos"
+            guard revision == sessionRevision, userID == store.userID else { return false }
+            present(error)
             return false
         }
+    }
+
+    private func present(_ error: Error) {
+        errorMessage = error.localizedDescription
+        showError = true
     }
 }

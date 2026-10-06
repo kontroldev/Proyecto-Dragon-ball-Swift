@@ -17,5 +17,9 @@
 	<array>
 		<string>SaiyanSans.ttf</string>
 	</array>
+	<key>GIDClientID</key>
+	<string>364266574381-eari38f0ug9e71q7efunf7sbn95j19le.apps.googleusercontent.com</string>
+	<key>BackendBaseURL</key>
+	<string>https://YOUR_PROJECT.vercel.app</string>
 </dict>
 </plist>

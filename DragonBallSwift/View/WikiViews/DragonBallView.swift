@@ -8,88 +8,73 @@
 import SwiftUI
 
 struct DragonBallView: View {
-    //Estados para obtener los personajes de la API
     @State private var viewModel: CharactersViewModel
-    
-    init(referent: String, logo: String, sagas: String){
+    @Environment(FavoritesViewModel.self) private var favorites
+    @State private var query = ""
+    private let columns = [GridItem(.adaptive(minimum: 160), spacing: 16)]
+
+    init(referent: String, logo: String, sagas: String) {
         _viewModel = State(initialValue: CharactersViewModel(referent: referent, logo: logo, sagas: sagas))
     }
-    
-    @State private var isLoading = false
-    
-    //Estados para manejar los personajes favoritos
-    @Environment(FavoritesViewModel.self) var favoritesViewModel
-    @State private var deleteCharacterFromFavorites: Bool = false
-    
-    //Estados para búsqueda de personajes
-    @State private var isSearching: Bool = false
-    @FocusState private var searchBarFocus: Bool
-    @State private var searchedCharacters: [CharactersModel] = []
-    @State private var characterName: String = ""
-    
-    let columns = [GridItem(), GridItem()]
 
-    private var displayedCharacters: [CharactersModel] {
-        characterName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            ? viewModel.characterModel
-            : searchedCharacters
-    }
-    
     var body: some View {
-        NavigationStack {
-            VStack {
-                if viewModel.showError && viewModel.characterModel.isEmpty {
-                    ContentUnavailableView {
-                        Label("No se pudieron cargar las cartas", systemImage: "wifi.exclamationmark")
-                    } description: {
-                        Text(viewModel.errorMessage)
-                    } actions: {
-                        Button("Reintentar") {
-                            Task { await viewModel.getCharacters() }
-                        }
-                    }
-                } else {
-                    ScrollView {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(displayedCharacters, id: \.id) { character in
-                                NavigationLink{
-                                    SagasViewDetails(character: character, logoDB: $viewModel.logo)
-                                } label: {
-                                    BasicCharacterCardView(character: character, logo: viewModel.logo, favoriteCharacters: favoritesViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
-                                        .environment(favoritesViewModel)
-                                }
+        ScrollView {
+            if viewModel.showError && viewModel.characterModel.isEmpty {
+                ContentUnavailableView {
+                    Label("No se pudieron cargar los personajes", systemImage: "wifi.exclamationmark")
+                } description: {
+                    Text(viewModel.errorMessage)
+                } actions: {
+                    Button("Reintentar") { Task { await viewModel.getCharacters() } }
+                }
+            } else if !viewModel.isLoading && viewModel.searchCharacters(characterName: query).isEmpty {
+                ContentUnavailableView.search(text: query)
+            } else {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(viewModel.searchCharacters(characterName: query), id: \.id) { character in
+                        VStack(spacing: 0) {
+                            NavigationLink {
+                                SagasViewDetails(character: character, logoDB: .constant(viewModel.logo))
+                            } label: {
+                                BasicCharacterCardView(character: character, logo: viewModel.logo)
                             }
+                            Button {
+                                Task {
+                                    if favorites.isFavorite(characterID: character.id) {
+                                        _ = await favorites.removeFromFavorites(characterID: character.id)
+                                    } else {
+                                        await favorites.addToFavorites(characterID: character.id)
+                                    }
+                                }
+                            } label: {
+                                Label(
+                                    favorites.isFavorite(characterID: character.id)
+                                        ? "Quitar favorito" : "Guardar favorito",
+                                    systemImage: favorites.isFavorite(characterID: character.id)
+                                        ? "heart.fill" : "heart"
+                                )
+                                .font(.caption)
+                                .frame(maxWidth: .infinity, minHeight: 44)
+                            }
+                            .accessibilityLabel("Favorito: \(character.name)")
+                            .accessibilityValue(
+                                favorites.isFavorite(characterID: character.id) ? "Guardado" : "Sin guardar")
                         }
                     }
-                }
-            }
-            .overlay {
-                if viewModel.isLoading {
-                    ProgressView()
-                        .scaleEffect(1.5)
-                }
-            }
-            .navigationTitle("\(viewModel.sagas)")
-            .navigationBarTitleDisplayMode(.inline)
-            .padding(.horizontal, 4)
-            .background(LinearGradient(
-                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
-                startPoint: .top,
-                endPoint: .bottom
-            ))
-            .toolbar {
-                ToolbarItem {
-                    SearchBarView(characterName: $characterName, isSearching: $isSearching, searchedCharacters: $searchedCharacters)
-                        .onChange(of: characterName) { _, _ in
-                            searchedCharacters = viewModel.searchCharacer(characterName: characterName)
-                        }
                 }
             }
         }
+        .padding(.horizontal, 8)
+        .background(Color.backgroundColor)
+        .navigationTitle(viewModel.sagas)
+        .navigationBarTitleDisplayMode(.inline)
+        .searchable(text: $query, prompt: "Busca un personaje")
+        .overlay { if viewModel.isLoading { ProgressView("Cargando personajes…") } }
+        .task { if viewModel.characterModel.isEmpty { await viewModel.getCharacters() } }
     }
 }
 
 #Preview {
-    DragonBallView(referent: "all", logo: "DBLogo", sagas: "Personajes")
+    NavigationStack { DragonBallView(referent: "all", logo: "DBLogo", sagas: "Personajes") }
         .environment(FavoritesViewModel())
 }

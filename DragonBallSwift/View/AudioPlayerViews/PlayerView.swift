@@ -26,20 +26,18 @@ struct VolumeView: UIViewRepresentable {
     func updateUIView(_ view: MPVolumeView, context: Context) {}
 }
 struct PlayerView: View {
-    
-    @State private var isPlaying = false
-    @State private var activityIdentifier: String = ""
-    @State private var volume: Float = AVAudioSession.sharedInstance().outputVolume
-    
+
     var song: URL?
     var songName: String
     @ObservedObject var songsPlayer: SongsPlayerViewModel
-    
+
     var body: some View {
-        ZStack{
-            RadialGradient(colors: [ Color("BackgroundColor")], center: .center, startRadius: 30, endRadius: 380)
-                .ignoresSafeArea()
-            
+        ZStack {
+            RadialGradient(
+                colors: [Color("BackgroundColor")], center: .center, startRadius: 30, endRadius: 380
+            )
+            .ignoresSafeArea()
+
             if let currentSong = songsPlayer.currentSong {
                 let songName = currentSong.lastPathComponent
                 let imageName = songName.replacingOccurrences(of: ".mp3", with: "")
@@ -49,7 +47,7 @@ struct PlayerView: View {
                     .ignoresSafeArea()
                     .opacity(0.5)
                     .blur(radius: 25)
-                VStack (alignment: .center, spacing: 10){
+                VStack(alignment: .center, spacing: 10) {
                     Image(imageName)
                         .resizable()
                         .scaledToFit()
@@ -62,7 +60,7 @@ struct PlayerView: View {
                     Text(imageName)
                         .font(.title)
                         .foregroundStyle(.white)
-                    ProgressView(value: songsPlayer.currentTime, total: songsPlayer.duration)
+                    ProgressView(value: songsPlayer.currentTime, total: max(1, songsPlayer.duration))
                         .progressViewStyle(LinearProgressViewStyle(tint: .gray))
                         .frame(height: 20)
                         .padding(.horizontal, 30)
@@ -70,47 +68,46 @@ struct PlayerView: View {
                         .foregroundStyle(.gray)
                     Spacer()
                         .frame(height: 8)
-                    HStack{
-                        Button{
+                    HStack {
+                        Button {
                             songsPlayer.previousSong()
-                        }label: {
+                        } label: {
                             Image(systemName: "backward.fill")
                                 .resizable()
                                 .frame(width: 45, height: 25)
                         }
                         .padding()
-                        Button{
-                            if isPlaying {
+                        .accessibilityLabel("Canción anterior")
+                        Button {
+                            if songsPlayer.isPlaying {
                                 songsPlayer.pause()
-                                isPlaying = false
                             } else {
-                                if let url = song {
-                                    songsPlayer.play(withURL: url)
-                                }
-                                isPlaying = true
+                                songsPlayer.play()
                             }
-                        }label: {
-                            Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                        } label: {
+                            Image(systemName: songsPlayer.isPlaying ? "pause.fill" : "play.fill")
                                 .resizable()
                                 .frame(width: 30, height: 40)
                         }
                         .padding()
-                        Button{
+                        .accessibilityLabel(songsPlayer.isPlaying ? "Pausar" : "Reproducir")
+                        Button {
                             songsPlayer.nextSong()
-                        }label: {
+                        } label: {
                             Image(systemName: "forward.fill")
                                 .resizable()
                                 .frame(width: 45, height: 25)
                         }
                         .padding()
+                        .accessibilityLabel("Canción siguiente")
                     }
                     Spacer()
                         .frame(height: 8)
-                    HStack(alignment: .center){
+                    HStack(alignment: .center) {
                         Image(systemName: "speaker.fill")
                             .foregroundStyle(.white)
                             .padding(.leading, 30)
-                        ZStack{
+                        ZStack {
                             GeometryReader { geometry in
                                 VolumeView()
                                     .frame(width: geometry.size.width * 1, height: 20)
@@ -118,7 +115,7 @@ struct PlayerView: View {
                             }
                             .frame(height: 20)
                         }
-                     
+
                         Image(systemName: "speaker.wave.3.fill")
                             .foregroundStyle(.white)
                             .padding(.trailing, 30)
@@ -126,30 +123,28 @@ struct PlayerView: View {
                     }
                     Spacer()
                 }
-                .onAppear{
+                .onAppear {
                     if let song = song, let songIndex = songsPlayer.songs.firstIndex(of: song) {
                         songsPlayer.currentSongIndex = songIndex
-                    } else {
-                        let tempURL = URL(filePath: "", directoryHint: .notDirectory, relativeTo: nil)
-                        if let songIndex = songsPlayer.songs.firstIndex(of: tempURL) {
-                            songsPlayer.currentSongIndex = songIndex
-                        }
                     }
                     songsPlayer.play(withURL: song)
-                    isPlaying = true
                 }
-                .onDisappear{
+                .onDisappear {
                     songsPlayer.stop()
-                    isPlaying = false
                 }
+            } else {
+                ContentUnavailableView("No hay audio disponible", systemImage: "music.note")
             }
+        }
+        .overlay(alignment: .bottom) {
+            if let error = songsPlayer.errorMessage { Text(error).padding() }
         }
     }
 }
 
 #Preview {
     if let url = Bundle.main.url(forResource: "Dragon Ball GT", withExtension: "mp3") {
-        PlayerView(song: url,songName: "Dragon Ball GT", songsPlayer: SongsPlayerViewModel())
+        PlayerView(song: url, songName: "Dragon Ball GT", songsPlayer: SongsPlayerViewModel())
     } else {
         PlayerView(song: nil, songName: "test", songsPlayer: SongsPlayerViewModel())
     }

@@ -7,65 +7,77 @@
 
 import SwiftUI
 
-struct FavoriteCharactersView: @unchecked Sendable, View {
+struct FavoriteCharactersView: View {
+    @Environment(FavoritesViewModel.self) private var favorites
+    @Environment(SessionStore.self) private var session
+    @Environment(\.dismiss) private var dismiss
+    @State private var showsLogin = false
 
-    @Environment(FavoritesViewModel.self) var favoriteViewModel
-    @Environment(\.dismiss) var dismiss
-    @State private var deleteCharacterFromFavorites = false
-    @State private var logo: String = ""
-    
-    let columns = [GridItem(), GridItem()]
-    
     var body: some View {
         NavigationStack {
-            VStack {
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(favoriteViewModel.favoriteCharacters, id: \.id) { character in
-                            NavigationLink{
-                                SagasViewDetails(character: character, logoDB: $logo)
-                            } label: {
-                                BasicCharacterCardView(character: character, logo: logo, favoriteCharacters: favoriteViewModel.favoriteCharactersIDs, deleteSuccessfull: $deleteCharacterFromFavorites)
+            ScrollView {
+                if favorites.showError {
+                    VStack(spacing: 8) {
+                        Text(favorites.errorMessage)
+                        Button("Reintentar") {
+                            Task {
+                                favorites.showError = false
+                                await favorites.getFavoriteCharactersIDs()
+                                await favorites.getFavoriteCharactersModels()
+                            }
+                        }
+                    }.padding()
+                }
+                if session.userID == nil {
+                    ContentUnavailableView {
+                        Label("Tus favoritos", systemImage: "heart")
+                    } description: {
+                        Text("Inicia sesión para guardar y consultar tus personajes favoritos.")
+                    } actions: {
+                        Button("Iniciar sesión") { showsLogin = true }
+                    }
+                } else if favorites.favoriteCharacters.isEmpty && !favorites.isLoading {
+                    ContentUnavailableView(
+                        "Todavía no hay favoritos", systemImage: "heart",
+                        description: Text("Guarda personajes desde la wiki."))
+                } else {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 160))], spacing: 16) {
+                        ForEach(favorites.favoriteCharacters, id: \.id) { character in
+                            VStack {
+                                NavigationLink {
+                                    SagasViewDetails(character: character, logoDB: .constant("DBLogo"))
+                                } label: {
+                                    BasicCharacterCardView(character: character, logo: "DBLogo")
+                                }
+                                Button("Quitar de favoritos") {
+                                    Task {
+                                        _ = await favorites.removeFromFavorites(characterID: character.id)
+                                    }
+                                }
+                                .frame(minHeight: 44)
                             }
                         }
                     }
-                }
-                .overlay {
-                    ZStack {
-                        if favoriteViewModel.isLoading {
-                            ProgressView()
-                                .scaleEffect(1.5)
-                        }
-                    }
+                    .padding(8)
                 }
             }
-            .padding(.horizontal, 4)
-            .background(LinearGradient(
-                gradient: Gradient(colors: [.backgroundColorEX, .backgroundColor]),
-                startPoint: .top,
-                endPoint: .bottom
-            ))
-            .navigationTitle("Personajes Favoritos")
-            .navigationBarTitleDisplayMode(.inline)
-            .task {
-                favoriteViewModel.isLoading = true
-                await favoriteViewModel.getFavoriteCharactersIDs()
-                await favoriteViewModel.getFavoriteCharactersModels()
-                favoriteViewModel.isLoading = false
-              
+            .background(Color.backgroundColor)
+            .navigationTitle("Favoritos")
+            .overlay { if favorites.isLoading { ProgressView("Cargando favoritos…") } }
+            .task(id: session.userID) {
+                await favorites.getFavoriteCharactersIDs()
+                await favorites.getFavoriteCharactersModels()
             }
-            .toolbar{
-                Button(role: .cancel, action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.red)
-                })
+            .refreshable {
+                await favorites.getFavoriteCharactersIDs()
+                await favorites.getFavoriteCharactersModels()
             }
+            .toolbar { Button("Cerrar", systemImage: "xmark") { dismiss() } }
+            .sheet(isPresented: $showsLogin) { LoginView() }
         }
     }
 }
 
 #Preview {
-    FavoriteCharactersView()
+    FavoriteCharactersView().environment(FavoritesViewModel()).environment(SessionStore())
 }

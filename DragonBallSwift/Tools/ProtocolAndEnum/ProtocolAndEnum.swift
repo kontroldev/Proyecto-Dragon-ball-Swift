@@ -4,36 +4,30 @@
 //
 //  Created by Esteban Perez Castillejo on 6/9/24.
 //
-//  ⚠️ ARREGLADO (ver comentarios "FIX"):
-//  El enum ApiError solo tenía `invalidURL` e `invalidResponse`, pero
-//  NetworkClient.swift ya usaba `.notFound`, `.clientError`, `.badResponse`
-//  y `.badRequest`, que no existían. Esto no daba error porque
-//  NetworkClient.swift no estaba añadido al target de Xcode todavía.
-//  En cuanto lo añadas, esto es lo que necesita para compilar.
-
 import Foundation
 
-// MARK: - Enumera los casos de Login para Firebase
+// MARK: - Opciones de inicio de sesión
 enum UserLoginState: Int {
     case loggedOut, loggedIn
 }
 
 // MARK: - Enumera los casos de error de la API
-// FIX: se añaden los casos que faltaban y se implementa LocalizedError
-// para poder mostrar un mensaje real al usuario (antes se guardaba "").
 enum ApiError: Error {
     case invalidURL
+    case httpError(Int)
     case invalidResponse
-    case notFound                 // 400...499
-    case serverError              // 500...599 (antes se llamaba, por error, "clientError")
-    case badResponse              // cualquier otro código fuera de rango
-    case decodingFailed(Error)    // FIX: antes se perdía el error real de decodificación
-    case requestFailed(Error)     // FIX: antes se perdía el error real de red
+    case notFound
+    case serverError
+    case badResponse
+    case decodingFailed(Error)
+    case requestFailed(Error)
 }
 
 extension ApiError: LocalizedError {
     var errorDescription: String? {
         switch self {
+        case .httpError(let status):
+            return "No se pudo completar la petición (HTTP \(status))."
         case .invalidURL:
             return "La URL de la petición no es válida."
         case .invalidResponse:
@@ -56,4 +50,3 @@ extension ApiError: LocalizedError {
 protocol CheractersProtocols {
     func getCharacters(_ referent: String) async throws -> [CharactersModel]
 }
-

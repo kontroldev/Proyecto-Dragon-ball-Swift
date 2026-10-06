@@ -15,7 +15,7 @@ struct SingleCharacter: Codable {
     let image: String
     let affiliation: String
     let deletedAt: Date?
-    let originPlanet: OriginPlanet
+    let originPlanet: OriginPlanet?
     let transformations: [APITransformation]
 }
 

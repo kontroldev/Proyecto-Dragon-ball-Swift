@@ -9,23 +9,16 @@ import SwiftUI
 
 @main
 struct DragonBallSwiftApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @AppStorage("LoginFlowState") private var loginFlowState = UserLoginState.loggedOut
+    @State private var session = SessionStore.shared
     @AppStorage("isDarkMode") private var isDarkMode = false
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(session)
                 .preferredColorScheme(isDarkMode ? .dark : .light)
-//            switch loginFlowState {
-//            case .loggedOut:
-//                LoginView()
-//                    .preferredColorScheme(isDarkMode ? .dark : .light)
-//            case .loggedIn:
-//                ContentView()
-//                    .preferredColorScheme(isDarkMode ? .dark : .light)
-//            }
+                .task { await session.startListening() }
         }
     }
 }

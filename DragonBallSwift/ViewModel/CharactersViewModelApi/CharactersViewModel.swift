@@ -13,7 +13,8 @@ import Observation
 import SwiftUI
 
 @Observable
-final class CharactersViewModel: @unchecked Sendable {
+@MainActor
+final class CharactersViewModel {
 
     private enum CatalogFilter {
         case all
@@ -47,7 +48,7 @@ final class CharactersViewModel: @unchecked Sendable {
         }
     }
 
-    private let charactersService: AllCheractersProtocols
+    private let charactersService: CharacterCatalogProviding
     private let catalogFilter: CatalogFilter
 
     var characterModel: [CharactersModel] = []
@@ -57,7 +58,6 @@ final class CharactersViewModel: @unchecked Sendable {
     var sagas: String
     var referent: String
     var logo: String
-    var work: Task<Void, Never>?
     // Columnas para el grid de la vista de listado
     let columns = [GridItem(), GridItem()]
 
@@ -65,7 +65,7 @@ final class CharactersViewModel: @unchecked Sendable {
         referent: String,
         logo: String,
         sagas: String,
-        charactersService: AllCheractersProtocols = AllCheracteersService(
+        charactersService: CharacterCatalogProviding = CharacterCatalogService(
             networkClient: NetworkClient(urlSession: URLSession.shared)
         )
     ) {
@@ -75,30 +75,33 @@ final class CharactersViewModel: @unchecked Sendable {
         self.catalogFilter = CatalogFilter(identifier: referent)
         self.charactersService = charactersService
 
-        Task {
-            await getCharacters()
-        }
     }
 
     @MainActor
     func getCharacters() async {
+        guard !isLoading else { return }
         isLoading = true
         showError = false
         defer { isLoading = false }
 
         do {
-            let characters = try await charactersService.getAllCheracters().items
-            characterModel = catalogFilter
+            let characters = try await charactersService.fetchCharacters().items
+            guard !Task.isCancelled else { return }
+            characterModel =
+                catalogFilter
                 .apply(to: characters)
                 .map { $0.toCharactersModel() }
+        } catch is CancellationError {
+            return
         } catch {
+            guard !Task.isCancelled else { return }
             showError = true
             errorMessage = error.localizedDescription
         }
     }
 
     @MainActor
-    func searchCharacer(characterName: String) -> [CharactersModel] {
+    func searchCharacters(characterName: String) -> [CharactersModel] {
         let trimmed = characterName.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return characterModel }
         return characterModel.filter { $0.name.localizedCaseInsensitiveContains(trimmed) }

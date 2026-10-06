@@ -7,9 +7,12 @@
 
 import Foundation
 
+@MainActor
 protocol NetworkClientProtocol {
-    func call<T: Decodable>(urlString: String,
-                            method: NetworkMethod,
-                            queryParams: [String: Any]?,
-                            of type: T.Type) async throws -> T
+    func call<T: Decodable>(
+        urlString: String,
+        method: NetworkMethod,
+        queryParams: [String: Any]?,
+        of type: T.Type
+    ) async throws -> T
 }

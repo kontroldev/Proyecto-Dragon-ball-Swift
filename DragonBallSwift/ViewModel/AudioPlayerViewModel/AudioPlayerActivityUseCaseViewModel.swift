@@ -1,41 +1,22 @@
-//
-//  AudioPlayerActivityUseCaseViewModel.swift
-//  DragonBallSwift
-//
-//  Created by Manuel Bermudo on 9/8/24.
-//
-
 import ActivityKit
 import Foundation
 
-final class AudioPlayerActivityUseCaseViewModel {
-    
-    static func startActivity(songName: String) throws -> String {
-        guard ActivityAuthorizationInfo().areActivitiesEnabled else { return "" }
-        let initialState = AudioPlayerAttributesModel.ContentState(songName: songName, isPlaying: false)
-        
-        let futureDate = .now + 3600
-        let activityContent = ActivityContent(state: initialState, staleDate: futureDate)
-        
-        let atributes = AudioPlayerAttributesModel()
-        
-        do{
-            let activity = try Activity.request(attributes: atributes, content: activityContent)
-            return activity.id
-        } catch {
-            throw error
-        }
+/// La app conserva IDs; las instancias de Activity no cruzan actores.
+enum PlaybackLiveActivity {
+    static func start(state: AudioPlayerAttributesModel.ContentState) throws -> String? {
+        guard ActivityAuthorizationInfo().areActivitiesEnabled else { return nil }
+        return try Activity.request(
+            attributes: AudioPlayerAttributesModel(), content: ActivityContent(state: state, staleDate: nil)
+        ).id
     }
-    static func updateActivity(activityIdentifier: String, songName: String, isPlaying: Bool, url: URL?, currentTime: Double, duration: Double) async {
 
-        let updateContentState = AudioPlayerAttributesModel.ContentState(songName: songName, currentTime: currentTime, duration: duration, isPlaying: isPlaying)
-        let activity = Activity<AudioPlayerAttributesModel>.activities.first(where: { $0.id == activityIdentifier })
-        let activityContent = ActivityContent(state: updateContentState, staleDate: .now)
-        
-        await activity?.update(activityContent)
+    static func update(id: String, state: AudioPlayerAttributesModel.ContentState) async {
+        let activity = Activity<AudioPlayerAttributesModel>.activities.first { $0.id == id }
+        await activity?.update(ActivityContent(state: state, staleDate: nil))
     }
-    static func endActivity(withActivityIdentifier activityIdentifier: String) async {
-        let value = Activity<AudioPlayerAttributesModel>.activities.first(where: { $0.id == activityIdentifier})
-        await value?.end(nil)
+
+    static func end(id: String) async {
+        let activity = Activity<AudioPlayerAttributesModel>.activities.first { $0.id == id }
+        await activity?.end(nil, dismissalPolicy: .immediate)
     }
 }
